@@ -27,7 +27,7 @@ class SKBoard: SKScene {
     
     private func addAnimalCard () {
         arrangementController.removeAllCards()
-        let animals = ["squirrel","pig","penguin","panda","dog","cat"]
+        let animals = ["squirrel","pig","penguin","panda","dog","cat"].shuffled()
         
         for item in animals {
             let card = Card.init(cardImage: item, cardValue: item)

@@ -5,6 +5,15 @@ public class SPViewController: UIViewController {
     var boardView: SKView?
     var board: SKBoard?
     var arrangementController: SPArrangementController?
+    var appTitlePrimary: UILabel?
+    var appTitleSecondary: UILabel?
+    private var titleColor = UIColor.white
+    
+    public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)? {
+        didSet {
+            arrangementController?.performSelectionSort = performSelectionSort
+        }
+    }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +41,50 @@ public class SPViewController: UIViewController {
             boardView.presentScene(board)
         }
         
+        appTitlePrimary = UILabel()
+        if let appTitlePrimary = appTitlePrimary {
+            appTitlePrimary.text = "Sorting"
+            appTitlePrimary.font = UIFont(name: "akaDylan Collage", size: 50)
+            appTitlePrimary.textAlignment = .center
+            appTitlePrimary.minimumScaleFactor = 0.4
+            appTitlePrimary.adjustsFontSizeToFitWidth = true
+            appTitlePrimary.textColor = titleColor
+            appTitlePrimary.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(appTitlePrimary)
+            
+            let views = ["view": view, "appTitlePrimary": appTitlePrimary]
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(40)-[appTitlePrimary]-(40)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(80)-[appTitlePrimary(60)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            
+            view.addConstraints(horizontalConstraints)
+            view.addConstraints(verticalConstraints)
+        }
+        
+        appTitleSecondary = UILabel()
+        if let appTitleSecondary = appTitleSecondary {
+            appTitleSecondary.text = "Playground"
+            appTitleSecondary.font = UIFont(name: "akaDylan Collage", size: 50)
+            appTitleSecondary.textAlignment = .center
+            appTitleSecondary.minimumScaleFactor = 0.4
+            appTitleSecondary.adjustsFontSizeToFitWidth = true
+            appTitleSecondary.textColor = titleColor
+            appTitleSecondary.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(appTitleSecondary)
+            
+            let views = ["appTitlePrimary": appTitlePrimary, "appTitleSecondary": appTitleSecondary]
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(40)-[appTitleSecondary]-(40)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[appTitlePrimary]-[appTitleSecondary(50)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            
+            view.addConstraints(horizontalConstraints)
+            view.addConstraints(verticalConstraints)
+        }
+        
         
         view.backgroundColor = UIColor.black
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+            self.arrangementController?.performSelectionSort!(self.arrangementController!)
+        }
     }
     
     public override func viewDidAppear(_ animated: Bool) {

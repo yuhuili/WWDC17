@@ -12,7 +12,9 @@ public class SPArrangementController: NSObject {
     private let velocity: CGFloat // Velocity at which a card will move to a new position
     private let neighbourRearrangeDuration: TimeInterval
     
-    private var cards = [Card]()
+    public var cards = [Card]()
+    
+    public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)?
     
     /**
      Initialize an ArrangementController with properties
@@ -65,6 +67,15 @@ public class SPArrangementController: NSObject {
     }
     
     /**
+     Reset the opacity of all cards to 1
+     */
+    public func resetCardsOpacity() {
+        for n in cards.enumerated() {
+            n.element.alpha = 1
+        }
+    }
+    
+    /**
      Update `card` zPosition to 1.0 and that of other cards to 0.0
      
      - parameter card: A card to be brought to front
@@ -113,7 +124,7 @@ public class SPArrangementController: NSObject {
      
      - parameter card: A card to be checked and potentially rearranged
      */
-    private func rearrange(index1: Int, index2: Int) {
+    public func rearrange(index1: Int, index2: Int) {
         if index1 == index2 {
             return
         }
