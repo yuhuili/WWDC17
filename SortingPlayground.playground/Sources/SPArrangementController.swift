@@ -1,6 +1,24 @@
 import UIKit
 import SpriteKit
 
+public enum SPActionType {
+    case swap
+    case dim
+    case resetAll
+}
+
+public struct SPAction {
+    var type: SPActionType
+    var index1: Int?
+    var index2: Int?
+    
+    public init(type: SPActionType, index1: Int?, index2: Int?) {
+        self.type = type
+        self.index1 = index1
+        self.index2 = index2
+    }
+}
+
 public class SPArrangementController: NSObject {
     private let viewSize: CGSize // Arrangement view size
     private let viewOffset: CGPoint // Arrangement view offset from parent view
@@ -15,6 +33,38 @@ public class SPArrangementController: NSObject {
     public var cards = [Card]()
     
     public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)?
+    
+    private var actions = [SPAction]()
+    
+    public func appendAction(_ action: SPAction) {
+        actions.append(action)
+    }
+    
+    public func appendAction(type: SPActionType, index1: Int?, index2: Int?) {
+        let action = SPAction(type: type, index1: index1, index2: index2)
+        actions.append(action)
+    }
+    
+    public func executeActions() {
+        if actions.isEmpty {
+            return
+        }
+        
+        switch actions[0].type {
+        case .swap:
+            rearrange(index1: actions[0].index1!, index2: actions[0].index2!)
+        case .dim:
+            cards[actions[0].index1!].alpha = 0.5
+        case .resetAll:
+            resetCardsOpacity()
+        }
+        
+        actions.removeFirst()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { 
+            self.executeActions()
+        }
+    }
     
     /**
      Initialize an ArrangementController with properties

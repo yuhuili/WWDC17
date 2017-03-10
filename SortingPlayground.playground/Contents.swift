@@ -23,12 +23,45 @@ let viewController = SPViewController()
 PlaygroundPage.current.liveView = viewController
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 func performSelectionSort(_ arrangementController: SPArrangementController) {
-    performSelectionSort(arrangementController, startIndex: 0)
+    var valueArray = [String]()
+    for c in arrangementController.cards {
+        valueArray.append(c.stringValue())
+    }
+    
+    performSelectionSort(arrangementController, values: &valueArray)
 }
 //#-end-hidden-code
 
 // Each time we select the smallest element and place it in front, continue doing this for all cards.
-func performSelectionSort(_ arrangementController: SPArrangementController, startIndex: Int) {
+func performSelectionSort(_ arrangementController: SPArrangementController, values: inout [String]) {
+    
+    for i in 0..<values.count {
+        var smallestValue = values[i]
+        var smallestIndex = i
+        for j in i..<values.count {
+            if values[j] < smallestValue {
+                smallestValue = values[j]
+                smallestIndex = j
+            }
+        }
+        if smallestIndex != i {
+            swap(&values[i], &values[smallestIndex])
+            //#-hidden-code
+            arrangementController.appendAction(type: .swap, index1: i, index2: smallestIndex)
+            //#-end-hidden-code
+        }
+        //#-hidden-code
+        arrangementController.appendAction(type: .dim, index1: i, index2: nil)
+        //#-end-hidden-code
+    }
+    
+    //#-hidden-code
+    arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
+    
+    arrangementController.executeActions()
+    //#-end-hidden-code
+    
+    /*
     // If we have finished looking at all elements of the array, reset the transparency
     if (startIndex >= arrangementController.cards.count) {
         arrangementController.resetCardsOpacity()
@@ -51,19 +84,19 @@ func performSelectionSort(_ arrangementController: SPArrangementController, star
         arrangementController.rearrange(index1: startIndex, index2: smallestIndex)
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-            performSelectionSort(arrangementController, startIndex: startIndex + 1)
+            performSelectionSort(arrangementController, cards, startIndex: startIndex + 1)
         })
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
             arrangementController.cards[startIndex].alpha = 0.5
         })
     } else {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-            performSelectionSort(arrangementController, startIndex: startIndex + 1)
+            performSelectionSort(arrangementController, cards, startIndex: startIndex + 1)
         })
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
             arrangementController.cards[startIndex].alpha = 0.5
         })
-    }
+    }*/
 }
 //#-hidden-code
 viewController.performSelectionSort = performSelectionSort
