@@ -5,8 +5,9 @@
 //  Copyright (c) 2017 Yuhui Li
 //
 //#-end-hidden-code
-/*:
- Implement sorting functions! Follow the comments to get started.
+/*: #
+ Sorting: the process of arranging items.
+  - - -
  */
 //#-hidden-code
 //#-code-completion(everything, hide)
@@ -31,19 +32,30 @@ func performSelectionSort(_ arrangementController: SPArrangementController) {
     performSelectionSort(arrangementController, values: &valueArray)
 }
 //#-end-hidden-code
-
-// Each time we select the smallest element and place it in front, continue doing this for all cards.
+//: ## Selection Sort
+//: Average runtime: O(n^2)
 func performSelectionSort(_ arrangementController: SPArrangementController, values: inout [String]) {
-    
+    //#-hidden-code
+    viewController.disableBoard()
+    //#-end-hidden-code
+    // Imagine the array to have two parts, sorted and unsorted.
+    // Each time we loop through unsorted part, we pick the smallest item. Then place it at the end of the sorted part.
+    //#-hidden-code
+    // Some issue with iPad playground layout engine, forcing an update
+    arrangementController.appendAction(type: .quickSwap, index1: 0, index2: 1)
+    arrangementController.appendAction(type: .quickSwap, index1: 0, index2: 1)
+    //#-end-hidden-code
     for i in 0..<values.count {
-        var smallestValue = values[i]
-        var smallestIndex = i
+        //#-editable-code
+        // Challenge for you: modify the code to sort in descending order
+        var (smallestIndex, smallestValue) = (i, values[i])
         for j in i..<values.count {
             if values[j] < smallestValue {
-                smallestValue = values[j]
-                smallestIndex = j
+                (smallestIndex, smallestValue) = (j, values[j])
             }
         }
+        //#-end-editable-code
+        // Swap the smallest item with front of the unsorted part
         if smallestIndex != i {
             swap(&values[i], &values[smallestIndex])
             //#-hidden-code
@@ -54,49 +66,10 @@ func performSelectionSort(_ arrangementController: SPArrangementController, valu
         arrangementController.appendAction(type: .dim, index1: i, index2: nil)
         //#-end-hidden-code
     }
-    
     //#-hidden-code
     arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
-    
     arrangementController.executeActions()
     //#-end-hidden-code
-    
-    /*
-    // If we have finished looking at all elements of the array, reset the transparency
-    if (startIndex >= arrangementController.cards.count) {
-        arrangementController.resetCardsOpacity()
-        return
-    }
-    
-    var smallestIndex = startIndex
-    var smallestIndexWord = arrangementController.cards[startIndex].stringValue()
-    if startIndex < arrangementController.cards.count - 1 {
-        // Try to change the code to make it sort by descending order, that is, z comes first, a comes last.
-        //#-editable-code
-        for i in startIndex+1..<arrangementController.cards.count {
-            if arrangementController.cards[i].stringValue() < smallestIndexWord {
-                smallestIndexWord = arrangementController.cards[i].stringValue()
-                smallestIndex = i
-            }
-        }
-        //#-end-editable-code
-        
-        arrangementController.rearrange(index1: startIndex, index2: smallestIndex)
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-            performSelectionSort(arrangementController, cards, startIndex: startIndex + 1)
-        })
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-            arrangementController.cards[startIndex].alpha = 0.5
-        })
-    } else {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-            performSelectionSort(arrangementController, cards, startIndex: startIndex + 1)
-        })
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-            arrangementController.cards[startIndex].alpha = 0.5
-        })
-    }*/
 }
 //#-hidden-code
 viewController.performSelectionSort = performSelectionSort

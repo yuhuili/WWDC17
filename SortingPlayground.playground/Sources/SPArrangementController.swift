@@ -3,6 +3,7 @@ import SpriteKit
 
 public enum SPActionType {
     case swap
+    case quickSwap
     case dim
     case resetAll
 }
@@ -36,6 +37,8 @@ public class SPArrangementController: NSObject {
     
     private var actions = [SPAction]()
     
+    public weak var viewController: SPViewController?
+    
     public func appendAction(_ action: SPAction) {
         actions.append(action)
     }
@@ -47,21 +50,33 @@ public class SPArrangementController: NSObject {
     
     public func executeActions() {
         if actions.isEmpty {
+            if let viewController = viewController {
+                viewController.enableBoard()
+            }
             return
         }
         
         switch actions[0].type {
         case .swap:
             rearrange(index1: actions[0].index1!, index2: actions[0].index2!)
+            
+            break
         case .dim:
             cards[actions[0].index1!].alpha = 0.5
+            break
         case .resetAll:
             resetCardsOpacity()
+            break
+        case .quickSwap:
+            rearrange(index1: actions[0].index1!, index2: actions[0].index2!)
+            actions.removeFirst()
+            self.executeActions()
+            return
         }
         
         actions.removeFirst()
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { 
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
             self.executeActions()
         }
     }
@@ -184,6 +199,22 @@ public class SPArrangementController: NSObject {
         
         cards[index1].run(SKAction.move(to: CGPoint(x: xPos2, y: viewOffset.y), duration: neighbourRearrangeDuration))
         cards[index2].run(SKAction.move(to: CGPoint(x: xPos1, y: viewOffset.y), duration: neighbourRearrangeDuration))
+        
+        cards[index1].currentIndex = index2
+        cards[index2].currentIndex = index1
+        swap(&cards[index1], &cards[index2])
+    }
+    
+    public func quickRearrange(index1: Int, index2: Int) {
+        if index1 == index2 {
+            return
+        }
+        
+        let xPos1 = CGFloat(index1) * (itemSize.width + interItemDistance) + viewOffset.x
+        let xPos2 = CGFloat(index2) * (itemSize.width + interItemDistance) + viewOffset.x
+        
+        cards[index1].run(SKAction.move(to: CGPoint(x: xPos2, y: viewOffset.y), duration: 0))
+        cards[index2].run(SKAction.move(to: CGPoint(x: xPos1, y: viewOffset.y), duration: 0))
         
         cards[index1].currentIndex = index2
         cards[index2].currentIndex = index1

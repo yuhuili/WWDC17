@@ -9,12 +9,24 @@ class SKBoard: SKScene {
     private let restrictCardYMax: CGFloat = 180 // Restrict max y at which a card can be dragged
     private let restrictCardYMin: CGFloat = 100 // Restrict min y at which a card can be dragged
     
+    public var isUserTouchEnabled: Bool {
+        didSet {
+            if isUserTouchEnabled == false {
+                if let selectedNode = selectedNode as? Card {
+                    arrangementController.placeToCurrentIndexPos(card: selectedNode)
+                    self.selectedNode = dummyNode
+                }
+            }
+        }
+    }
+    
     private let arrangementController: SPArrangementController
     
     public init(arrangementController: SPArrangementController, viewSize: CGSize) {
         self.dummyNode = SKSpriteNode()
         self.selectedNode = dummyNode
         self.arrangementController = arrangementController
+        self.isUserTouchEnabled = true
         super.init(size: viewSize)
     }
     
@@ -22,6 +34,7 @@ class SKBoard: SKScene {
         self.dummyNode = SKSpriteNode()
         self.selectedNode = dummyNode
         self.arrangementController = SPArrangementController(viewSize: CGSize.zero, offsetFromSuperview: CGPoint.zero, itemSize: CGSize.zero, itemCount: 0, interItemDistance: 0, velocity: 1)
+        self.isUserTouchEnabled = true
         super.init(coder: aDecoder)
     }
     
@@ -86,6 +99,10 @@ class SKBoard: SKScene {
     }
     
     func selectNodeForTouch(_ touchLocation: CGPoint) {
+        if !isUserTouchEnabled {
+            return
+        }
+        
         let touchedNodes = self.nodes(at: touchLocation)
         
         var touchedNode: SKSpriteNode? = nil
