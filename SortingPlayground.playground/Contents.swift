@@ -35,9 +35,6 @@ func performSelectionSort(_ arrangementController: SPArrangementController) {
 //: ## Selection Sort
 //: Average runtime: O(n^2)
 func performSelectionSort(_ arrangementController: SPArrangementController, values: inout [String]) {
-    //#-hidden-code
-    viewController.disableBoard()
-    //#-end-hidden-code
     // Imagine the array to have two parts, sorted and unsorted.
     // Each time we loop through unsorted part, we pick the smallest item. Then place it at the end of the sorted part.
     //#-hidden-code

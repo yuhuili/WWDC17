@@ -15,6 +15,11 @@ public let CardImageOffset = CGPoint(x: 0, y: 20)
 public let CardLabelOffset = CGPoint(x: 0, y: -80)
 public let CardSize = CGSize(width: 150, height: 200)
 
+public let NormalColorOnWood = UIColor(red: 133.0/255, green: 88.0/255, blue: 10.0/255, alpha: 1)
+public let DisabledColorOnWood = UIColor(red: 181.0/255, green: 131.0/255, blue: 47.0/255, alpha: 1)
+
+public let SkyGradient = [UIColor(red: 31.0/255.0, green: 182.0/255.0, blue: 246.0/255.0, alpha: 1).cgColor, UIColor(red: 153.0/255.0, green: 224.0/255.0, blue: 254.0/255.0, alpha: 1).cgColor]
+
 extension CGPoint {
     func withOffset(_ offset: CGPoint) -> CGPoint {
         return CGPoint(x: self.x + offset.x, y: self.y + offset.y)
@@ -57,5 +62,16 @@ extension Sequence {
         var result = Array(self)
         result.shuffle()
         return result
+    }
+}
+
+extension UIButton {
+    static func createSPButton() -> UIButton {
+        let button = UIButton(type: UIButtonType.system)
+        button.setBackgroundImage(UIImage(named: "purty_wood"), for: .normal)
+        button.layer.cornerRadius = 5
+        button.clipsToBounds = true
+        button.setTitleColor(NormalColorOnWood , for: .normal)
+        return button
     }
 }

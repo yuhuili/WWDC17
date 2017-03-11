@@ -28,6 +28,7 @@ class SKBoard: SKScene {
         self.arrangementController = arrangementController
         self.isUserTouchEnabled = true
         super.init(size: viewSize)
+        self.backgroundColor = UIColor.clear
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -36,6 +37,7 @@ class SKBoard: SKScene {
         self.arrangementController = SPArrangementController(viewSize: CGSize.zero, offsetFromSuperview: CGPoint.zero, itemSize: CGSize.zero, itemCount: 0, interItemDistance: 0, velocity: 1)
         self.isUserTouchEnabled = true
         super.init(coder: aDecoder)
+        self.backgroundColor = UIColor.clear
     }
     
     private func addAnimalCard () {

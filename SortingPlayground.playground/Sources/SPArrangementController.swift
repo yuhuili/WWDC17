@@ -33,11 +33,11 @@ public class SPArrangementController: NSObject {
     
     public var cards = [Card]()
     
-    public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)?
-    
-    private var actions = [SPAction]()
-    
     public weak var viewController: SPViewController?
+    
+    // MARK: - Animations
+    public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)?
+    private var actions = [SPAction]()
     
     public func appendAction(_ action: SPAction) {
         actions.append(action)
@@ -52,6 +52,7 @@ public class SPArrangementController: NSObject {
         if actions.isEmpty {
             if let viewController = viewController {
                 viewController.enableBoard()
+                viewController.enableButtons()
             }
             return
         }
@@ -81,6 +82,8 @@ public class SPArrangementController: NSObject {
         }
     }
     
+    // MARK: - Initializer
+    
     /**
      Initialize an ArrangementController with properties
      
@@ -104,6 +107,8 @@ public class SPArrangementController: NSObject {
         self.neighbourRearrangeDuration = TimeInterval((itemSize.width + interItemDistance) / velocity)
         super.init()
     }
+    
+    // MARK: - Cards
     
     /**
      Add a new card to the existing group
