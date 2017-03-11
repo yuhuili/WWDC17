@@ -5,8 +5,7 @@ public class SPViewController: UIViewController {
     var boardView: SKView?
     var board: SKBoard?
     var arrangementController: SPArrangementController?
-    var appTitlePrimary: UILabel?
-    var appTitleSecondary: UILabel?
+    var logoImageView: UIImageView?
     private var titleColor = UIColor.white
     
     public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)? {
@@ -52,6 +51,30 @@ public class SPViewController: UIViewController {
             boardView.presentScene(board)
         }
         
+        logoImageView = UIImageView()
+        if let logoImageView = logoImageView {
+            logoImageView.image = UIImage(named: "logo")
+            logoImageView.contentMode = .scaleAspectFit
+            logoImageView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(logoImageView)
+            
+            let views = ["view": view, "logoImageView": logoImageView]
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(20)-[logoImageView]-(20)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            view.addConstraints(horizontalConstraints)
+            
+            let horizontalConstraint = NSLayoutConstraint(item: logoImageView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+            let topConstraint = NSLayoutConstraint(item: logoImageView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 10)
+            let heightConstraint = NSLayoutConstraint(item: logoImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 130)
+            heightConstraint.priority = 800
+            
+            
+            let bottomConstraint = NSLayoutConstraint(item: logoImageView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: boardView!, attribute: .top, multiplier: 1, constant: -50)
+            bottomConstraint.priority = 1000
+            
+            view.addConstraints([horizontalConstraint, topConstraint, heightConstraint, bottomConstraint])
+            
+        }
+        /*
         appTitlePrimary = LabelWithAdaptiveTextHeight()
         if let appTitlePrimary = appTitlePrimary {
             appTitlePrimary.text = "Sorting"
@@ -94,10 +117,10 @@ public class SPViewController: UIViewController {
             
             view.addConstraints(horizontalConstraints)
             view.addConstraints(verticalConstraints)
-        }
+        }*/
         
         
-        view.backgroundColor = UIColor.black
+        view.backgroundColor = UIColor.white
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             self.arrangementController?.performSelectionSort!(self.arrangementController!)
