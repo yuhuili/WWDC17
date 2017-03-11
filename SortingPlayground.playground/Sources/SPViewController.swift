@@ -6,6 +6,16 @@ public class SPViewController: UIViewController {
     var board: SKBoard?
     var arrangementController: SPArrangementController?
     var logoImageView: UIImageView?
+    var buttonsStackView: UIStackView?
+    var selectionSortButton: UIButton?
+    var bubbleSortButton: UIButton?
+    var quickSortButton: UIButton?
+    var bogoSortButton: UIButton?
+    var buttonsWidthConstraintNarrow: NSLayoutConstraint?
+    var buttonsWidthConstraintWideLeft: NSLayoutConstraint?
+    var buttonsWidthConstraintWideRight: NSLayoutConstraint?
+    var buttonsHeightConstraintTall: NSLayoutConstraint?
+    var buttonsHeightConstraintShort: NSLayoutConstraint?
     private var titleColor = UIColor.white
     
     public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)? {
@@ -43,12 +53,63 @@ public class SPViewController: UIViewController {
             
             
             let bottomConstraint = NSLayoutConstraint(item: boardView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-            let topConstraint = NSLayoutConstraint(item: boardView, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: view, attribute: .top, multiplier: 1, constant: 200)
+            let topConstraint = NSLayoutConstraint(item: boardView, attribute: .bottom, relatedBy: .greaterThanOrEqual, toItem: view, attribute: .top, multiplier: 1, constant: 40)
+            topConstraint.priority = 800
             
             view.addConstraints(horizontalConstraints)
-            view.addConstraints([heightConstraint, bottomConstraint])
+            view.addConstraints([heightConstraint, bottomConstraint, topConstraint])
             
             boardView.presentScene(board)
+        }
+        
+        buttonsStackView = UIStackView()
+        selectionSortButton = UIButton(type: .system)
+        bubbleSortButton = UIButton(type: .system)
+        quickSortButton = UIButton(type: .system)
+        bogoSortButton = UIButton(type: .system)
+        if let buttonsStackView = buttonsStackView,
+            let selectionSortButton = selectionSortButton,
+            let bubbleSortButton = bubbleSortButton,
+            let quickSortButton = quickSortButton,
+            let bogoSortButton = bogoSortButton {
+            
+            selectionSortButton.setTitle("Selection", for: .normal)
+            selectionSortButton.setTitleColor(UIColor.black, for: .normal)
+            
+            bubbleSortButton.setTitle("Bubble", for: .normal)
+            bubbleSortButton.setTitleColor(UIColor.black, for: .normal)
+            
+            quickSortButton.setTitle("Quick", for: .normal)
+            quickSortButton.setTitleColor(UIColor.black, for: .normal)
+            
+            bogoSortButton.setTitle("Bogo", for: .normal)
+            bogoSortButton.setTitleColor(UIColor.black, for: .normal)
+            
+            buttonsStackView.axis = .vertical
+            buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
+            buttonsStackView.addArrangedSubview(selectionSortButton)
+            buttonsStackView.addArrangedSubview(bubbleSortButton)
+            buttonsStackView.addArrangedSubview(quickSortButton)
+            buttonsStackView.addArrangedSubview(bogoSortButton)
+            buttonsStackView.distribution = .fillEqually
+            view.addSubview(buttonsStackView)
+            
+            let horizontalConstraint = NSLayoutConstraint(item: buttonsStackView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+            buttonsWidthConstraintNarrow = NSLayoutConstraint(item: buttonsStackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 180)
+            
+            buttonsWidthConstraintWideLeft = NSLayoutConstraint(item: buttonsStackView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 30)
+            buttonsWidthConstraintWideRight = NSLayoutConstraint(item: buttonsStackView, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 30)
+            buttonsWidthConstraintWideLeft?.isActive = false
+            buttonsWidthConstraintWideRight?.isActive = false
+            
+            buttonsHeightConstraintTall = NSLayoutConstraint(item: buttonsStackView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 140)
+            buttonsHeightConstraintShort = NSLayoutConstraint(item: buttonsStackView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30)
+            buttonsHeightConstraintShort?.isActive = false
+            
+            //heightConstraint.priority = 0.4
+            let bottomConstraint = NSLayoutConstraint(item: buttonsStackView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: boardView, attribute: .top, multiplier: 1, constant: -20)
+            
+            view.addConstraints([horizontalConstraint, buttonsWidthConstraintNarrow!, buttonsWidthConstraintWideLeft!, buttonsWidthConstraintWideRight!,buttonsHeightConstraintTall!, buttonsHeightConstraintShort!, bottomConstraint])
         }
         
         logoImageView = UIImageView()
@@ -65,60 +126,15 @@ public class SPViewController: UIViewController {
             let horizontalConstraint = NSLayoutConstraint(item: logoImageView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
             let topConstraint = NSLayoutConstraint(item: logoImageView, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 10)
             let heightConstraint = NSLayoutConstraint(item: logoImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 130)
+            let heightConstraint2 = NSLayoutConstraint(item: logoImageView, attribute: .height, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 200)
             heightConstraint.priority = 800
             
             
-            let bottomConstraint = NSLayoutConstraint(item: logoImageView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: boardView!, attribute: .top, multiplier: 1, constant: -50)
-            bottomConstraint.priority = 1000
+            let bottomConstraint = NSLayoutConstraint(item: logoImageView, attribute: .bottom, relatedBy: .equal, toItem: buttonsStackView!, attribute: .top, multiplier: 1, constant: -10)
             
-            view.addConstraints([horizontalConstraint, topConstraint, heightConstraint, bottomConstraint])
+            view.addConstraints([horizontalConstraint, topConstraint, heightConstraint, heightConstraint2, bottomConstraint])
             
         }
-        /*
-        appTitlePrimary = LabelWithAdaptiveTextHeight()
-        if let appTitlePrimary = appTitlePrimary {
-            appTitlePrimary.text = "Sorting"
-            appTitlePrimary.font = UIFont(name: "akaDylan Collage", size: 50)
-            //appTitlePrimary.font = UIFont.systemFont(ofSize: 50)
-            appTitlePrimary.textAlignment = .center
-            appTitlePrimary.minimumScaleFactor = 0.1
-            appTitlePrimary.adjustsFontSizeToFitWidth = true
-            appTitlePrimary.baselineAdjustment = .alignCenters
-            appTitlePrimary.textColor = titleColor
-            appTitlePrimary.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(appTitlePrimary)
-            
-            let views = ["view": view, "appTitlePrimary": appTitlePrimary]
-            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(40)-[appTitlePrimary]-(40)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(80@800)-[appTitlePrimary(60@50)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
-            let verticalConstraints2 = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(20@1000)-[appTitlePrimary]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
-            
-            view.addConstraints(horizontalConstraints)
-            view.addConstraints(verticalConstraints)
-            view.addConstraints(verticalConstraints2)
-        }
-        
-        appTitleSecondary = LabelWithAdaptiveTextHeight()
-        if let appTitleSecondary = appTitleSecondary {
-            appTitleSecondary.text = "Playground"
-            appTitleSecondary.font = UIFont(name: "akaDylan Collage", size: 50)
-            //appTitleSecondary.font = UIFont.systemFont(ofSize: 50)
-            appTitleSecondary.textAlignment = .center
-            appTitleSecondary.minimumScaleFactor = 0.1
-            appTitleSecondary.adjustsFontSizeToFitWidth = true
-            appTitleSecondary.baselineAdjustment = .alignCenters
-            appTitleSecondary.textColor = titleColor
-            appTitleSecondary.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(appTitleSecondary)
-            
-            let views: [String: UIView?] = ["appTitlePrimary": appTitlePrimary, "appTitleSecondary": appTitleSecondary, "boardView": boardView]
-            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(40)-[appTitleSecondary]-(40)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[appTitlePrimary]-[appTitleSecondary(==appTitlePrimary)]-(>=60@1000)-[boardView]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
-            
-            view.addConstraints(horizontalConstraints)
-            view.addConstraints(verticalConstraints)
-        }*/
-        
         
         view.backgroundColor = UIColor.white
         
@@ -129,10 +145,47 @@ public class SPViewController: UIViewController {
         
     }
     
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        /*let alertController = UIAlertController(title: "Things are happening", message: "Pleas confirm?", preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        present(alertController, animated: true, completion: nil)*/
+    }
+    
     public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
             self.view.setNeedsLayout()
+        }
+        
+        print(buttonsStackView?.frame.width, buttonsStackView?.frame.height, buttonsStackView?.frame.origin.x, buttonsStackView?.frame.origin.y)
+    }
+    
+    public override func viewWillLayoutSubviews() {
+        /*let alertController = UIAlertController(title: "Things are happening", message: String(format:"%f", self.view.frame.height), preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        present(alertController, animated: true, completion: nil)*/
+        
+        print(view.frame.height)
+        if view.frame.height < 400 {
+            buttonsHeightConstraintTall?.isActive = false
+            buttonsHeightConstraintShort?.isActive = true
+            buttonsWidthConstraintNarrow?.isActive = false
+            buttonsWidthConstraintWideLeft?.isActive = true
+            buttonsWidthConstraintWideRight?.isActive = true
+            buttonsStackView?.axis = .horizontal
+        } else {
+            buttonsHeightConstraintTall?.isActive = true
+            buttonsHeightConstraintShort?.isActive = false
+            buttonsWidthConstraintNarrow?.isActive = true
+            buttonsWidthConstraintWideLeft?.isActive = false
+            buttonsWidthConstraintWideRight?.isActive = false
+            buttonsStackView?.axis = .vertical
         }
     }
 }
