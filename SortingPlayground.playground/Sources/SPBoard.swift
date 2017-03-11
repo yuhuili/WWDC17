@@ -1,7 +1,7 @@
 import UIKit
 import SpriteKit
 
-class SKBoard: SKScene {
+class SPBoard: SKScene {
     private let dummyNode: SKSpriteNode // selectedNode when there is no real selection
     public var selectedNode: SKSpriteNode // Currently selected node
     

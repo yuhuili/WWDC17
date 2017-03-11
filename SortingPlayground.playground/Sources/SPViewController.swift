@@ -3,7 +3,9 @@ import SpriteKit
 
 public class SPViewController: UIViewController {
     var boardView: SKView?
-    var board: SKBoard?
+    var board: SPBoard?
+    var cloudView: SKView?
+    var cloudScene: SPCloudScene?
     var arrangementController: SPArrangementController?
     var logoImageView: UIImageView?
     var buttonsStackView: UIStackView?
@@ -69,11 +71,12 @@ public class SPViewController: UIViewController {
         arrangementController = SPArrangementController(viewSize: CGSize(width: 1000, height: 300), offsetFromSuperview: CGPoint(x: 75 + 40, y: 100 + 40), itemSize: CGSize(width: 150, height: 200), itemCount: 6, interItemDistance: 20, velocity: 425)
         if let arrangementController = arrangementController {
             arrangementController.viewController = self
-            board = SKBoard(arrangementController: arrangementController, viewSize: CGSize(width: 1080, height: 320))
+            board = SPBoard(arrangementController: arrangementController, viewSize: CGSize(width: 1080, height: 320))
         }
         view.backgroundColor = UIColor.white
         
         setupGradient()
+        setupCloudView()
         setupGrassImageView()
         setupBoardView()
         setupButtons()
@@ -84,6 +87,10 @@ public class SPViewController: UIViewController {
         super.viewDidAppear(animated)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.001) {
             self.view.setNeedsLayout()
+        }
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            self.cloudScene?.size = (self.cloudView?.frame.size)!
+            self.cloudScene?.restartTimer()
         }
     }
     
@@ -102,6 +109,17 @@ public class SPViewController: UIViewController {
             buttonsWidthConstraintWideLeft?.isActive = false
             buttonsWidthConstraintWideRight?.isActive = false
             buttonsStackView?.axis = .vertical
+        }
+    }
+    
+    public override func viewDidLayoutSubviews() {
+        cloudScene?.size = (cloudView?.frame.size)!
+        cloudScene?.restartTimer()
+        
+        if view.frame.height < 400 {
+            cloudScene?.minimumY = 160
+        } else {
+            cloudScene?.minimumY = nil
         }
     }
     
@@ -131,6 +149,27 @@ public class SPViewController: UIViewController {
             
             view.addConstraints(horizontalConstraints)
             view.addConstraints([heightConstraint, topConstraint, bottomConstraint])
+        }
+    }
+    
+    private func setupCloudView() {
+        cloudView = SKView()
+        if let cloudView = cloudView {
+            cloudView.allowsTransparency = true
+            cloudView.translatesAutoresizingMaskIntoConstraints = false
+            cloudView.contentMode = .scaleToFill
+            view.addSubview(cloudView)
+            
+            let views = ["view": view, "cloudView": cloudView]
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(0)-[cloudView]-(0)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(0)-[cloudView]-(0)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            
+            view.addConstraints(horizontalConstraints)
+            view.addConstraints(verticalConstraints)
+            
+            cloudScene = SPCloudScene()
+            
+            cloudView.presentScene(cloudScene)
         }
     }
     

@@ -27,6 +27,7 @@ extension CGPoint {
 }
 
 public func _internalSetup() {
+    srand48(Int(Date().timeIntervalSince1970))
     _loadFonts()
 }
 
