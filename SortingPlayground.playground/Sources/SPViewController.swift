@@ -34,6 +34,18 @@ public class SPViewController: UIViewController {
         }
     }
     
+    @objc private func bubbleSort() {
+        disableBoard()
+        disableButtons()
+        self.arrangementController?.performBubbleSort!(self.arrangementController!)
+    }
+    
+    public var performBubbleSort: ((_ arrangementController: SPArrangementController) -> Void)? {
+        didSet {
+            arrangementController?.performBubbleSort = performBubbleSort
+        }
+    }
+    
     public func enableBoard() {
         board?.isUserTouchEnabled = true
     }
@@ -213,6 +225,7 @@ public class SPViewController: UIViewController {
             selectionSortButton.addTarget(self, action: #selector(selectionSort), for: .touchUpInside)
             
             bubbleSortButton.setTitle("Bubble", for: .normal)
+            bubbleSortButton.addTarget(self, action: #selector(bubbleSort), for: .touchUpInside)
             
             quickSortButton.setTitle("Quick", for: .normal)
             

@@ -37,6 +37,7 @@ public class SPArrangementController: NSObject {
     
     // MARK: - Animations
     public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)?
+    public var performBubbleSort: ((_ arrangementController: SPArrangementController) -> Void)?
     private var actions = [SPAction]()
     
     public func appendAction(_ action: SPAction) {

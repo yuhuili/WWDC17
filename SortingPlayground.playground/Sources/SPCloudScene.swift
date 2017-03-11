@@ -6,13 +6,11 @@ public class SPCloudScene: SKScene {
     private var timer: Timer?
     public var minimumY: CGFloat?
     override public init() {
-        print("init")
         cloudNode = SKSpriteNode(imageNamed: "cloud")
         super.init()
     }
     
     override public init(size viewSize: CGSize) {
-        print("size")
         cloudNode = SKSpriteNode(imageNamed: "cloud")
         super.init(size: viewSize)
         self.backgroundColor = UIColor.clear
@@ -20,7 +18,6 @@ public class SPCloudScene: SKScene {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        print("coder")
         cloudNode = SKSpriteNode(imageNamed: "cloud")
         super.init(coder: aDecoder)
         self.backgroundColor = UIColor.clear
@@ -40,8 +37,6 @@ public class SPCloudScene: SKScene {
     
     override public func didMove(to view: SKView) {
         self.size = view.frame.size
-        print(self.size.width)
-        print(self.size.height)
         restartTimer()
     }
     
