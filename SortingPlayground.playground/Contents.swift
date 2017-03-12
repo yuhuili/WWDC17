@@ -26,6 +26,17 @@ PlaygroundPage.current.liveView = viewController
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 var values = [String]()
 //#-end-hidden-code
+//#-hidden-code
+// Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
+func performBubbleSort(_ arrangementController: SPArrangementController) {
+    values.removeAll()
+    for c in arrangementController.cards {
+        values.append(c.stringValue())
+    }
+    
+    performBubbleSort(arrangementController, endBefore: values.count)
+}
+//#-end-hidden-code
 //: ## Bubble Sort
 //: Can you see how the cards are being bubbled up? Average runtime: O(n^2)
 func performBubbleSort(_ arrangementController: SPArrangementController, endBefore: Int) {
@@ -124,19 +135,81 @@ func performSelectionSort(_ arrangementController: SPArrangementController, star
     arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
     arrangementController.executeActions()
     //#-end-hidden-code
-}
-//#-hidden-code
+}//#-hidden-code
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
-func performBubbleSort(_ arrangementController: SPArrangementController) {
+func performQuickSort(_ arrangementController: SPArrangementController) {
     values.removeAll()
     for c in arrangementController.cards {
         values.append(c.stringValue())
     }
     
-    performBubbleSort(arrangementController, endBefore: values.count)
+    performQuickSort(arrangementController, startAt: 0, endBefore: values.count, completion: {
+        arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
+        arrangementController.executeActions()
+        viewController.enableBoard()
+        viewController.enableButtons()
+    })
 }
 //#-end-hidden-code
+//: ## Quick Sort
+//: Average runtime: O(nlogn)
+func performQuickSort(_ arrangementController: SPArrangementController, startAt: Int, endBefore: Int, completion: (() -> Void)?) {
+    // Every time we pick the first card in range as the pivot, then rearrange the board such that everything less than it will be on its left and other ones will be on its right. We know this card must be at the correct place. Then we sort its left and right side.
+    
+    if startAt < endBefore {
+        var dividerLocation: Int = startAt
+        for i in startAt+1..<endBefore {
+            //#-hidden-code
+            arrangementController.appendAction(type: .showCurrentIndicator, index1: i, index2: nil)
+            //#-end-hidden-code
+            if values[i] < values[startAt] {
+                dividerLocation += 1
+                if dividerLocation != i {
+                    swap(&values[i], &values[dividerLocation])
+                    //#-hidden-code
+                    arrangementController.appendAction(type: .showSwapIndicators, index1: i, index2: dividerLocation)
+                    arrangementController.appendAction(type: .swap, index1: i, index2: dividerLocation)
+                    arrangementController.appendAction(type: .hideSwapIndicators, index1: i, index2: dividerLocation)
+                    //#-end-hidden-code
+                }
+            }
+            //#-hidden-code
+            arrangementController.appendAction(type: .hideIndicator, index1: i, index2: nil)
+            //#-end-hidden-code
+        }
+        if (startAt != dividerLocation) {
+            swap(&values[startAt], &values[dividerLocation])
+            //#-hidden-code
+            arrangementController.appendAction(type: .showSwapIndicators, index1: startAt, index2: dividerLocation)
+            arrangementController.appendAction(type: .swap, index1: startAt, index2: dividerLocation)
+            arrangementController.appendAction(type: .hideSwapIndicators, index1: startAt, index2: dividerLocation)
+            //#-end-hidden-code
+        }
+        //#-hidden-code
+        arrangementController.appendAction(type: .dim, index1: dividerLocation, index2: nil)
+        arrangementController.appendAction(type: .showDoneIndicator, index1: dividerLocation, index2: nil)
+        arrangementController.executeActions {
+            performQuickSort(arrangementController, startAt: startAt, endBefore: dividerLocation, completion: {
+                performQuickSort(arrangementController, startAt: dividerLocation+1, endBefore: endBefore, completion: {
+                    if let completion = completion {
+                        completion()
+                    }
+                })
+            })
+        }
+        //#-end-hidden-code
+        return
+    }
+    //#-hidden-code
+    /*arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
+    arrangementController.executeActions()*/
+    if let completion = completion {
+        completion()
+    }
+    //#-end-hidden-code
+}
 //#-hidden-code
 viewController.performSelectionSort = performSelectionSort
 viewController.performBubbleSort = performBubbleSort
+viewController.performQuickSort = performQuickSort
 //#-end-hidden-code

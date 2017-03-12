@@ -46,6 +46,18 @@ public class SPViewController: UIViewController {
         }
     }
     
+    @objc private func quickSort() {
+        disableBoard()
+        disableButtons()
+        self.arrangementController?.performQuickSort!(self.arrangementController!)
+    }
+    
+    public var performQuickSort: ((_ arrangementController: SPArrangementController) -> Void)? {
+        didSet {
+            arrangementController?.performQuickSort = performQuickSort
+        }
+    }
+    
     public func enableBoard() {
         board?.isUserTouchEnabled = true
     }
@@ -228,6 +240,7 @@ public class SPViewController: UIViewController {
             selectionSortButton.addTarget(self, action: #selector(selectionSort), for: .touchUpInside)
             
             quickSortButton.setTitle("Quick", for: .normal)
+            quickSortButton.addTarget(self, action: #selector(quickSort), for: .touchUpInside)
             
             bogoSortButton.setTitle("Bogo", for: .normal)
             
