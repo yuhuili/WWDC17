@@ -139,7 +139,7 @@ func performSelectionSort(_ arrangementController: SPArrangementController, i: I
         }
     } else {
         arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
-        arrangementController.executeActions {}
+        arrangementController.executeActions()
     }
     /*
     //#-hidden-code
