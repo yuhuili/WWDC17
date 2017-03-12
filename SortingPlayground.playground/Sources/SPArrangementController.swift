@@ -10,7 +10,9 @@ public enum SPActionType: UInt8 {
     case hideSwapIndicators
     case showInterestIndicator
     case showCurrentIndicator
+    case showCurrentIndicators
     case hideIndicator
+    case hideIndicators
     case resetAll
 }
 
@@ -95,6 +97,7 @@ public class SPArrangementController: NSObject {
         }
     }
     */
+    
     public func executeActions(_ completion: @escaping () -> Void) {
         if actions.isEmpty {
             completion()
@@ -118,8 +121,17 @@ public class SPArrangementController: NSObject {
             cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
         case .showCurrentIndicator:
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
+        case .showCurrentIndicators:
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
+            cards[actions[0].index2!].showIndicatorWithColor(UIColor.black)
         case .hideIndicator:
             cards[actions[0].index1!].hideIndicator()
+            actions.removeFirst()
+            self.executeActions(completion)
+            return
+        case .hideIndicators:
+            cards[actions[0].index1!].hideIndicator()
+            cards[actions[0].index2!].hideIndicator()
             actions.removeFirst()
             self.executeActions(completion)
             return
@@ -167,8 +179,17 @@ public class SPArrangementController: NSObject {
             cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
         case .showCurrentIndicator:
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
+        case .showCurrentIndicators:
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
+            cards[actions[0].index2!].showIndicatorWithColor(UIColor.black)
         case .hideIndicator:
             cards[actions[0].index1!].hideIndicator()
+            actions.removeFirst()
+            self.executeActions()
+            return
+        case .hideIndicators:
+            cards[actions[0].index1!].hideIndicator()
+            cards[actions[0].index2!].hideIndicator()
             actions.removeFirst()
             self.executeActions()
             return

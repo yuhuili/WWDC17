@@ -88,7 +88,7 @@ public class SPViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         setupGradient()
-        setupCloudView()
+        //setupCloudView()
         setupGrassImageView()
         setupBoardView()
         setupButtons()
@@ -221,11 +221,11 @@ public class SPViewController: UIViewController {
             let quickSortButton = quickSortButton,
             let bogoSortButton = bogoSortButton {
             
-            selectionSortButton.setTitle("Selection", for: .normal)
-            selectionSortButton.addTarget(self, action: #selector(selectionSort), for: .touchUpInside)
-            
             bubbleSortButton.setTitle("Bubble", for: .normal)
             bubbleSortButton.addTarget(self, action: #selector(bubbleSort), for: .touchUpInside)
+            
+            selectionSortButton.setTitle("Selection", for: .normal)
+            selectionSortButton.addTarget(self, action: #selector(selectionSort), for: .touchUpInside)
             
             quickSortButton.setTitle("Quick", for: .normal)
             
