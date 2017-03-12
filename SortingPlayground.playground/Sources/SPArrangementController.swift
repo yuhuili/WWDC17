@@ -1,10 +1,16 @@
 import UIKit
 import SpriteKit
 
-public enum SPActionType {
+public enum SPActionType: UInt8 {
     case swap
     case quickSwap
     case dim
+    case showDoneIndicator
+    case showSwapIndicators
+    case hideSwapIndicators
+    case showInterestIndicator
+    case showCurrentIndicator
+    case hideIndicator
     case resetAll
 }
 
@@ -39,6 +45,7 @@ public class SPArrangementController: NSObject {
     public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)?
     public var performBubbleSort: ((_ arrangementController: SPArrangementController) -> Void)?
     private var actions = [SPAction]()
+    public var testing = [UInt8]()
     
     public func appendAction(_ action: SPAction) {
         actions.append(action)
@@ -47,6 +54,91 @@ public class SPArrangementController: NSObject {
     public func appendAction(type: SPActionType, index1: Int?, index2: Int?) {
         let action = SPAction(type: type, index1: index1, index2: index2)
         actions.append(action)
+    }
+    /*
+    public func executeAction(type: SPActionType, index1: Int?, index2: Int?, completion: @escaping () -> Void) {
+        switch type {
+        case .swap:
+            rearrange(index1: index1!, index2: index2!)
+        case .dim:
+            cards[index1!].alpha = 0.5
+            completion()
+            return
+        case .showDoneIndicator:
+            cards[index1!].showIndicatorWithColor(UIColor(red: 0, green: 200.0/255.0, blue: 0, alpha: 1))
+        case .showSwapIndicators:
+            cards[index1!].showIndicatorWithColor(UIColor.red)
+            cards[index2!].showIndicatorWithColor(UIColor.red)
+        case .hideSwapIndicators:
+            cards[index1!].hideIndicator()
+            cards[index2!].hideIndicator()
+        case .showInterestIndicator:
+            cards[index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
+        case .showCurrentIndicator:
+            cards[index1!].showIndicatorWithColor(UIColor.black)
+        case .hideIndicator:
+            cards[index1!].hideIndicator()
+            completion()
+            return
+        case .resetAll:
+            resetCardsOpacity()
+            resetCardsIndicator()
+            break
+        case .quickSwap:
+            rearrange(index1: index1!, index2: index2!)
+            completion()
+            return
+        }
+        
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: DispatchTime.now() + 2) {
+            completion()
+        }
+    }
+    */
+    public func executeActions(_ completion: @escaping () -> Void) {
+        if actions.isEmpty {
+            completion()
+            return
+        }
+        
+        switch actions[0].type {
+        case .swap:
+            rearrange(index1: actions[0].index1!, index2: actions[0].index2!)
+        case .dim:
+            cards[actions[0].index1!].alpha = 0.5
+        case .showDoneIndicator:
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 200.0/255.0, blue: 0, alpha: 1))
+        case .showSwapIndicators:
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor.red)
+            cards[actions[0].index2!].showIndicatorWithColor(UIColor.red)
+        case .hideSwapIndicators:
+            cards[actions[0].index1!].hideIndicator()
+            cards[actions[0].index2!].hideIndicator()
+        case .showInterestIndicator:
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
+        case .showCurrentIndicator:
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
+        case .hideIndicator:
+            cards[actions[0].index1!].hideIndicator()
+            actions.removeFirst()
+            self.executeActions(completion)
+            return
+        case .resetAll:
+            resetCardsOpacity()
+            resetCardsIndicator()
+            break
+        case .quickSwap:
+            rearrange(index1: actions[0].index1!, index2: actions[0].index2!)
+            actions.removeFirst()
+            self.executeActions(completion)
+            return
+        }
+        
+        actions.removeFirst()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+            self.executeActions(completion)
+        }
     }
     
     public func executeActions() {
@@ -61,13 +153,28 @@ public class SPArrangementController: NSObject {
         switch actions[0].type {
         case .swap:
             rearrange(index1: actions[0].index1!, index2: actions[0].index2!)
-            
-            break
         case .dim:
             cards[actions[0].index1!].alpha = 0.5
-            break
+        case .showDoneIndicator:
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 200.0/255.0, blue: 0, alpha: 1))
+        case .showSwapIndicators:
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor.red)
+            cards[actions[0].index2!].showIndicatorWithColor(UIColor.red)
+        case .hideSwapIndicators:
+            cards[actions[0].index1!].hideIndicator()
+            cards[actions[0].index2!].hideIndicator()
+        case .showInterestIndicator:
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
+        case .showCurrentIndicator:
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
+        case .hideIndicator:
+            cards[actions[0].index1!].hideIndicator()
+            actions.removeFirst()
+            self.executeActions()
+            return
         case .resetAll:
             resetCardsOpacity()
+            resetCardsIndicator()
             break
         case .quickSwap:
             rearrange(index1: actions[0].index1!, index2: actions[0].index2!)
@@ -143,6 +250,15 @@ public class SPArrangementController: NSObject {
     public func resetCardsOpacity() {
         for n in cards.enumerated() {
             n.element.alpha = 1
+        }
+    }
+    
+    /**
+     Hide all indicators
+     */
+    public func resetCardsIndicator() {
+        for n in cards.enumerated() {
+            n.element.hideIndicator()
         }
     }
     

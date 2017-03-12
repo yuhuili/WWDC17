@@ -22,18 +22,24 @@ _internalSetup()
 
 let viewController = SPViewController()
 PlaygroundPage.current.liveView = viewController
+
+var values = [String]()
+
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 func performSelectionSort(_ arrangementController: SPArrangementController) {
-    var valueArray = [String]()
+    values.removeAll()
     for c in arrangementController.cards {
-        valueArray.append(c.stringValue())
+        values.append(c.stringValue())
     }
     
-    performSelectionSort(arrangementController, values: &valueArray)
+    performSelectionSort(arrangementController, i: 0)
 }
+
+
 //#-end-hidden-code
 //: ## Selection Sort
 //: Average runtime: O(n^2)
+/*
 func performSelectionSort(_ arrangementController: SPArrangementController, values: inout [String]) {
     // Imagine the array to have two parts, sorted and unsorted.
     // Each time we loop through unsorted part, we pick the smallest item. Then place it at the end of the sorted part.
@@ -43,30 +49,104 @@ func performSelectionSort(_ arrangementController: SPArrangementController, valu
     arrangementController.appendAction(type: .quickSwap, index1: 0, index2: 1)
     //#-end-hidden-code
     for i in 0..<values.count {
-        //#-editable-code
-        // Challenge for you: modify the code to sort in descending order
+        //#-hidden-code
+        //arrangementController.appendAction(type: .showCurrentIndicator, index1: i, index2: nil)
+        //arrangementController.appendAction(type: .showInterestIndicator, index1: i, index2: nil)
+        //#-end-hidden-code
         var (smallestIndex, smallestValue) = (i, values[i])
-        for j in i..<values.count {
+        for j in i+1..<values.count {
+            
+            //#-hidden-code
+            //arrangementController.appendAction(type: .showCurrentIndicator, index1: j, index2: nil)
+            if values[j] < smallestValue {
+                //arrangementController.appendAction(type: .hideIndicator, index1: smallestIndex, index2: nil)
+                //arrangementController.appendAction(type: .showInterestIndicator, index1: j, index2: nil)
+            } else {
+                //arrangementController.appendAction(type: .hideIndicator, index1: j, index2: nil)
+            }
+            //#-end-hidden-code
+ 
+            //#-editable-code
             if values[j] < smallestValue {
                 (smallestIndex, smallestValue) = (j, values[j])
             }
+            //#-end-editable-code
         }
-        //#-end-editable-code
         // Swap the smallest item with front of the unsorted part
         if smallestIndex != i {
             swap(&values[i], &values[smallestIndex])
             //#-hidden-code
+            arrangementController.appendAction(type: .showSwapIndicators, index1: i, index2: smallestIndex)
             arrangementController.appendAction(type: .swap, index1: i, index2: smallestIndex)
+            arrangementController.appendAction(type: .hideSwapIndicators, index1: i, index2: smallestIndex)
             //#-end-hidden-code
         }
         //#-hidden-code
         arrangementController.appendAction(type: .dim, index1: i, index2: nil)
+        //arrangementController.appendAction(type: .showDoneIndicator, index1: i, index2: nil)
         //#-end-hidden-code
     }
     //#-hidden-code
     arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
     arrangementController.executeActions()
     //#-end-hidden-code
+}
+ */
+func performSelectionSort(_ arrangementController: SPArrangementController, i: Int) {
+    
+    print("perform")
+    
+    if i < values.count {
+        //#-hidden-code
+        arrangementController.appendAction(type: .showCurrentIndicator, index1: i, index2: nil)
+        arrangementController.appendAction(type: .showInterestIndicator, index1: i, index2: nil)
+        //#-end-hidden-code
+        var (smallestIndex, smallestValue) = (i, values[i])
+        for j in i+1..<values.count {
+            
+            //#-hidden-code
+            arrangementController.appendAction(type: .showCurrentIndicator, index1: j, index2: nil)
+            if values[j] < smallestValue {
+                arrangementController.appendAction(type: .hideIndicator, index1: smallestIndex, index2: nil)
+                arrangementController.appendAction(type: .showInterestIndicator, index1: j, index2: nil)
+            } else {
+                arrangementController.appendAction(type: .hideIndicator, index1: j, index2: nil)
+            }
+            //#-end-hidden-code
+            
+            //#-editable-code
+            if values[j] < smallestValue {
+                (smallestIndex, smallestValue) = (j, values[j])
+            }
+            //#-end-editable-code
+        }
+        // Swap the smallest item with front of the unsorted part
+        if smallestIndex != i {
+            swap(&values[i], &values[smallestIndex])
+            //#-hidden-code
+            arrangementController.appendAction(type: .showSwapIndicators, index1: i, index2: smallestIndex)
+            arrangementController.appendAction(type: .swap, index1: i, index2: smallestIndex)
+            arrangementController.appendAction(type: .hideSwapIndicators, index1: i, index2: smallestIndex)
+            //#-end-hidden-code
+        }
+        //#-hidden-code
+        arrangementController.appendAction(type: .dim, index1: i, index2: nil)
+        arrangementController.appendAction(type: .showDoneIndicator, index1: i, index2: nil)
+        //#-end-hidden-code
+        
+        arrangementController.executeActions {
+            performSelectionSort(arrangementController, i: i+1)
+        }
+    } else {
+        arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
+        arrangementController.executeActions {}
+    }
+    /*
+    //#-hidden-code
+    arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
+    arrangementController.executeActions()
+    //#-end-hidden-code
+    */
 }
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 func performBubbleSort(_ arrangementController: SPArrangementController) {

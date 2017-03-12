@@ -7,6 +7,7 @@ public class Card: SKSpriteNode {
     public var cardImageSpriteNode: SKSpriteNode?
     public var cardLabelSpriteNode: SKLabelNode?
     public var currentIndex: Int = -1
+    private var indicatorNode: SKShapeNode?
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -36,6 +37,25 @@ public class Card: SKSpriteNode {
         }
         
         self.size = CardSize
+        
+        let path = CGPath.init(roundedRect: CGRect(x: 0, y: 0, width: self.size.width * 0.95, height: self.size.height * 0.95), cornerWidth: 20, cornerHeight: 20, transform: nil)
+        indicatorNode = SKShapeNode(path: path, centered: true)
+        if let indicatorNode = indicatorNode {
+            indicatorNode.isHidden = true
+            indicatorNode.fillColor = UIColor.clear
+            indicatorNode.strokeColor = UIColor.red
+            indicatorNode.lineWidth = 3
+            self.addChild(indicatorNode)
+        }
+    }
+    
+    public func showIndicatorWithColor(_ color: UIColor) {
+        indicatorNode?.isHidden = false
+        indicatorNode?.strokeColor = color
+    }
+    
+    public func hideIndicator() {
+        indicatorNode?.isHidden = true
     }
     
     public func stringValue() -> String{
