@@ -73,7 +73,7 @@ class SPBoard: SKScene {
     
     override public func didMove(to view: SKView) {
         // Backboard
-        let backboardTexture = SKTexture(imageNamed: "backboard")
+        let backboardTexture = SKTexture(imageNamed: "backboard_shadow")
         let backboard = SKSpriteNode.init(texture: backboardTexture)
         backboard.size = CGSize(width: self.size.width - 40, height: CardSize.height + 40)
         backboard.position = CGPoint(x: self.size.width / 2, y: CardSize.height / 2 + 40)

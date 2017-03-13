@@ -23,8 +23,8 @@ _internalSetup()
 let viewController = SPViewController()
 PlaygroundPage.current.liveView = viewController
 
-// Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 var values = [String]()
+
 //#-end-hidden-code
 //#-hidden-code
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.

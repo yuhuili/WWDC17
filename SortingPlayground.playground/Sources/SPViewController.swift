@@ -14,12 +14,34 @@ public class SPViewController: UIViewController {
     var quickSortButton: UIButton?
     var bogoSortButton: UIButton?
     var grassImageView: UIImageView?
+    var questionIcon: UIButton?
     private var buttonsWidthConstraintNarrow: NSLayoutConstraint?
     private var buttonsWidthConstraintWideLeft: NSLayoutConstraint?
     private var buttonsWidthConstraintWideRight: NSLayoutConstraint?
     private var buttonsHeightConstraintTall: NSLayoutConstraint?
     private var buttonsHeightConstraintShort: NSLayoutConstraint?
     private var titleColor = UIColor.white
+    
+    private var infoVC: SPMenuViewController?
+    
+    public func openQuestions() {
+        dismissChildVC()
+        
+        let vc = SPInfoViewController()
+        vc.mainViewController = self
+        self.addChildViewController(vc)
+        vc.view.frame = view.frame
+        self.view.addSubview(vc.view)
+        vc.didMove(toParentViewController: self)
+    }
+    
+    public func dismissChildVC() {
+        if let vc = childViewControllers.last {
+            vc.willMove(toParentViewController: nil)
+            vc.view.removeFromSuperview()
+            vc.removeFromParentViewController()
+        }
+    }
     
     // MARK: - User Interaction and Animations
     @objc private func selectionSort() {
@@ -94,6 +116,15 @@ public class SPViewController: UIViewController {
         bogoSortButton?.setTitleColor(DisabledColorOnWood, for: .normal)
     }
     
+    public func showInfo() {
+        let vc = SPMenuViewController()
+        vc.mainViewController = self
+        self.addChildViewController(vc)
+        vc.view.frame = view.frame
+        self.view.addSubview(vc.view)
+        vc.didMove(toParentViewController: self)
+    }
+    
     // MARK: - UIViewController
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,6 +137,7 @@ public class SPViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         setupGradient()
+        setupQuestionIcon()
         //setupCloudView()
         setupGrassImageView()
         setupBoardView()
@@ -154,6 +186,23 @@ public class SPViewController: UIViewController {
     }
     
     // MARK: - Set up views
+    private func setupQuestionIcon() {
+        questionIcon = UIButton(type: .infoDark)
+        if let questionIcon = questionIcon {
+            questionIcon.tintColor = UIColor.white
+            questionIcon.translatesAutoresizingMaskIntoConstraints = false
+            questionIcon.addTarget(self, action: #selector(showInfo), for: .touchUpInside)
+            view.addSubview(questionIcon)
+            
+            let views = ["view": view, "questionIcon": questionIcon]
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:[questionIcon(22)]-(10)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(10)-[questionIcon(22)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            
+            view.addConstraints(horizontalConstraints)
+            view.addConstraints(verticalConstraints)
+        }
+    }
+    
     private func setupGradient() {
         let gradient = CAGradientLayer()
         gradient.frame = view.bounds
@@ -281,7 +330,7 @@ public class SPViewController: UIViewController {
     private func setupLogo() {
         logoImageView = UIImageView()
         if let logoImageView = logoImageView {
-            logoImageView.image = UIImage(named: "logo")?.withRenderingMode(.alwaysTemplate)
+            logoImageView.image = UIImage(named: "logo")//?.withRenderingMode(.alwaysTemplate)
             logoImageView.tintColor = UIColor.white
             logoImageView.contentMode = .scaleAspectFit
             logoImageView.translatesAutoresizingMaskIntoConstraints = false
