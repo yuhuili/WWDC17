@@ -33,6 +33,7 @@ public class Card: SKSpriteNode {
         if let cardLabelSpriteNode = cardLabelSpriteNode {
             cardLabelSpriteNode.position = CardLabelOffset
             cardLabelSpriteNode.fontColor = UIColor.black
+            cardLabelSpriteNode.fontName = "HelveticaNeue-Thin"
             self.addChild(cardLabelSpriteNode)
         }
         

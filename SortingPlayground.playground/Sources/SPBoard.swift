@@ -4,6 +4,12 @@ import SpriteKit
 class SPBoard: SKScene {
     private let dummyNode: SKSpriteNode // selectedNode when there is no real selection
     public var selectedNode: SKSpriteNode // Currently selected node
+    private var labelNode: SKLabelNode
+    public var labelText: String? {
+        didSet {
+            labelNode.text = labelText
+        }
+    }
     
     private let kCardName = "movable" // Identifier for cards
     private let restrictCardYMax: CGFloat = 180 // Restrict max y at which a card can be dragged
@@ -27,8 +33,11 @@ class SPBoard: SKScene {
         self.selectedNode = dummyNode
         self.arrangementController = arrangementController
         self.isUserTouchEnabled = true
+        self.labelNode = SKLabelNode()
         super.init(size: viewSize)
         self.backgroundColor = UIColor.clear
+        
+        setupLabelNode()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -36,8 +45,18 @@ class SPBoard: SKScene {
         self.selectedNode = dummyNode
         self.arrangementController = SPArrangementController(viewSize: CGSize.zero, offsetFromSuperview: CGPoint.zero, itemSize: CGSize.zero, itemCount: 0, interItemDistance: 0, velocity: 1)
         self.isUserTouchEnabled = true
+        self.labelNode = SKLabelNode()
         super.init(coder: aDecoder)
         self.backgroundColor = UIColor.clear
+        
+        setupLabelNode()
+    }
+    
+    private func setupLabelNode() {
+        self.labelNode.fontColor = UIColor.white
+        self.labelNode.position = CGPoint(x: self.size.width / 2, y: self.size.height - 30)
+        self.labelNode.fontName = "HelveticaNeue-Medium"
+        self.addChild(self.labelNode)
     }
     
     private func addAnimalCard () {

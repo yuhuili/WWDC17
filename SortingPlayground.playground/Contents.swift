@@ -29,6 +29,9 @@ var values = [String]()
 //#-hidden-code
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 func performBubbleSort(_ arrangementController: SPArrangementController) {
+    
+    viewController.labelText = "Performing Bubble Sort"
+    
     values.removeAll()
     for c in arrangementController.cards {
         values.append(c.stringValue())
@@ -79,6 +82,9 @@ func performBubbleSort(_ arrangementController: SPArrangementController, endBefo
 }
 //#-hidden-code
 func performSelectionSort(_ arrangementController: SPArrangementController) {
+    
+    viewController.labelText = "Performing Selection Sort"
+    
     values.removeAll()
     for c in arrangementController.cards {
         values.append(c.stringValue())
@@ -138,6 +144,9 @@ func performSelectionSort(_ arrangementController: SPArrangementController, star
 }//#-hidden-code
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 func performQuickSort(_ arrangementController: SPArrangementController) {
+    
+    viewController.labelText = "Performing Quick Sort"
+    
     values.removeAll()
     for c in arrangementController.cards {
         values.append(c.stringValue())

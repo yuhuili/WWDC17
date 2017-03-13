@@ -58,6 +58,12 @@ public class SPViewController: UIViewController {
         }
     }
     
+    public var labelText: String? {
+        didSet {
+            board?.labelText = labelText
+        }
+    }
+    
     public func enableBoard() {
         board?.isUserTouchEnabled = true
     }
@@ -246,8 +252,8 @@ public class SPViewController: UIViewController {
             
             buttonsStackView.axis = .vertical
             buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
-            buttonsStackView.addArrangedSubview(selectionSortButton)
             buttonsStackView.addArrangedSubview(bubbleSortButton)
+            buttonsStackView.addArrangedSubview(selectionSortButton)
             buttonsStackView.addArrangedSubview(quickSortButton)
             buttonsStackView.addArrangedSubview(bogoSortButton)
             buttonsStackView.distribution = .fillEqually
