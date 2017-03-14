@@ -87,6 +87,13 @@ public class SPArrangementController: NSObject {
         case .showPivotIndicator:
             viewController?.labelText = String(format: "Let %@ be the pivot", cards[actions[0].index1!].stringValue())
             cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
+            actions.removeFirst()
+            
+            // For longer delay
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2 * animationSpeed) {
+                self.executeActions(completion)
+            }
+            return
         case .showCurrentIndicator:
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
         case .showCurrentIndicators:

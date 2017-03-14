@@ -15,7 +15,7 @@ public class SPViewController: UIViewController {
     var bogoSortButton: UIButton?
     var grassImageView: UIImageView?
     var questionIcon: UIButton?
-    var shuffleButton: UIButton?
+    var funcButton: UIButton?
     var speedSlider: UISlider?
     private var buttonsWidthConstraintNarrow: NSLayoutConstraint?
     private var buttonsWidthConstraintWideLeft: NSLayoutConstraint?
@@ -86,8 +86,12 @@ public class SPViewController: UIViewController {
         openRTF("About", vc: vc, prependString: mutableStringWithImage)
     }
     
-    public func shuffle() {
-        arrangementController?.shuffle()
+    public func handleFunc() {
+        if funcButton?.title(for: .normal) == "Shuffle" {
+            arrangementController?.shuffle()
+        } else {
+            // TODO: stop
+        }
     }
     
     public func adjustSpeed(_ sender: UISlider) {
@@ -162,6 +166,8 @@ public class SPViewController: UIViewController {
         bubbleSortButton?.setTitleColor(NormalColorOnWood, for: .normal)
         quickSortButton?.setTitleColor(NormalColorOnWood, for: .normal)
         bogoSortButton?.setTitleColor(NormalColorOnWood, for: .normal)
+        
+        funcButton?.setTitle("Shuffle", for: .normal)
     }
     
     public func disableButtons() {
@@ -173,6 +179,8 @@ public class SPViewController: UIViewController {
         bubbleSortButton?.setTitleColor(DisabledColorOnWood, for: .normal)
         quickSortButton?.setTitleColor(DisabledColorOnWood, for: .normal)
         bogoSortButton?.setTitleColor(DisabledColorOnWood, for: .normal)
+        
+        funcButton?.setTitle("Stop", for: .normal)
     }
     
     public func showInfo() {
@@ -415,24 +423,25 @@ public class SPViewController: UIViewController {
     }
     
     private func setupOverlayButtons() {
-        shuffleButton = UIButton()
-        if let shuffleButton = shuffleButton, let boardView = boardView {
-            shuffleButton.setTitle("Shuffle", for: .normal)
-            shuffleButton.translatesAutoresizingMaskIntoConstraints = false
-            shuffleButton.titleLabel?.adjustsFontSizeToFitWidth = true
-            shuffleButton.titleLabel?.minimumScaleFactor = 0.2
-            shuffleButton.setBackgroundImage(UIImage(named: "purty_wood"), for: .normal)
-            shuffleButton.setTitleColor(NormalColorOnWood, for: .normal)
-            shuffleButton.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 6, right: 3)
-            shuffleButton.layer.cornerRadius = 5
-            shuffleButton.layer.masksToBounds = true
-            shuffleButton.addTarget(self, action: #selector(shuffle), for: .touchUpInside)
-            view.addSubview(shuffleButton)
+        funcButton = UIButton()
+        if let funcButton = funcButton, let boardView = boardView {
+            funcButton.setTitle("Shuffle", for: .normal)
+            funcButton.translatesAutoresizingMaskIntoConstraints = false
+            funcButton.titleLabel?.adjustsFontSizeToFitWidth = true
+            funcButton.titleLabel?.minimumScaleFactor = 0.2
+            funcButton.setBackgroundImage(UIImage(named: "purty_wood"), for: .normal)
+            funcButton.setTitleColor(NormalColorOnWood, for: .normal)
+            funcButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+            //funcButton.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 6, right: 3)
+            funcButton.layer.cornerRadius = 5
+            funcButton.layer.masksToBounds = true
+            funcButton.addTarget(self, action: #selector(handleFunc), for: .touchUpInside)
+            view.addSubview(funcButton)
             
-            let widthConstraint = NSLayoutConstraint(item: shuffleButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
-            let heightConstraint = NSLayoutConstraint(item: shuffleButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
-            let topConstraint = NSLayoutConstraint(item: shuffleButton, attribute: .top, relatedBy: .equal, toItem: boardView, attribute: .top, multiplier: 1, constant: 0)
-            let rightConstraint = NSLayoutConstraint(item: shuffleButton, attribute: .right, relatedBy: .equal, toItem: boardView, attribute: .right, multiplier: 1, constant: -10)
+            let widthConstraint = NSLayoutConstraint(item: funcButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
+            let heightConstraint = NSLayoutConstraint(item: funcButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
+            let topConstraint = NSLayoutConstraint(item: funcButton, attribute: .top, relatedBy: .equal, toItem: boardView, attribute: .top, multiplier: 1, constant: 0)
+            let rightConstraint = NSLayoutConstraint(item: funcButton, attribute: .right, relatedBy: .equal, toItem: boardView, attribute: .right, multiplier: 1, constant: -10)
             
             view.addConstraints([widthConstraint, heightConstraint, topConstraint, rightConstraint])
         }
