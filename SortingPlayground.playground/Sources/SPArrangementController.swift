@@ -48,6 +48,9 @@ public class SPArrangementController: NSObject {
     public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)?
     public var performBubbleSort: ((_ arrangementController: SPArrangementController) -> Void)?
     public var performQuickSort: ((_ arrangementController: SPArrangementController) -> Void)?
+    
+    public var shuffle: ((_ count: Int) -> Void)?
+    
     private var actions = [SPAction]()
     public var testing = [UInt8]()
     public var animationSpeed: Double = 0.7
@@ -356,13 +359,5 @@ public class SPArrangementController: NSObject {
         // Move item to position with calculated duration based on velocity, time = distance / speed
         card.run(SKAction.move(to: CGPoint(x: currentIndexPosX, y: viewOffset.y), duration: Double(abs(currentIndexPosX - card.position.x)) / Double(velocity)))
         card.run(SKAction.rotate(toAngle: 0.0, duration: 0.1))
-    }
-    
-    
-    public func shuffle() {
-        for i in 0..<cards.count-1 {
-            let r = Int(arc4random_uniform(UInt32(cards.count - i)))
-            quickRearrange(index1: i, index2: i+r)
-        }
     }
 }

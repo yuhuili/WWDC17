@@ -25,7 +25,27 @@ PlaygroundPage.current.liveView = viewController
 
 var values = [String]()
 
+func quickRearrange(index1: Int, index2: Int) {
+    viewController.arrangementController?.quickRearrange(index1: index1, index2: index2)
+}
+
+func rand(low: Int, high: Int) -> Int {
+    return Int(arc4random_uniform(UInt32(high-low))) + low
+}
+
 //#-end-hidden-code
+//: ## Shuffle
+//: Shuffle the cards so we can sort them back~
+func shuffle(_ count: Int) {
+    //#-editable-code
+    for i in 0..<count-1 {
+        // rand gives you an integer between low and high inclusive
+        let r = rand(low: i, high: count)
+        // Use quickRearrange to update the graphics
+        quickRearrange(index1: i, index2: r)
+    }
+    //#-end-editable-code
+}
 //#-hidden-code
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 func performBubbleSort(_ arrangementController: SPArrangementController) {
@@ -222,4 +242,5 @@ func performQuickSort(_ arrangementController: SPArrangementController, startAt:
 viewController.performSelectionSort = performSelectionSort
 viewController.performBubbleSort = performBubbleSort
 viewController.performQuickSort = performQuickSort
+viewController.shuffle = shuffle
 //#-end-hidden-code

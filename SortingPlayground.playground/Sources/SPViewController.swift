@@ -6,7 +6,7 @@ public class SPViewController: UIViewController {
     var board: SPBoard?
     var cloudView: SKView?
     var cloudScene: SPCloudScene?
-    var arrangementController: SPArrangementController?
+    public var arrangementController: SPArrangementController?
     var logoImageView: UIImageView?
     var buttonsStackView: UIStackView?
     var selectionSortButton: UIButton?
@@ -88,7 +88,7 @@ public class SPViewController: UIViewController {
     
     public func handleFunc() {
         if funcButton?.title(for: .normal) == "Shuffle" {
-            arrangementController?.shuffle()
+            arrangementController?.shuffle!((arrangementController?.cards.count)!)
         } else {
             // TODO: stop
         }
@@ -146,6 +146,12 @@ public class SPViewController: UIViewController {
     public var labelText: String? {
         didSet {
             board?.labelText = labelText
+        }
+    }
+    
+    public var shuffle: ((_ count: Int) -> Void)? {
+        didSet {
+            arrangementController?.shuffle = shuffle
         }
     }
     
