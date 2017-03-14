@@ -11,6 +11,8 @@ class SPBoard: SKScene {
         }
     }
     
+    private var handIndicatorNode: SKSpriteNode
+    
     private let kCardName = "movable" // Identifier for cards
     private let restrictCardYMax: CGFloat = 180 // Restrict max y at which a card can be dragged
     private let restrictCardYMin: CGFloat = 100 // Restrict min y at which a card can be dragged
@@ -34,6 +36,7 @@ class SPBoard: SKScene {
         self.arrangementController = arrangementController
         self.isUserTouchEnabled = true
         self.labelNode = SKLabelNode()
+        self.handIndicatorNode = SKSpriteNode(imageNamed: "hand")
         super.init(size: viewSize)
         self.backgroundColor = UIColor.clear
         
@@ -46,10 +49,23 @@ class SPBoard: SKScene {
         self.arrangementController = SPArrangementController(viewSize: CGSize.zero, offsetFromSuperview: CGPoint.zero, itemSize: CGSize.zero, itemCount: 0, interItemDistance: 0, velocity: 1)
         self.isUserTouchEnabled = true
         self.labelNode = SKLabelNode()
+        self.handIndicatorNode = SKSpriteNode(imageNamed: "hand")
         super.init(coder: aDecoder)
         self.backgroundColor = UIColor.clear
         
         setupLabelNode()
+    }
+    
+    private func setupHandIndicator() {
+        self.handIndicatorNode.size = CGSize(width: 180, height: 180)
+        self.handIndicatorNode.position = CGPoint(x: 140, y: 120)
+        self.addChild(self.handIndicatorNode)
+        
+        self.handIndicatorNode.run(SKAction.moveBy(x: 600, y: 0, duration: 3)) {
+            self.handIndicatorNode.run(SKAction.fadeOut(withDuration: 0.5), completion: {
+                self.handIndicatorNode.removeFromParent()
+            })
+        }
     }
     
     private func setupLabelNode() {
@@ -81,6 +97,10 @@ class SPBoard: SKScene {
         
         // Cards
         addAnimalCard()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { 
+            self.setupHandIndicator()
+        }
     }
     
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
