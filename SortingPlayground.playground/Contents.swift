@@ -26,8 +26,8 @@ PlaygroundPage.current.liveView = viewController
 var values = [String]()
 
 // Shuffle Helpers
-func quickRearrange(index1: Int, index2: Int) {
-    viewController.arrangementController?.quickRearrange(index1: index1, index2: index2)
+func rearrange(index1: Int, index2: Int) {
+    viewController.arrangementController?.rearrange(index1: index1, index2: index2)
 }
 
 func rand(low: Int, high: Int) -> Int {
@@ -42,8 +42,8 @@ func shuffle(_ count: Int) {
     for i in 0..<count-1 {
         // rand gives you an integer between low and high inclusive
         let r = rand(low: i, high: count)
-        // Use quickRearrange to update the graphics
-        quickRearrange(index1: i, index2: r)
+        // Use rearrange to update the graphics
+        rearrange(index1: i, index2: r)
     }
     //#-end-editable-code
 }
