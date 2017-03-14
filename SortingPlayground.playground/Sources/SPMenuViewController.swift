@@ -20,6 +20,14 @@ class SPMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         mainViewController?.openQuestions()
     }
     
+    @objc private func handleSuggestionsButtonTap() {
+        mainViewController?.openSuggestions()
+    }
+    
+    @objc private func handleAboutButtonTap() {
+        mainViewController?.openAbout()
+    }
+    
     private func setupGestureRecognizer() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
         tapGesture.numberOfTapsRequired = 1
@@ -71,11 +79,13 @@ class SPMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         suggestionButton?.translatesAutoresizingMaskIntoConstraints = false
         suggestionButton?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         suggestionButton?.setImage(UIImage(named: "button_task"), for: .normal)
+        suggestionButton?.addTarget(self, action: #selector(handleSuggestionsButtonTap), for: .touchUpInside)
         
         authorButton = UIButton()
         authorButton?.translatesAutoresizingMaskIntoConstraints = false
         authorButton?.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         authorButton?.setImage(UIImage(named: "button_human"), for: .normal)
+        authorButton?.addTarget(self, action: #selector(handleAboutButtonTap), for: .touchUpInside)
         
         if let questionButton = questionButton, let suggestionButton = suggestionButton, let authorButton = authorButton {
             backboardStackView = UIStackView(arrangedSubviews: [questionButton, suggestionButton, authorButton])

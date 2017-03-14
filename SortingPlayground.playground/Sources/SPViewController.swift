@@ -24,7 +24,7 @@ public class SPViewController: UIViewController {
     
     private var infoVC: SPMenuViewController?
     
-    public func openQuestions() {
+    private func openInfoViewController() -> SPInfoViewController {
         dismissChildVC()
         
         let vc = SPInfoViewController()
@@ -33,6 +33,55 @@ public class SPViewController: UIViewController {
         vc.view.frame = view.frame
         self.view.addSubview(vc.view)
         vc.didMove(toParentViewController: self)
+        
+        return vc
+    }
+    
+    private func openRTF(_ name: String, vc: SPInfoViewController, prependString: NSAttributedString?) {
+        if let rtfPath = Bundle.main.url(forResource: name, withExtension: "rtf") {
+            do {
+                let attributedString = try NSAttributedString(url: rtfPath, options: [NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType], documentAttributes: nil)
+                if let prependString = prependString {
+                    let res = NSMutableAttributedString()
+                    res.append(prependString)
+                    res.append(NSAttributedString(string: "\n\n\n"))
+                    res.append(attributedString)
+                    vc.text = res
+                    return
+                }
+                vc.text = attributedString
+            } catch {
+                
+            }
+        }
+    }
+    
+    public func openQuestions() {
+        let vc = openInfoViewController()
+        openRTF("Questions", vc: vc, prependString: nil)
+    }
+    
+    public func openSuggestions() {
+        let vc = openInfoViewController()
+        openRTF("Suggestions", vc: vc, prependString: nil)
+    }
+    
+    public func openAbout() {
+        
+        let textAttachment = NSTextAttachment()
+        textAttachment.image = UIImage(named: "me")
+        textAttachment.setImageHeight(height: 80)
+        
+        let stringWithImage = NSAttributedString(attachment: textAttachment)
+        let mutableStringWithImage = NSMutableAttributedString()
+        mutableStringWithImage.append(stringWithImage)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        mutableStringWithImage.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: mutableStringWithImage.length))
+        
+        let vc = openInfoViewController()
+        openRTF("About", vc: vc, prependString: mutableStringWithImage)
     }
     
     public func dismissChildVC() {
