@@ -25,6 +25,7 @@ PlaygroundPage.current.liveView = viewController
 
 var values = [String]()
 
+// Shuffle Helpers
 func quickRearrange(index1: Int, index2: Int) {
     viewController.arrangementController?.quickRearrange(index1: index1, index2: index2)
 }

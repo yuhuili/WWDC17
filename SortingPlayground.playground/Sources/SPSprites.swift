@@ -22,23 +22,27 @@ public class Card: SKSpriteNode {
         let woodTexture = SKTexture(imageNamed: "card")
         let imageTexture = SKTexture(imageNamed: imageName)
         super.init(texture: woodTexture, color: UIColor.white, size: woodTexture.size())
+        
+        self.size = SPCardSize
+        
+        // Add Image
         cardImageSpriteNode = SKSpriteNode(texture: imageTexture, size: imageTexture.size())
         if let cardImageSpriteNode = cardImageSpriteNode {
-            cardImageSpriteNode.size = CardImageSize
-            cardImageSpriteNode.position = CardImageOffset
+            cardImageSpriteNode.size = SPCardImageSize
+            cardImageSpriteNode.position = SPCardImageOffset
             self.addChild(cardImageSpriteNode)
         }
         
+        // Add Label
         cardLabelSpriteNode = SKLabelNode(text: self.stringValue())
         if let cardLabelSpriteNode = cardLabelSpriteNode {
-            cardLabelSpriteNode.position = CardLabelOffset
+            cardLabelSpriteNode.position = SPCardLabelOffset
             cardLabelSpriteNode.fontColor = UIColor.black
             cardLabelSpriteNode.fontName = "HelveticaNeue-Thin"
             self.addChild(cardLabelSpriteNode)
         }
         
-        self.size = CardSize
-        
+        // Add Indicator
         let path = CGPath.init(roundedRect: CGRect(x: 0, y: 0, width: self.size.width * 0.95, height: self.size.height * 0.95), cornerWidth: 20, cornerHeight: 20, transform: nil)
         indicatorNode = SKShapeNode(path: path, centered: true)
         if let indicatorNode = indicatorNode {

@@ -3,11 +3,15 @@ import UIKit
 class SPMenuViewController: UIViewController, UIGestureRecognizerDelegate {
     private var backboardView: UIImageView?
     private var backboardStackView: UIStackView?
+    
     private var questionButton: UIButton?
     private var suggestionButton: UIButton?
     private var authorButton: UIButton?
+    
     public weak var mainViewController: SPViewController?
     
+    
+    // MARK: - UIViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
@@ -16,6 +20,7 @@ class SPMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         setupBackboard()
     }
     
+    // MARK: - Button Tap Recognizers and Handlers
     @objc private func handleQuestionButtonTap() {
         mainViewController?.openQuestions()
     }
@@ -50,6 +55,7 @@ class SPMenuViewController: UIViewController, UIGestureRecognizerDelegate {
         return false
     }
     
+    // MARK: - View Setups
     private func setupBackboard() {
         backboardView = UIImageView(image: UIImage(named: "backboard_shadow"))
         if let backboardView = backboardView {

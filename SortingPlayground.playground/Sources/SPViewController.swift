@@ -2,11 +2,17 @@ import UIKit
 import SpriteKit
 
 public class SPViewController: UIViewController {
-    var boardView: SKView?
-    var board: SPBoard?
-    var cloudView: SKView?
-    var cloudScene: SPCloudScene?
+    // MARK: Controllers
     public var arrangementController: SPArrangementController?
+    private var infoVC: SPMenuViewController?
+    
+    // MARK: SpriteKit
+    private var boardView: SKView?
+    private var board: SPBoard?
+    private var cloudView: SKView?
+    private var cloudScene: SPCloudScene?
+    
+    // MARK: UI
     var logoImageView: UIImageView?
     var buttonsStackView: UIStackView?
     var selectionSortButton: UIButton?
@@ -17,100 +23,21 @@ public class SPViewController: UIViewController {
     var questionIcon: UIButton?
     var funcButton: UIButton?
     var speedSlider: UISlider?
+    
+    // MARK: Constraints for different view sizes
     private var buttonsWidthConstraintNarrow: NSLayoutConstraint?
     private var buttonsWidthConstraintWideLeft: NSLayoutConstraint?
     private var buttonsWidthConstraintWideRight: NSLayoutConstraint?
     private var buttonsHeightConstraintTall: NSLayoutConstraint?
     private var buttonsHeightConstraintShort: NSLayoutConstraint?
-    private var titleColor = UIColor.white
+
     
-    private var infoVC: SPMenuViewController?
-    
-    private func openInfoViewController() -> SPInfoViewController {
-        dismissChildVC()
-        
-        let vc = SPInfoViewController()
-        vc.mainViewController = self
-        self.addChildViewController(vc)
-        vc.view.frame = view.frame
-        self.view.addSubview(vc.view)
-        vc.didMove(toParentViewController: self)
-        
-        return vc
-    }
-    
-    private func openRTF(_ name: String, vc: SPInfoViewController, prependString: NSAttributedString?) {
-        if let rtfPath = Bundle.main.url(forResource: name, withExtension: "rtf") {
-            do {
-                let attributedString = try NSAttributedString(url: rtfPath, options: [NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType], documentAttributes: nil)
-                if let prependString = prependString {
-                    let res = NSMutableAttributedString()
-                    res.append(prependString)
-                    res.append(NSAttributedString(string: "\n\n\n"))
-                    res.append(attributedString)
-                    vc.text = res
-                    return
-                }
-                vc.text = attributedString
-            } catch {
-                
-            }
+    // MARK: - Exposed functions for Contents.swift
+    // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
+    public var performBubbleSort: ((_ arrangementController: SPArrangementController) -> Void)? {
+        didSet {
+            arrangementController?.performBubbleSort = performBubbleSort
         }
-    }
-    
-    public func openQuestions() {
-        let vc = openInfoViewController()
-        openRTF("Questions", vc: vc, prependString: nil)
-    }
-    
-    public func openSuggestions() {
-        let vc = openInfoViewController()
-        openRTF("Suggestions", vc: vc, prependString: nil)
-    }
-    
-    public func openAbout() {
-        
-        let textAttachment = NSTextAttachment()
-        textAttachment.image = UIImage(named: "me")
-        textAttachment.setImageHeight(height: 80)
-        
-        let stringWithImage = NSAttributedString(attachment: textAttachment)
-        let mutableStringWithImage = NSMutableAttributedString()
-        mutableStringWithImage.append(stringWithImage)
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .center
-        mutableStringWithImage.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: mutableStringWithImage.length))
-        
-        let vc = openInfoViewController()
-        openRTF("About", vc: vc, prependString: mutableStringWithImage)
-    }
-    
-    public func handleFunc() {
-        if funcButton?.title(for: .normal) == "Shuffle" {
-            arrangementController?.shuffle!((arrangementController?.cards.count)!)
-        } else {
-            // TODO: stop
-        }
-    }
-    
-    public func adjustSpeed(_ sender: UISlider) {
-        arrangementController?.animationSpeed = Double(sender.maximumValue - (sender.value - sender.minimumValue))
-    }
-    
-    public func dismissChildVC() {
-        if let vc = childViewControllers.last {
-            vc.willMove(toParentViewController: nil)
-            vc.view.removeFromSuperview()
-            vc.removeFromParentViewController()
-        }
-    }
-    
-    // MARK: - User Interaction and Animations
-    @objc private func selectionSort() {
-        disableBoard()
-        disableButtons()
-        self.arrangementController?.performSelectionSort!(self.arrangementController!)
     }
     
     public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)? {
@@ -119,16 +46,29 @@ public class SPViewController: UIViewController {
         }
     }
     
+    public var performQuickSort: ((_ arrangementController: SPArrangementController) -> Void)? {
+        didSet {
+            arrangementController?.performQuickSort = performQuickSort
+        }
+    }
+    
+    public var shuffle: ((_ count: Int) -> Void)? {
+        didSet {
+            arrangementController?.shuffle = shuffle
+        }
+    }
+    
+    // MARK: - User Interaction and Animations
     @objc private func bubbleSort() {
         disableBoard()
         disableButtons()
         self.arrangementController?.performBubbleSort!(self.arrangementController!)
     }
     
-    public var performBubbleSort: ((_ arrangementController: SPArrangementController) -> Void)? {
-        didSet {
-            arrangementController?.performBubbleSort = performBubbleSort
-        }
+    @objc private func selectionSort() {
+        disableBoard()
+        disableButtons()
+        self.arrangementController?.performSelectionSort!(self.arrangementController!)
     }
     
     @objc private func quickSort() {
@@ -137,21 +77,9 @@ public class SPViewController: UIViewController {
         self.arrangementController?.performQuickSort!(self.arrangementController!)
     }
     
-    public var performQuickSort: ((_ arrangementController: SPArrangementController) -> Void)? {
-        didSet {
-            arrangementController?.performQuickSort = performQuickSort
-        }
-    }
-    
     public var labelText: String? {
         didSet {
             board?.labelText = labelText
-        }
-    }
-    
-    public var shuffle: ((_ count: Int) -> Void)? {
-        didSet {
-            arrangementController?.shuffle = shuffle
         }
     }
     
@@ -189,7 +117,20 @@ public class SPViewController: UIViewController {
         funcButton?.setTitle("Stop", for: .normal)
     }
     
-    public func showInfo() {
+    public func handleFunc() {
+        if funcButton?.title(for: .normal) == "Shuffle" {
+            arrangementController?.shuffle!((arrangementController?.cards.count)!)
+        } else {
+            // TODO: stop
+        }
+    }
+    
+    public func adjustSpeed(_ sender: UISlider) {
+        arrangementController?.animationSpeed = Double(sender.maximumValue - (sender.value - sender.minimumValue))
+    }
+    
+    // MARK: - Menu Control
+    public func showMenu() {
         let vc = SPMenuViewController()
         vc.mainViewController = self
         self.addChildViewController(vc)
@@ -198,14 +139,81 @@ public class SPViewController: UIViewController {
         vc.didMove(toParentViewController: self)
     }
     
+    public func dismissChildVC() {
+        if let vc = childViewControllers.last {
+            vc.willMove(toParentViewController: nil)
+            vc.view.removeFromSuperview()
+            vc.removeFromParentViewController()
+        }
+    }
+    
+    private func openInfoViewController() -> SPInfoViewController {
+        dismissChildVC()
+        
+        let vc = SPInfoViewController()
+        vc.mainViewController = self
+        self.addChildViewController(vc)
+        vc.view.frame = view.frame
+        self.view.addSubview(vc.view)
+        vc.didMove(toParentViewController: self)
+        
+        return vc
+    }
+    
+    public func openQuestions() {
+        let vc = openInfoViewController()
+        openRTF("Questions", vc: vc, prependString: nil)
+    }
+    
+    public func openSuggestions() {
+        let vc = openInfoViewController()
+        openRTF("Suggestions", vc: vc, prependString: nil)
+    }
+    
+    public func openAbout() {
+        let textAttachment = NSTextAttachment()
+        textAttachment.image = UIImage(named: "me")
+        textAttachment.setImageHeight(height: 80)
+        
+        let stringWithImage = NSAttributedString(attachment: textAttachment)
+        let mutableStringWithImage = NSMutableAttributedString()
+        mutableStringWithImage.append(stringWithImage)
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        mutableStringWithImage.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSRange(location: 0, length: mutableStringWithImage.length))
+        
+        let vc = openInfoViewController()
+        openRTF("About", vc: vc, prependString: mutableStringWithImage)
+    }
+    
+    private func openRTF(_ name: String, vc: SPInfoViewController, prependString: NSAttributedString?) {
+        if let rtfPath = Bundle.main.url(forResource: name, withExtension: "rtf") {
+            do {
+                let attributedString = try NSAttributedString(url: rtfPath, options: [NSDocumentTypeDocumentAttribute: NSRTFTextDocumentType], documentAttributes: nil)
+                if let prependString = prependString {
+                    let res = NSMutableAttributedString()
+                    res.append(prependString)
+                    res.append(NSAttributedString(string: "\n\n\n"))
+                    res.append(attributedString)
+                    vc.text = res
+                    return
+                }
+                vc.text = attributedString
+            } catch {
+                
+            }
+        }
+    }
+    
     // MARK: - UIViewController
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        arrangementController = SPArrangementController(viewSize: CGSize(width: 1000, height: 300), offsetFromSuperview: CGPoint(x: 75 + 40, y: 100 + 40), itemSize: CGSize(width: 150, height: 200), itemCount: 6, interItemDistance: 20, velocity: 425)
+        arrangementController = SPArrangementController(viewSize: SPArrangementAreaSizeSecondary, offsetFromSuperview: CGPoint(x: 75 + 40, y: 100 + 40), itemSize: SPCardSize, itemCount: 6, interItemDistance: SPCardInterItemDistance, velocity: SPCardVelocity)
         if let arrangementController = arrangementController {
             arrangementController.viewController = self
-            board = SPBoard(arrangementController: arrangementController, viewSize: CGSize(width: 1080, height: 320))
+            board = SPBoard(arrangementController: arrangementController, viewSize: SPBoardSize)
         }
         view.backgroundColor = UIColor.white
         
@@ -259,13 +267,13 @@ public class SPViewController: UIViewController {
         }
     }
     
-    // MARK: - Set up views
+    // MARK: - View Setups
     private func setupQuestionIcon() {
         questionIcon = UIButton(type: .infoDark)
         if let questionIcon = questionIcon {
             questionIcon.tintColor = UIColor.white
             questionIcon.translatesAutoresizingMaskIntoConstraints = false
-            questionIcon.addTarget(self, action: #selector(showInfo), for: .touchUpInside)
+            questionIcon.addTarget(self, action: #selector(showMenu), for: .touchUpInside)
             view.addSubview(questionIcon)
             
             let views = ["view": view, "questionIcon": questionIcon]
@@ -404,7 +412,7 @@ public class SPViewController: UIViewController {
     private func setupLogo() {
         logoImageView = UIImageView()
         if let logoImageView = logoImageView {
-            logoImageView.image = UIImage(named: "logo")//?.withRenderingMode(.alwaysTemplate)
+            logoImageView.image = UIImage(named: "logo")
             logoImageView.tintColor = UIColor.white
             logoImageView.contentMode = .scaleAspectFit
             logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -438,7 +446,6 @@ public class SPViewController: UIViewController {
             funcButton.setBackgroundImage(UIImage(named: "purty_wood"), for: .normal)
             funcButton.setTitleColor(NormalColorOnWood, for: .normal)
             funcButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-            //funcButton.contentEdgeInsets = UIEdgeInsets(top: 3, left: 3, bottom: 6, right: 3)
             funcButton.layer.cornerRadius = 5
             funcButton.layer.masksToBounds = true
             funcButton.addTarget(self, action: #selector(handleFunc), for: .touchUpInside)

@@ -4,14 +4,15 @@ class SPInfoViewController: UIViewController, UIGestureRecognizerDelegate {
     private var woodBackgroundView: UIImageView?
     private var woodCloseButton: UIButton?
     private var details: UITextView?
-    public weak var mainViewController: SPViewController?
-    
     public var text: NSAttributedString? {
         didSet {
             details?.attributedText = text
         }
     }
     
+    public weak var mainViewController: SPViewController?
+    
+    // MARK: - UIViewController
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         
@@ -20,6 +21,7 @@ class SPInfoViewController: UIViewController, UIGestureRecognizerDelegate {
         setupTextView()
     }
     
+    // MARK: - Handle exiting
     private func setupGestureRecognizer() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
         tapGesture.numberOfTapsRequired = 1
@@ -46,6 +48,7 @@ class SPInfoViewController: UIViewController, UIGestureRecognizerDelegate {
         return false
     }
     
+    // MARK: - View Setups
     private func setupBackground() {
         woodBackgroundView = UIImageView(image: UIImage(named: "retina_wood"))
         if let woodBackgroundView = woodBackgroundView {

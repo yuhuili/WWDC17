@@ -3,21 +3,18 @@ import SpriteKit
 
 class SPBoard: SKScene {
     private let dummyNode: SKSpriteNode // selectedNode when there is no real selection
-    public var selectedNode: SKSpriteNode // Currently selected node
-    private var labelNode: SKLabelNode
+    private var selectedNode: SKSpriteNode // Currently selected node
+    private var labelNode: SKLabelNode // Show current state
     public var labelText: String? {
         didSet {
             labelNode.text = labelText
         }
     }
-    
-    private var handIndicatorNode: SKSpriteNode
-    
-    private let kCardName = "movable" // Identifier for cards
+    private var handIndicatorNode: SKSpriteNode // Show that cards can be moved
     private let restrictCardYMax: CGFloat = 180 // Restrict max y at which a card can be dragged
     private let restrictCardYMin: CGFloat = 100 // Restrict min y at which a card can be dragged
     
-    public var isUserTouchEnabled: Bool {
+    public var isUserTouchEnabled: Bool { // Determine if touch events are handled
         didSet {
             if isUserTouchEnabled == false {
                 if let selectedNode = selectedNode as? Card {
@@ -30,6 +27,8 @@ class SPBoard: SKScene {
     
     private let arrangementController: SPArrangementController
     
+    
+    // MARK: - Initializers
     public init(arrangementController: SPArrangementController, viewSize: CGSize) {
         self.dummyNode = SKSpriteNode()
         self.selectedNode = dummyNode
@@ -56,43 +55,13 @@ class SPBoard: SKScene {
         setupLabelNode()
     }
     
-    private func setupHandIndicator() {
-        self.handIndicatorNode.size = CGSize(width: 180, height: 180)
-        self.handIndicatorNode.position = CGPoint(x: 140, y: 120)
-        self.addChild(self.handIndicatorNode)
-        
-        self.handIndicatorNode.run(SKAction.moveBy(x: 600, y: 0, duration: 3)) {
-            self.handIndicatorNode.run(SKAction.fadeOut(withDuration: 0.5), completion: {
-                self.handIndicatorNode.removeFromParent()
-            })
-        }
-    }
-    
-    private func setupLabelNode() {
-        self.labelNode.fontColor = UIColor.white
-        self.labelNode.position = CGPoint(x: self.size.width / 2, y: self.size.height - 30)
-        self.labelNode.fontName = "HelveticaNeue-Medium"
-        self.addChild(self.labelNode)
-    }
-    
-    private func addAnimalCard () {
-        arrangementController.removeAllCards()
-        let animals = ["squirrel","pig","penguin","panda","dog","cat"].shuffled()
-        
-        for item in animals {
-            let card = Card.init(cardImage: item, cardValue: item)
-            card.position = arrangementController.addCard(card: card)
-            
-            self.addChild(card)
-        }
-    }
-    
+    // MARK: - User Interaction and Game Handlers
     override public func didMove(to view: SKView) {
         // Backboard
         let backboardTexture = SKTexture(imageNamed: "backboard_shadow")
         let backboard = SKSpriteNode.init(texture: backboardTexture)
-        backboard.size = CGSize(width: self.size.width - 40, height: CardSize.height + 40)
-        backboard.position = CGPoint(x: self.size.width / 2, y: CardSize.height / 2 + 40)
+        backboard.size = CGSize(width: self.size.width - 40, height: SPCardSize.height + 40)
+        backboard.position = CGPoint(x: self.size.width / 2, y: SPCardSize.height / 2 + 40)
         self.addChild(backboard)
         
         // Cards
@@ -135,10 +104,6 @@ class SPBoard: SKScene {
         selectedNode = dummyNode
     }
     
-    func degToRad(degree: Double) -> CGFloat {
-        return CGFloat(degree / 180.0) * (CGFloat.pi)
-    }
-    
     func selectNodeForTouch(_ touchLocation: CGPoint) {
         if !isUserTouchEnabled {
             return
@@ -174,19 +139,46 @@ class SPBoard: SKScene {
         } else {
             selectedNode = dummyNode
         }
-        
     }
     
     func performTranslation(_ translation: CGPoint) {
-        
         if let selectedNode = selectedNode as? Card {
             let position = selectedNode.position
             selectedNode.position = CGPoint(x: position.x + translation.x, y: max(restrictCardYMin, min(restrictCardYMax, position.y + translation.y)))
             arrangementController.handleRearrange(card: selectedNode)
         }
-        
-        
     }
     
+    private func addAnimalCard() {
+        arrangementController.removeAllCards()
+        let animals = ["squirrel","pig","penguin","panda","dog","cat"].shuffled()
+        
+        for item in animals {
+            let card = Card.init(cardImage: item, cardValue: item)
+            card.position = arrangementController.addCard(card: card)
+            
+            self.addChild(card)
+        }
+    }
+    
+    // MARK: - View Setups
+    private func setupHandIndicator() {
+        self.handIndicatorNode.size = CGSize(width: 180, height: 180)
+        self.handIndicatorNode.position = CGPoint(x: 140, y: 120)
+        self.addChild(self.handIndicatorNode)
+        
+        self.handIndicatorNode.run(SKAction.moveBy(x: 600, y: 0, duration: 3)) {
+            self.handIndicatorNode.run(SKAction.fadeOut(withDuration: 0.5), completion: {
+                self.handIndicatorNode.removeFromParent()
+            })
+        }
+    }
+    
+    private func setupLabelNode() {
+        self.labelNode.fontColor = UIColor.white
+        self.labelNode.position = CGPoint(x: self.size.width / 2, y: self.size.height - 30)
+        self.labelNode.fontName = "HelveticaNeue-Medium"
+        self.addChild(self.labelNode)
+    }
 }
 

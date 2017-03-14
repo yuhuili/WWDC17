@@ -1,34 +1,6 @@
 import UIKit
 import SpriteKit
 
-public enum SPActionType: UInt8 {
-    case swap
-    case quickSwap
-    case dim
-    case showDoneIndicator
-    case showSwapIndicators
-    case hideSwapIndicators
-    case showInterestIndicator
-    case showPivotIndicator
-    case showCurrentIndicator
-    case showCurrentIndicators
-    case hideIndicator
-    case hideIndicators
-    case resetAll
-}
-
-public struct SPAction {
-    var type: SPActionType
-    var index1: Int?
-    var index2: Int?
-    
-    public init(type: SPActionType, index1: Int?, index2: Int?) {
-        self.type = type
-        self.index1 = index1
-        self.index2 = index2
-    }
-}
-
 public class SPArrangementController: NSObject {
     private let viewSize: CGSize // Arrangement view size
     private let viewOffset: CGPoint // Arrangement view offset from parent view
@@ -45,25 +17,45 @@ public class SPArrangementController: NSObject {
     public weak var viewController: SPViewController?
     
     // MARK: - Animations
+    
     public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)?
     public var performBubbleSort: ((_ arrangementController: SPArrangementController) -> Void)?
     public var performQuickSort: ((_ arrangementController: SPArrangementController) -> Void)?
     
     public var shuffle: ((_ count: Int) -> Void)?
     
+    
+    // MARK: - Animation Queue Handlers
+    
     private var actions = [SPAction]()
-    public var testing = [UInt8]()
     public var animationSpeed: Double = 0.7
     
+    /**
+     Add a new action to animation queue
+     
+     - parameter action: A `SPAction` to be queued
+     */
     public func appendAction(_ action: SPAction) {
         actions.append(action)
     }
     
+    /**
+     Add a new action to animation queue
+     
+     - parameter type: A valid `SPActionType`
+     - parameter index1: Primary index for the action
+     - parameter index2: Secondary Index for the action
+     */
     public func appendAction(type: SPActionType, index1: Int?, index2: Int?) {
         let action = SPAction(type: type, index1: index1, index2: index2)
         actions.append(action)
     }
     
+    /**
+     Execute actions in animation queue with completion handler
+     
+     - parameter completion: code block to be executed upon completion of all items in animation queue
+     */
     public func executeActions(_ completion: @escaping () -> Void) {
         if actions.isEmpty {
             completion()
@@ -133,6 +125,9 @@ public class SPArrangementController: NSObject {
         }
     }
     
+    /**
+     Execute actions in animation queue
+     */
     public func executeActions() {
         if actions.isEmpty {
             if let viewController = viewController {
@@ -190,13 +185,13 @@ public class SPArrangementController: NSObject {
         
         actions.removeFirst()
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + animationSpeed) {
             self.executeActions()
         }
     }
     
     // MARK: - Initializer
-    
+
     /**
      Initialize an ArrangementController with properties
      
