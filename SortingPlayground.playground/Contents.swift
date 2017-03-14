@@ -167,6 +167,7 @@ func performQuickSort(_ arrangementController: SPArrangementController, startAt:
     
     if startAt < endBefore {
         var dividerLocation: Int = startAt
+        arrangementController.appendAction(type: .showPivotIndicator, index1: startAt, index2: nil)
         for i in startAt+1..<endBefore {
             //#-hidden-code
             arrangementController.appendAction(type: .showCurrentIndicator, index1: i, index2: nil)

@@ -9,6 +9,7 @@ public enum SPActionType: UInt8 {
     case showSwapIndicators
     case hideSwapIndicators
     case showInterestIndicator
+    case showPivotIndicator
     case showCurrentIndicator
     case showCurrentIndicators
     case hideIndicator
@@ -109,10 +110,12 @@ public class SPArrangementController: NSObject {
         case .swap:
             rearrange(index1: actions[0].index1!, index2: actions[0].index2!)
         case .dim:
+            viewController?.labelText = String(format: "%@ is now at the correct position", cards[actions[0].index1!].stringValue())
             cards[actions[0].index1!].alpha = 0.5
         case .showDoneIndicator:
             cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 200.0/255.0, blue: 0, alpha: 1))
         case .showSwapIndicators:
+            viewController?.labelText = String(format: "Swapping %@ with %@", cards[actions[0].index1!].stringValue(), cards[actions[0].index2!].stringValue())
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.red)
             cards[actions[0].index2!].showIndicatorWithColor(UIColor.red)
         case .hideSwapIndicators:
@@ -120,9 +123,13 @@ public class SPArrangementController: NSObject {
             cards[actions[0].index2!].hideIndicator()
         case .showInterestIndicator:
             cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
+        case .showPivotIndicator:
+            viewController?.labelText = String(format: "Let %@ be the pivot", cards[actions[0].index1!].stringValue())
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
         case .showCurrentIndicator:
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
         case .showCurrentIndicators:
+            viewController?.labelText = String(format: "Checking %@ and %@", cards[actions[0].index1!].stringValue(), cards[actions[0].index2!].stringValue())
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
             cards[actions[0].index2!].showIndicatorWithColor(UIColor.black)
         case .hideIndicator:
@@ -137,6 +144,7 @@ public class SPArrangementController: NSObject {
             self.executeActions(completion)
             return
         case .resetAll:
+            viewController?.labelText = "Sorting completed!"
             resetCardsOpacity()
             resetCardsIndicator()
             break
@@ -149,7 +157,7 @@ public class SPArrangementController: NSObject {
         
         actions.removeFirst()
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             self.executeActions(completion)
         }
     }
@@ -178,6 +186,9 @@ public class SPArrangementController: NSObject {
             cards[actions[0].index2!].hideIndicator()
         case .showInterestIndicator:
             cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
+        case .showPivotIndicator:
+            viewController?.labelText = String(format: "Let %@ be the pivot", cards[actions[0].index1!].stringValue())
+            cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
         case .showCurrentIndicator:
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
         case .showCurrentIndicators:
@@ -195,6 +206,7 @@ public class SPArrangementController: NSObject {
             self.executeActions()
             return
         case .resetAll:
+            viewController?.labelText = "Sorting completed!"
             resetCardsOpacity()
             resetCardsIndicator()
             break
