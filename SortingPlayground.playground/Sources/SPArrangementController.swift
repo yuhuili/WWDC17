@@ -50,6 +50,7 @@ public class SPArrangementController: NSObject {
     public var performQuickSort: ((_ arrangementController: SPArrangementController) -> Void)?
     private var actions = [SPAction]()
     public var testing = [UInt8]()
+    public var animationSpeed: Double = 0.7
     
     public func appendAction(_ action: SPAction) {
         actions.append(action)
@@ -59,46 +60,6 @@ public class SPArrangementController: NSObject {
         let action = SPAction(type: type, index1: index1, index2: index2)
         actions.append(action)
     }
-    /*
-    public func executeAction(type: SPActionType, index1: Int?, index2: Int?, completion: @escaping () -> Void) {
-        switch type {
-        case .swap:
-            rearrange(index1: index1!, index2: index2!)
-        case .dim:
-            cards[index1!].alpha = 0.5
-            completion()
-            return
-        case .showDoneIndicator:
-            cards[index1!].showIndicatorWithColor(UIColor(red: 0, green: 200.0/255.0, blue: 0, alpha: 1))
-        case .showSwapIndicators:
-            cards[index1!].showIndicatorWithColor(UIColor.red)
-            cards[index2!].showIndicatorWithColor(UIColor.red)
-        case .hideSwapIndicators:
-            cards[index1!].hideIndicator()
-            cards[index2!].hideIndicator()
-        case .showInterestIndicator:
-            cards[index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
-        case .showCurrentIndicator:
-            cards[index1!].showIndicatorWithColor(UIColor.black)
-        case .hideIndicator:
-            cards[index1!].hideIndicator()
-            completion()
-            return
-        case .resetAll:
-            resetCardsOpacity()
-            resetCardsIndicator()
-            break
-        case .quickSwap:
-            rearrange(index1: index1!, index2: index2!)
-            completion()
-            return
-        }
-        
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: DispatchTime.now() + 2) {
-            completion()
-        }
-    }
-    */
     
     public func executeActions(_ completion: @escaping () -> Void) {
         if actions.isEmpty {
@@ -157,7 +118,7 @@ public class SPArrangementController: NSObject {
         
         actions.removeFirst()
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + animationSpeed) {
             self.executeActions(completion)
         }
     }
@@ -391,64 +352,10 @@ public class SPArrangementController: NSObject {
     }
     
     
-    /*
-     public func performSort(_ type: SortingAlgo) {
-     if type == .selectionSort {
-     performSelectionSort()
-     }
-     }
-     
-     private func performSelectionSort() {
-     performSelectionSort(startIndex: 0)
-     }
-     
-     private func performSelectionSort(startIndex: Int) {
-     if (startIndex >= cards.count) {
-     for n in cards.enumerated() {
-     n.element.alpha = 1
-     }
-     return
-     }
-     
-     var smallestIndex = startIndex
-     var smallestIndexWord = cards[startIndex].stringValue()
-     if startIndex < cards.count - 1 {
-     for i in startIndex+1..<cards.count {
-     if cards[i].stringValue() < smallestIndexWord {
-     smallestIndexWord = cards[i].stringValue()
-     smallestIndex = i
-     }
-     }
-     
-     rearrange(index1: startIndex, index2: smallestIndex)
-     
-     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-     self.performSelectionSort(startIndex: startIndex + 1)
-     })
-     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-     self.cards[startIndex].alpha = 0.5
-     })
-     } else {
-     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
-     self.performSelectionSort(startIndex: startIndex + 1)
-     })
-     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-     self.cards[startIndex].alpha = 0.5
-     })
-     }
-     }
-     
-     private func performBubbleSort() {
-     performBubbleSort(index: 0, swapped: false)
-     }
-     
-     private func performBubbleSort(index: Int, swapped: Bool) {
-     if (index >= cards.count) {
-     if swapped {
-     
-     } else {
-     return
-     }
-     }
-     }*/
+    public func shuffle() {
+        for i in 0..<cards.count-1 {
+            let r = Int(arc4random_uniform(UInt32(cards.count - i)))
+            quickRearrange(index1: i, index2: i+r)
+        }
+    }
 }
