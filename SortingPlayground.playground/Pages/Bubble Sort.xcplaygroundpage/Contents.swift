@@ -109,6 +109,7 @@ func performBubbleSort(_ arrangementController: SPArrangementController, endBefo
     }
     //#-end-editable-code
 }
+//: Ready to check out [Selection Sort?](@next)
 //#-hidden-code
 viewController.performBubbleSort = performBubbleSort
 viewController.shuffle = shuffle

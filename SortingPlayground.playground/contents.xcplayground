@@ -3,6 +3,7 @@
     <pages>
         <page name='Shuffle'/>
         <page name='Bubble Sort'/>
+        <page name='Selection Sort'/>
         <page name='Master'/>
     </pages>
 </playground>

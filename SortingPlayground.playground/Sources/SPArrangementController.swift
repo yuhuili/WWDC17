@@ -90,7 +90,8 @@ public class SPArrangementController: NSObject {
         case .hideSwapIndicators:
             cards[actions[0].index1!].hideIndicator()
             cards[actions[0].index2!].hideIndicator()
-        case .showInterestIndicator:
+        case .showSelectionInterestIndicator:
+            viewController?.labelText = String(format: "We are interested in %@", cards[actions[0].index1!].stringValue())
             cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
         case .showPivotIndicator:
             viewController?.labelText = String(format: "Let %@ be the pivot", cards[actions[0].index1!].stringValue())
@@ -163,7 +164,8 @@ public class SPArrangementController: NSObject {
         case .hideSwapIndicators:
             cards[actions[0].index1!].hideIndicator()
             cards[actions[0].index2!].hideIndicator()
-        case .showInterestIndicator:
+        case .showSelectionInterestIndicator:
+            viewController?.labelText = String(format: "We are interested in %@", cards[actions[0].index1!].stringValue())
             cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
         case .showPivotIndicator:
             viewController?.labelText = String(format: "Let %@ be the pivot", cards[actions[0].index1!].stringValue())

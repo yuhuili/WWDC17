@@ -32,7 +32,7 @@ public enum SPActionType: UInt8 {
     case showDoneIndicator
     case showSwapIndicators
     case hideSwapIndicators
-    case showInterestIndicator
+    case showSelectionInterestIndicator
     case showPivotIndicator
     case showCurrentIndicator
     case showCurrentIndicators

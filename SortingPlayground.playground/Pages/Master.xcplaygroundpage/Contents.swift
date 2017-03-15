@@ -119,7 +119,7 @@ func performSelectionSort(_ arrangementController: SPArrangementController, star
     if i < values.count {
         //#-hidden-code
         arrangementController.appendAction(type: .showCurrentIndicator, index1: i, index2: nil)
-        arrangementController.appendAction(type: .showInterestIndicator, index1: i, index2: nil)
+        arrangementController.appendAction(type: .showSelectionInterestIndicator, index1: i, index2: nil)
         //#-end-hidden-code
         var (smallestIndex, smallestValue) = (i, values[i])
         for j in i+1..<values.count {
@@ -127,7 +127,7 @@ func performSelectionSort(_ arrangementController: SPArrangementController, star
             arrangementController.appendAction(type: .showCurrentIndicator, index1: j, index2: nil)
             if values[j] < smallestValue {
                 arrangementController.appendAction(type: .hideIndicator, index1: smallestIndex, index2: nil)
-                arrangementController.appendAction(type: .showInterestIndicator, index1: j, index2: nil)
+                arrangementController.appendAction(type: .showSelectionInterestIndicator, index1: j, index2: nil)
             } else {
                 arrangementController.appendAction(type: .hideIndicator, index1: j, index2: nil)
             }
