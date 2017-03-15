@@ -35,6 +35,11 @@ func visualIterator(range: CountableRange<Int>, iterator: (_ i: Int) -> Void) {
 }
 
 func visualSwap(index1: Int, index2: Int) {
+    
+    if index1 == index2 {
+        return
+    }
+        
     swap(&names[index1], &names[index2])
     viewController.arrangementController?.appendAction(type: .swap, index1: index1, index2: index2)
 }
@@ -139,23 +144,26 @@ func visualizeSelectionIndicatorsWith(j: Int, smallestValue: String, smallestInd
     }
 }
 //#-end-hidden-code
-//: ## Selection Sort
-//: Now we have the sorted part to the left side. Each time we loop through unsorted part, we pick the smallest item. Then place it at the end of the sorted part. Average runtime: O(n^2)
+/*:
+ ## Selection Sort
+ Now we have the sorted part to the left side. Each time we loop through unsorted part, we pick the smallest item. Then place it at the end of the sorted part.
+ 
+ Average runtime: O(n^2), same as Bubble Sort
+ */
 func performSelectionSort(_ arrangementController: SPArrangementController, startAt: Int) {
     //#-editable-code
     let i = startAt
     selectionVisualIf(value: i, lessThan: names.count) {
         var (smallestIndex, smallestValue) = (i, names[i])
         for j in i+1..<names.count {
+            // Call visualize before we actually make any changes
             visualizeSelectionIndicatorsWith(j: j, smallestValue: smallestValue, smallestIndex: smallestIndex)
             if names[j] < smallestValue {
                 (smallestIndex, smallestValue) = (j, names[j])
             }
         }
         // Swap the smallest item with the front
-        if smallestIndex != i {
-            visualSwap(index1: i, index2: smallestIndex)
-        }
+        visualSwap(index1: i, index2: smallestIndex)
     }
     //#-end-editable-code
 }

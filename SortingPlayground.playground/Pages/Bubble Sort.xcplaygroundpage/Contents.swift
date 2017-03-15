@@ -95,7 +95,7 @@ func visualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
  Average runtime: O(n^2), i.e., if we have 2 times amount of cards, this algorithm will take 4 times longer to run.
  
  Imagine the array having two parts, left is unosrted and right is sorted. Each time we examine the adjacent pair, and swap them if they are out of order. Can you see that the last element in each iteration will be at the correct spot? (Hint: will it ever be in the currect order when we examine it with its neighbour unless it's at very end?)
-*/
+ */
 func performBubbleSort(_ arrangementController: SPArrangementController, endBefore: Int) {
     // Can you see how the cards are being bubbled up?
     //#-editable-code
