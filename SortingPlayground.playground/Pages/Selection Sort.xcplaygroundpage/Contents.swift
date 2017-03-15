@@ -167,6 +167,7 @@ func performSelectionSort(_ arrangementController: SPArrangementController, star
     }
     //#-end-editable-code
 }
+//: These two are too slow? The [next one](@next) is going to be fast! Buckle up!
 //#-hidden-code
 viewController.performSelectionSort = performSelectionSort
 viewController.performBubbleSort = performBubbleSort
