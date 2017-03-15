@@ -1,5 +1,6 @@
 import UIKit
 import SpriteKit
+import AVFoundation
 
 public class SPViewController: UIViewController {
     // MARK: Controllers
@@ -22,6 +23,8 @@ public class SPViewController: UIViewController {
     var grassImageView: UIImageView?
     var questionIcon: UIButton?
     var funcButton: UIButton?
+    
+    var musicPlayer: AVAudioPlayer?
     
     public var shouldTerminate: Bool {
         didSet {
@@ -280,6 +283,19 @@ public class SPViewController: UIViewController {
         setupLogo()
         setupQuestionIcon()
         setupOverlayButtons()
+        
+        do {
+            let backgroundMusicURL = Bundle.main.url(forResource: "GreenHills", withExtension: "mp3")
+            if let backgroundMusicURL = backgroundMusicURL {
+                musicPlayer = try AVAudioPlayer(contentsOf: backgroundMusicURL)
+                musicPlayer?.volume = 0.05
+                musicPlayer?.numberOfLoops = -1
+                musicPlayer?.prepareToPlay()
+                musicPlayer?.play()
+            }
+        } catch {
+            
+        }
     }
     
     public override func viewDidAppear(_ animated: Bool) {
