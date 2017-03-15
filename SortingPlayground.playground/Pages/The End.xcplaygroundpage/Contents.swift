@@ -285,9 +285,9 @@ func performBogo(_ count: Int) {
 
 /*:
  # The end
- Sorting Playground provided you with an intuitive interface and animation to explore a number of sorting algorithms, ranging from easy but slow ones, to a very sophisticated Quick Sort, then finally a laugh of Bogo Sort.
+ Sorting Playground provides you with an intuitive interface and animations to explore a number of sorting algorithms, ranging from easy but slow ones, to a very sophisticated Quick Sort, then finally a laugh with Bogo.
  
- I hope you have enjoyed this journey in sorting. You may enjoy all previously shown algorithms on this page, or reread the details by going back to previous pages.
+ I hope you have enjoyed this journey in sorting. You may play with all previously shown algorithms on this page, or reread the details by going back to [table of contents](Shuffle).
  
  Yuhui Li
  */
