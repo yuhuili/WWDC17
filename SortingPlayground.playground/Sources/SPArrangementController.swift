@@ -23,6 +23,7 @@ public class SPArrangementController: NSObject {
     public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)?
     public var performBubbleSort: ((_ arrangementController: SPArrangementController) -> Void)?
     public var performQuickSort: ((_ arrangementController: SPArrangementController) -> Void)?
+    public var performBogoSort: ((_ arrangementController: SPArrangementController) -> Void)?
     
     public var shuffle: ((_ count: Int) -> Void)?
     

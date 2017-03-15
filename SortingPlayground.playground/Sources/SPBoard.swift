@@ -176,7 +176,7 @@ class SPBoard: SKScene {
     
     private func setupLabelNode() {
         self.labelNode.fontColor = UIColor.white
-        self.labelNode.position = CGPoint(x: self.size.width / 2, y: self.size.height - 30)
+        self.labelNode.position = CGPoint(x: self.size.width / 2, y: self.size.height - 40)
         self.labelNode.fontName = "HelveticaNeue-Medium"
         self.addChild(self.labelNode)
     }

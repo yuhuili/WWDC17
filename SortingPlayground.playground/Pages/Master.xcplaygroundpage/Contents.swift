@@ -8,23 +8,77 @@
 /*:
  # Sorting Playground
  Sorting: the process of arranging items.
-  - - -
+ - - -
  */
 //#-hidden-code
 //#-code-completion(everything, hide)
-//#-code-completion(currentmodule, show)
-//#-code-completion(module, show, Swift)
 //#-code-completion(if, func, var, let, ., =, <=, >=, <, >, ==, !=, +, -, true, false, &&, ||, !, *, /, (, ))
-//#-code-completion(arrangementController, cards, stringValue(), smallestIndex, smallestIndexWord)
+//#-code-completion(rand(low: Int, high: Int), visualSwap(index1: Int, index2: Int))
 import UIKit
 import PlaygroundSupport
 
 _internalSetup()
 
-let viewController = SPViewController(showBubble: true, showSelection: true, showQuick: true, showBogo: true)
+let viewController = SPViewController(showBubble: true, showSelection: true, showQuick: true, showBogo: false)
 PlaygroundPage.current.liveView = viewController
 
-var values = [String]()
+var names = [String]()
+
+func visualSwap(index1: Int, index2: Int) {
+    
+    if index1 == index2 {
+        return
+    }
+    
+    swap(&names[index1], &names[index2])
+    viewController.arrangementController?.appendAction(type: .swap, index1: index1, index2: index2)
+}
+
+func bubbleVisualIterator(range: CountableRange<Int>, iterator: (_ i: Int) -> Void) {
+    for i in range {
+        viewController.arrangementController?.appendAction(type: .showCurrentIndicators, index1: i-1, index2: i)
+        iterator(i)
+        viewController.arrangementController?.appendAction(type: .hideIndicators, index1: i-1, index2: i)
+    }
+}
+
+func bubbleVisualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
+    if value > v {
+        execute()
+        viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: value-1, index2: nil)
+        viewController.arrangementController?.executeActions {
+            performBubbleSort(viewController.arrangementController!, endBefore: value-1)
+        }
+    } else {
+        viewController.arrangementController?.appendAction(type: .resetAll, index1: nil, index2: nil)
+        viewController.arrangementController?.executeActions()
+    }
+}
+
+func selectionVisualIf(value: Int, lessThan v: Int, execute: () -> Void) {
+    if value < v {
+        viewController.arrangementController?.appendAction(type: .showCurrentIndicator, index1: value, index2: nil)
+        viewController.arrangementController?.appendAction(type: .showSelectionInterestIndicator, index1: value, index2: nil)
+        execute()
+        viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: value, index2: nil)
+        viewController.arrangementController?.executeActions {
+            performSelectionSort(viewController.arrangementController!, startAt: value+1)
+        }
+    } else {
+        viewController.arrangementController?.appendAction(type: .resetAll, index1: nil, index2: nil)
+        viewController.arrangementController?.executeActions()
+    }
+}
+
+func visualizeSelectionIndicatorsWith(j: Int, smallestValue: String, smallestIndex: Int) {
+    viewController.arrangementController?.appendAction(type: .showCurrentIndicator, index1: j, index2: nil)
+    if names[j] < smallestValue {
+        viewController.arrangementController?.appendAction(type: .hideIndicator, index1: smallestIndex, index2: nil)
+        viewController.arrangementController?.appendAction(type: .showSelectionInterestIndicator, index1: j, index2: nil)
+    } else {
+        viewController.arrangementController?.appendAction(type: .hideIndicator, index1: j, index2: nil)
+    }
+}
 
 // Shuffle Helpers
 func rearrange(index1: Int, index2: Int) {
@@ -34,8 +88,6 @@ func rearrange(index1: Int, index2: Int) {
 func rand(low: Int, high: Int) -> Int {
     return Int(arc4random_uniform(UInt32(high-low))) + low
 }
-
-//#-end-hidden-code
 //: ## Shuffle
 //: Shuffle the cards so we can sort them back~
 func shuffle(_ count: Int) {
@@ -48,187 +100,155 @@ func shuffle(_ count: Int) {
     }
     //#-end-editable-code
 }
+//#-end-hidden-code
 //#-hidden-code
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 func performBubbleSort(_ arrangementController: SPArrangementController) {
     
     viewController.labelText = "Performing Bubble Sort"
     
-    values.removeAll()
+    names.removeAll()
     for c in arrangementController.cards {
-        values.append(c.stringValue())
+        names.append(c.stringValue())
     }
     
-    performBubbleSort(arrangementController, endBefore: values.count)
+    performBubbleSort(arrangementController, endBefore: names.count)
+}
+/*:
+ ## Bubble Sort
+ */
+func performBubbleSort(_ arrangementController: SPArrangementController, endBefore: Int) {
+    // Can you see how the cards are being bubbled up?
+    bubbleVisualIf(value: endBefore, greaterThan: 0) {
+        // Special iterator so we can see what happens in LiveView
+        bubbleVisualIterator(range: 1..<endBefore) { i in
+            if names[i-1] > names[i] {
+                visualSwap(index1: i-1, index2: i)
+            }
+        }
+    }
 }
 //#-end-hidden-code
-//: ## Bubble Sort
-//: Can you see how the cards are being bubbled up? Average runtime: O(n^2)
-func performBubbleSort(_ arrangementController: SPArrangementController, endBefore: Int) {
-    // Imagine the array to have two parts, unosrted and sorted. Each time we examine the adjacent pair, and swap them if they are out of order. Can you see that the last element in each iteration will be at the correct spot?
-    //#-hidden-code
-    // Some issue with iPad playground layout engine, forcing an update
-    arrangementController.appendAction(type: .quickSwap, index1: 0, index2: 1)
-    arrangementController.appendAction(type: .quickSwap, index1: 0, index2: 1)
-    //#-end-hidden-code
-    if endBefore > 0 {
-        for i in 1..<endBefore {
-            //#-hidden-code
-            arrangementController.appendAction(type: .showCurrentIndicators, index1: i-1, index2: i)
-            //#-end-hidden-code
-            if values[i-1] > values[i] {
-                swap(&values[i-1], &values[i])
-                //#-hidden-code
-                arrangementController.appendAction(type: .swap, index1: i-1, index2: i)
-                //#-end-hidden-code
-            }
-            //#-hidden-code
-            arrangementController.appendAction(type: .hideIndicators, index1: i-1, index2: i)
-            //#-end-hidden-code
-        }
-        //#-hidden-code
-        arrangementController.appendAction(type: .showDoneIndicator, index1: endBefore-1, index2: nil)
-        arrangementController.executeActions {
-            performBubbleSort(arrangementController, endBefore: endBefore-1)
-        }
-        //#-end-hidden-code
-        return
-    }
-    //#-hidden-code
-    arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
-    arrangementController.executeActions()
-    //#-end-hidden-code
-}
 //#-hidden-code
 func performSelectionSort(_ arrangementController: SPArrangementController) {
     
     viewController.labelText = "Performing Selection Sort"
     
-    values.removeAll()
+    names.removeAll()
     for c in arrangementController.cards {
-        values.append(c.stringValue())
+        names.append(c.stringValue())
     }
     
     performSelectionSort(arrangementController, startAt: 0)
 }
-//#-end-hidden-code
-//: ## Selection Sort
-//: Now we have the sorted part to the left side. Each time we loop through unsorted part, we pick the smallest item. Then place it at the end of the sorted part. Average runtime: O(n^2)
+/*:
+ ## Selection Sort
+ */
 func performSelectionSort(_ arrangementController: SPArrangementController, startAt: Int) {
     let i = startAt
-    if i < values.count {
-        //#-hidden-code
-        arrangementController.appendAction(type: .showCurrentIndicator, index1: i, index2: nil)
-        arrangementController.appendAction(type: .showSelectionInterestIndicator, index1: i, index2: nil)
-        //#-end-hidden-code
-        var (smallestIndex, smallestValue) = (i, values[i])
-        for j in i+1..<values.count {
-            //#-hidden-code
-            arrangementController.appendAction(type: .showCurrentIndicator, index1: j, index2: nil)
-            if values[j] < smallestValue {
-                arrangementController.appendAction(type: .hideIndicator, index1: smallestIndex, index2: nil)
-                arrangementController.appendAction(type: .showSelectionInterestIndicator, index1: j, index2: nil)
-            } else {
-                arrangementController.appendAction(type: .hideIndicator, index1: j, index2: nil)
+    selectionVisualIf(value: i, lessThan: names.count) {
+        var (smallestIndex, smallestValue) = (i, names[i])
+        for j in i+1..<names.count {
+            // Call visualize before we actually make any changes
+            visualizeSelectionIndicatorsWith(j: j, smallestValue: smallestValue, smallestIndex: smallestIndex)
+            if names[j] < smallestValue {
+                (smallestIndex, smallestValue) = (j, names[j])
             }
-            //#-end-hidden-code
-            //#-editable-code
-            if values[j] < smallestValue {
-                (smallestIndex, smallestValue) = (j, values[j])
-            }
-            //#-end-editable-code
         }
         // Swap the smallest item with the front
-        if smallestIndex != i {
-            swap(&values[i], &values[smallestIndex])
-            //#-hidden-code
-            arrangementController.appendAction(type: .swap, index1: i, index2: smallestIndex)
-            //#-end-hidden-code
-        }
-        //#-hidden-code
-        arrangementController.appendAction(type: .showDoneIndicator, index1: i, index2: nil)
-        arrangementController.executeActions {
-            performSelectionSort(arrangementController, startAt: i+1)
-        }
-        return
-        //#-end-hidden-code
+        visualSwap(index1: i, index2: smallestIndex)
     }
-    //#-hidden-code
-    arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
-    arrangementController.executeActions()
-    //#-end-hidden-code
-}//#-hidden-code
+}
+//#-end-hidden-code
+//#-hidden-code
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 func performQuickSort(_ arrangementController: SPArrangementController) {
     
     viewController.labelText = "Performing Quick Sort"
     
-    values.removeAll()
+    names.removeAll()
     for c in arrangementController.cards {
-        values.append(c.stringValue())
+        names.append(c.stringValue())
     }
     
-    performQuickSort(arrangementController, startAt: 0, endBefore: values.count, completion: {
+    performQuickSort(arrangementController, startAt: 0, endBefore: names.count, completion: {
         arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
         arrangementController.executeActions()
         viewController.enableBoard()
         viewController.enableButtons()
     })
 }
-//#-end-hidden-code
-//: ## Quick Sort
-//: Average runtime: O(nlogn)
-func performQuickSort(_ arrangementController: SPArrangementController, startAt: Int, endBefore: Int, completion: (() -> Void)?) {
-    // Every time we pick the first card in range as the pivot, then rearrange the board such that everything less than it will be on its left and other ones will be on its right. We know this card must be at the correct place. Then we sort its left and right side.
-    
+
+func visualizePivot(_ index: Int) {
+    viewController.arrangementController?.appendAction(type: .showPivotIndicator, index1: index, index2: nil)
+}
+
+func quickVisualIterator(range: CountableRange<Int>, iterator: (_ i: Int) -> Void) {
+    for i in range {
+        viewController.arrangementController?.appendAction(type: .showCurrentIndicator, index1: i, index2: nil)
+        iterator(i)
+        viewController.arrangementController?.appendAction(type: .hideIndicator, index1: i, index2: nil)
+    }
+}
+
+func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform completion: (() -> Void)?, getFinalPivotLocation: () -> Int) {
     if startAt < endBefore {
-        var dividerLocation: Int = startAt
-        arrangementController.appendAction(type: .showPivotIndicator, index1: startAt, index2: nil)
-        for i in startAt+1..<endBefore {
-            //#-hidden-code
-            arrangementController.appendAction(type: .showCurrentIndicator, index1: i, index2: nil)
-            //#-end-hidden-code
-            if values[i] < values[startAt] {
-                dividerLocation += 1
-                if dividerLocation != i {
-                    swap(&values[i], &values[dividerLocation])
-                    //#-hidden-code
-                    arrangementController.appendAction(type: .swap, index1: i, index2: dividerLocation)
-                    //#-end-hidden-code
-                }
-            }
-            //#-hidden-code
-            arrangementController.appendAction(type: .hideIndicator, index1: i, index2: nil)
-            //#-end-hidden-code
-        }
-        if (startAt != dividerLocation) {
-            swap(&values[startAt], &values[dividerLocation])
-            //#-hidden-code
-            arrangementController.appendAction(type: .swap, index1: startAt, index2: dividerLocation)
-            //#-end-hidden-code
-        }
-        //#-hidden-code
-        arrangementController.appendAction(type: .showDoneIndicator, index1: dividerLocation, index2: nil)
-        arrangementController.executeActions {
-            performQuickSort(arrangementController, startAt: startAt, endBefore: dividerLocation, completion: {
-                performQuickSort(arrangementController, startAt: dividerLocation+1, endBefore: endBefore, completion: {
+        let pivotLocation = getFinalPivotLocation()
+        viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: pivotLocation, index2: nil)
+        viewController.arrangementController?.executeActions {
+            viewController.arrangementController?.appendAction(type: .showLookLeft, index1: pivotLocation, index2: nil)
+            performQuickSort(viewController.arrangementController!, startAt: startAt, endBefore: pivotLocation, completion: {
+                viewController.arrangementController?.appendAction(type: .showLookRight, index1: pivotLocation, index2: nil)
+                performQuickSort(viewController.arrangementController!, startAt: pivotLocation+1, endBefore: endBefore, completion: {
                     if let completion = completion {
                         completion()
                     }
                 })
             })
         }
-        //#-end-hidden-code
-        return
     }
-    //#-hidden-code
-    /*arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
-    arrangementController.executeActions()*/
-    if let completion = completion {
-        completion()
+    else {
+        
+        if let completion = completion {
+            completion()
+        }
     }
-    //#-end-hidden-code
 }
+
+/*:
+ ## Quick Sort
+ */
+func performQuickSort(_ arrangementController: SPArrangementController, startAt: Int, endBefore: Int, completion: (() -> Void)?) {
+    // Let app handle visualization of each step
+    quickVisualIf(value: startAt, lessThan: endBefore, thenPerform: completion) {
+        
+        // Choose first card as the pivot
+        visualizePivot(startAt)
+        
+        // Mark the dividing line of cards with values less than pivot and those greater than pivot
+        var dividerLocation: Int = startAt
+        
+        quickVisualIterator(range: startAt+1..<endBefore) { i in
+            
+            // If we find a card that needs to be moved to the left of dividing line because it is less than the pivot, we shift the dividerLocation to the right. Now the dividerLocation is exactly on a card that has value greater than pivot. So if we swap current card with that, the current card will be at the correct place and that original card will still be to the right of dividing line.
+            if names[i] < names[startAt] {
+                dividerLocation += 1
+                if dividerLocation != i {
+                    visualSwap(index1: i, index2: dividerLocation)
+                }
+            }
+        }
+        
+        // Swap the pivot with the dividerLocation, note that at this instant, the dividerLocation is on a card with value less than the pivot. So swapping does not violate the ordering property.
+        visualSwap(index1: startAt, index2: dividerLocation)
+        
+        // The app will handle the calls for you to sort left and right side, just give it the pivotLocation and it will know where to proceed.
+        return dividerLocation
+    }
+}
+//#-end-hidden-code
+
+
 //#-hidden-code
 viewController.performSelectionSort = performSelectionSort
 viewController.performBubbleSort = performBubbleSort

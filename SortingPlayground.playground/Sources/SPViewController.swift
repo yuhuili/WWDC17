@@ -23,6 +23,12 @@ public class SPViewController: UIViewController {
     var questionIcon: UIButton?
     var funcButton: UIButton?
     
+    public var shouldTerminate: Bool {
+        didSet {
+            arrangementController?.shouldTerminate = shouldTerminate
+        }
+    }
+    
     private var showBubble: Bool
     private var showSelection: Bool
     private var showQuick: Bool
@@ -56,6 +62,12 @@ public class SPViewController: UIViewController {
         }
     }
     
+    public var performBogoSort: ((_ arrangementController: SPArrangementController) -> Void)? {
+        didSet {
+            arrangementController?.performBogoSort = performBogoSort
+        }
+    }
+    
     public var shuffle: ((_ count: Int) -> Void)? {
         didSet {
             arrangementController?.shuffle = shuffle
@@ -79,6 +91,12 @@ public class SPViewController: UIViewController {
         disableBoard()
         disableButtons()
         self.arrangementController?.performQuickSort!(self.arrangementController!)
+    }
+    
+    @objc private func bogoSort() {
+        disableBoard()
+        disableButtons()
+        self.arrangementController?.performBogoSort!(self.arrangementController!)
     }
     
     public var labelText: String? {
@@ -127,7 +145,7 @@ public class SPViewController: UIViewController {
         if funcButton?.title(for: .normal) == "Shuffle" {
             arrangementController?.shuffle!((arrangementController?.cards.count)!)
         } else {
-            arrangementController?.shouldTerminate = true
+            shouldTerminate = true
             
             funcButton?.setTitle("Stopping", for: .normal)
             funcButton?.isUserInteractionEnabled = false
@@ -135,7 +153,7 @@ public class SPViewController: UIViewController {
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2, execute: {
                 self.labelText = ""
-                self.arrangementController?.shouldTerminate = false
+                self.shouldTerminate = false
                 self.enableBoard()
                 self.enableButtons()
                 self.arrangementController?.appendAction(type: .terminate, index1: nil, index2: nil)
@@ -231,6 +249,7 @@ public class SPViewController: UIViewController {
         self.showSelection = showSelection
         self.showQuick = showQuick
         self.showBogo = showBogo
+        self.shouldTerminate = false
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -425,6 +444,7 @@ public class SPViewController: UIViewController {
             
             if showBogo {
                 bogoSortButton.setTitle("Bogo", for: .normal)
+                bogoSortButton.addTarget(self, action: #selector(bogoSort), for: .touchUpInside)
                 buttonsStackView.addArrangedSubview(bogoSortButton)
             }
             
