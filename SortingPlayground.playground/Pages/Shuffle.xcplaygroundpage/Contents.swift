@@ -11,11 +11,32 @@
 //#-code-completion(rand(low: Int, high: Int), rearrange)
 import UIKit
 import PlaygroundSupport
+import AVFoundation
 
 _internalSetup()
 
 let viewController = SPViewController(showBubble: false, showSelection: false, showQuick: false, showBogo: false)
 PlaygroundPage.current.liveView = viewController
+
+// == Shuffle Sound ==
+var shuffleSoundPlayer = AVAudioPlayer()
+let shuffleURL = Bundle.main.url(forResource: "shuffle", withExtension: "mp3")
+if let shuffleURL = shuffleURL {
+    do {
+        shuffleSoundPlayer = try AVAudioPlayer(contentsOf: shuffleURL)
+        shuffleSoundPlayer.volume = 0.1
+        shuffleSoundPlayer.prepareToPlay()
+    } catch {
+        
+    }
+}
+func playShuffleSound() {
+    shuffleSoundPlayer.stop()
+    shuffleSoundPlayer.currentTime = 0
+    shuffleSoundPlayer.play()
+}
+// == Shuffle Sound ==
+
 
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 func rearrange(index1: Int, index2: Int) {
@@ -56,6 +77,7 @@ func shuffle(_ count: Int) {
         rearrange(index1: i, index2: r)
     }
     //#-end-editable-code
+    playShuffleSound()
 }
 //: Coming up, [Bubble Sort!](@next)
 //#-hidden-code

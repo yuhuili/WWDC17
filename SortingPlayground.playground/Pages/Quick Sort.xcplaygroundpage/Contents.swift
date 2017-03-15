@@ -16,11 +16,31 @@
 //#-code-completion(rand(low: Int, high: Int), visualSwap(index1: Int, index2: Int))
 import UIKit
 import PlaygroundSupport
+import AVFoundation
 
 _internalSetup()
 
 let viewController = SPViewController(showBubble: false, showSelection: false, showQuick: true, showBogo: false)
 PlaygroundPage.current.liveView = viewController
+
+// == Shuffle Sound ==
+var shuffleSoundPlayer = AVAudioPlayer()
+let shuffleURL = Bundle.main.url(forResource: "shuffle", withExtension: "mp3")
+if let shuffleURL = shuffleURL {
+    do {
+        shuffleSoundPlayer = try AVAudioPlayer(contentsOf: shuffleURL)
+        shuffleSoundPlayer.volume = 0.1
+        shuffleSoundPlayer.prepareToPlay()
+    } catch {
+        
+    }
+}
+func playShuffleSound() {
+    shuffleSoundPlayer.stop()
+    shuffleSoundPlayer.currentTime = 0
+    shuffleSoundPlayer.play()
+}
+// == Shuffle Sound ==
 
 var names = [String]()
 
@@ -53,6 +73,7 @@ func shuffle(_ count: Int) {
         rearrange(index1: i, index2: r)
     }
     //#-end-editable-code
+    playShuffleSound()
 }
 //#-end-hidden-code
 //#-hidden-code
