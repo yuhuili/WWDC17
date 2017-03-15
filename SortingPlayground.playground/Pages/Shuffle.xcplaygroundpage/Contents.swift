@@ -7,8 +7,6 @@
 //#-end-hidden-code
 //#-hidden-code
 //#-code-completion(everything, hide)
-//#-code-completion(currentmodule, show)
-//#-code-completion(module, show, Swift)
 //#-code-completion(if, func, var, let, ., =, <=, >=, <, >, ==, !=, +, -, true, false, &&, ||, !, *, /, (, ))
 //#-code-completion(rand(low: Int, high: Int), rearrange)
 import UIKit
