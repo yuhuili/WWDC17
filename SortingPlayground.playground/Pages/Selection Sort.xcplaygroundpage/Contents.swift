@@ -19,7 +19,7 @@ import PlaygroundSupport
 
 _internalSetup()
 
-let viewController = SPViewController(showBubble: true, showSelection: true, showQuick: false, showBogo: false)
+let viewController = SPViewController(showBubble: false, showSelection: true, showQuick: false, showBogo: false)
 PlaygroundPage.current.liveView = viewController
 
 var names = [String]()

@@ -269,7 +269,6 @@ func verifyBogo() {
     }
     viewController.labelText = "Bogo succeeded!"
 }
-//#-end-hidden-code
 /*:
  ## Bogo Sort
  */

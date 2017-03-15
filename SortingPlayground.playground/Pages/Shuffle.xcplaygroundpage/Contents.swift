@@ -28,6 +28,18 @@ func rand(low: Int, high: Int) -> Int {
 
 //#-end-hidden-code
 /*:
+ # Prologue
+ Hello there, welcome to Sorting Playground! In this book, you will be guided through a number of sorting algorithms accompanied by beautiful animations. There will be small challenges for you to complete, and some questions for you to think about.
+ 
+ ### Table of Contents
+ * [Shuffle](Shuffle)
+ * [Bubble Sort](Bubble%20Sort)
+ * [Selection Sort](Selection%20Sort)
+ * [Quick Sort](Quick%20Sort)
+ * [Bogo Sort](Bogo%20Sort)
+ * [The End](The%20End)
+ */
+/*:
  ## Shuffle
  Before we start, we'll learn to shuffle.
  Drag cards around to shuffle manually, or let Swift do the shuffling for you!

@@ -69,12 +69,14 @@ func verifyBogo() {
         }
     }
     viewController.labelText = "Bogo succeeded!"
+    viewController.enableButtons()
+    viewController.enableBoard()
 }
 //#-end-hidden-code
 /*:
  ## Bogo Sort
  
- This one is interesting, for each iteration, we randomly generate a permutation of the cards, in other words, we shuffle the cards and then verify if they are in order. If not, we reshuffle again and again until the cards are in order.
+ This one is interesting, we reshuffle again and again until the cards are in order.
  
  Average runtime: O(n * n!)
  
@@ -82,7 +84,7 @@ func verifyBogo() {
  
  ### Think about...
  
- How many times do we need to shuffle in the best case? What about worst case? Could this run forever if you are unlucky?
+ How many times do we need to shuffle in the best case? What about worst case? Could this run forever if we are unlucky?
  */
 func performBogo(_ count: Int) {
     //#-editable-code
@@ -95,6 +97,7 @@ func performBogo(_ count: Int) {
     verifyBogo()
     //#-end-editable-code
 }
+//: [Next](@next)
 //#-hidden-code
 viewController.performBogoSort = performBogoSort
 viewController.shuffle = shuffle

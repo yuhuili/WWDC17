@@ -162,6 +162,7 @@ func performQuickSort(_ arrangementController: SPArrangementController, startAt:
     }
     //#-end-editable-code
 }
+//: Ready for some laugh? [Continue](@next)
 //#-hidden-code
 viewController.performQuickSort = performQuickSort
 viewController.shuffle = shuffle
