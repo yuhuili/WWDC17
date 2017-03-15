@@ -22,7 +22,11 @@ public class SPViewController: UIViewController {
     var grassImageView: UIImageView?
     var questionIcon: UIButton?
     var funcButton: UIButton?
-    var speedSlider: UISlider?
+    
+    private var showBubble: Bool
+    private var showSelection: Bool
+    private var showQuick: Bool
+    private var showBogo: Bool
     
     // MARK: Constraints for different view sizes
     private var buttonsWidthConstraintNarrow: NSLayoutConstraint?
@@ -207,6 +211,19 @@ public class SPViewController: UIViewController {
     }
     
     // MARK: - UIViewController
+    public init(showBubble: Bool, showSelection: Bool, showQuick: Bool, showBogo: Bool) {
+        self.showBubble = showBubble
+        self.showSelection = showSelection
+        self.showQuick = showQuick
+        self.showBogo = showBogo
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -219,7 +236,7 @@ public class SPViewController: UIViewController {
         
         setupGradient()
         setupQuestionIcon()
-        //setupCloudView()
+        setupCloudView()
         setupGrassImageView()
         setupBoardView()
         setupButtons()
@@ -370,23 +387,32 @@ public class SPViewController: UIViewController {
             let quickSortButton = quickSortButton,
             let bogoSortButton = bogoSortButton {
             
-            bubbleSortButton.setTitle("Bubble", for: .normal)
-            bubbleSortButton.addTarget(self, action: #selector(bubbleSort), for: .touchUpInside)
-            
-            selectionSortButton.setTitle("Selection", for: .normal)
-            selectionSortButton.addTarget(self, action: #selector(selectionSort), for: .touchUpInside)
-            
-            quickSortButton.setTitle("Quick", for: .normal)
-            quickSortButton.addTarget(self, action: #selector(quickSort), for: .touchUpInside)
-            
-            bogoSortButton.setTitle("Bogo", for: .normal)
-            
             buttonsStackView.axis = .vertical
             buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
-            buttonsStackView.addArrangedSubview(bubbleSortButton)
-            buttonsStackView.addArrangedSubview(selectionSortButton)
-            buttonsStackView.addArrangedSubview(quickSortButton)
-            buttonsStackView.addArrangedSubview(bogoSortButton)
+            
+            if showBubble {
+                bubbleSortButton.setTitle("Bubble", for: .normal)
+                bubbleSortButton.addTarget(self, action: #selector(bubbleSort), for: .touchUpInside)
+                buttonsStackView.addArrangedSubview(bubbleSortButton)
+            }
+            
+            if showSelection {
+                selectionSortButton.setTitle("Selection", for: .normal)
+                selectionSortButton.addTarget(self, action: #selector(selectionSort), for: .touchUpInside)
+                buttonsStackView.addArrangedSubview(selectionSortButton)
+            }
+            
+            if showQuick {
+                quickSortButton.setTitle("Quick", for: .normal)
+                quickSortButton.addTarget(self, action: #selector(quickSort), for: .touchUpInside)
+                buttonsStackView.addArrangedSubview(quickSortButton)
+            }
+            
+            if showBogo {
+                bogoSortButton.setTitle("Bogo", for: .normal)
+                buttonsStackView.addArrangedSubview(bogoSortButton)
+            }
+            
             buttonsStackView.distribution = .fillEqually
             buttonsStackView.spacing = 8
             view.addSubview(buttonsStackView)
@@ -451,31 +477,12 @@ public class SPViewController: UIViewController {
             funcButton.addTarget(self, action: #selector(handleFunc), for: .touchUpInside)
             view.addSubview(funcButton)
             
-            let widthConstraint = NSLayoutConstraint(item: funcButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
-            let heightConstraint = NSLayoutConstraint(item: funcButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
+            let heightConstraint = NSLayoutConstraint(item: funcButton, attribute: .height, relatedBy: .equal, toItem: boardView, attribute: .height, multiplier: 0.203, constant: 0)
+            let widthConstraint = NSLayoutConstraint(item: funcButton, attribute: .width, relatedBy: .equal, toItem: funcButton, attribute: .height, multiplier: 50.0/20.0, constant: 0)
             let topConstraint = NSLayoutConstraint(item: funcButton, attribute: .top, relatedBy: .equal, toItem: boardView, attribute: .top, multiplier: 1, constant: 0)
             let rightConstraint = NSLayoutConstraint(item: funcButton, attribute: .right, relatedBy: .equal, toItem: boardView, attribute: .right, multiplier: 1, constant: -10)
             
             view.addConstraints([widthConstraint, heightConstraint, topConstraint, rightConstraint])
-        }
-        
-        speedSlider = UISlider()
-        if let speedSlider = speedSlider, let boardView = boardView {
-            speedSlider.minimumValue = 0.2
-            speedSlider.maximumValue = 1.2
-            speedSlider.value = 0.7
-            speedSlider.tintColor = NormalColorOnWood
-            speedSlider.setThumbImage(UIImage(named: "slider_thumb"), for: .normal)
-            speedSlider.translatesAutoresizingMaskIntoConstraints = false
-            speedSlider.addTarget(self, action: #selector(adjustSpeed), for: .valueChanged)
-            view.addSubview(speedSlider)
-            
-            let widthConstraint = NSLayoutConstraint(item: speedSlider, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50)
-            let heightConstraint = NSLayoutConstraint(item: speedSlider, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
-            let topConstraint = NSLayoutConstraint(item: speedSlider, attribute: .top, relatedBy: .equal, toItem: boardView, attribute: .top, multiplier: 1, constant: 0)
-            let leftConstraint = NSLayoutConstraint(item: speedSlider, attribute: .left, relatedBy: .equal, toItem: boardView, attribute: .left, multiplier: 1, constant: 10)
-            
-            view.addConstraints([widthConstraint, heightConstraint, topConstraint, leftConstraint])
         }
     }
 }

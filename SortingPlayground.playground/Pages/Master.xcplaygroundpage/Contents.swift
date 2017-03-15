@@ -5,7 +5,8 @@
 //  Copyright (c) 2017 Yuhui Li
 //
 //#-end-hidden-code
-/*: #
+/*:
+ # Sorting Playground
  Sorting: the process of arranging items.
   - - -
  */
@@ -20,7 +21,7 @@ import PlaygroundSupport
 
 _internalSetup()
 
-let viewController = SPViewController()
+let viewController = SPViewController(showBubble: true, showSelection: true, showQuick: true, showBogo: true)
 PlaygroundPage.current.liveView = viewController
 
 var values = [String]()

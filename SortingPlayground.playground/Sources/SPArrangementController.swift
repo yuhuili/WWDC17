@@ -26,7 +26,6 @@ public class SPArrangementController: NSObject {
     
     
     // MARK: - Animation Queue Handlers
-    
     private var actions = [SPAction]()
     public var animationSpeed: Double = 0.7
     
