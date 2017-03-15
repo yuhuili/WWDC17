@@ -61,7 +61,7 @@ func performBubbleSort(_ arrangementController: SPArrangementController) {
     performBubbleSort(arrangementController, endBefore: names.count)
 }
 
-func visualIterator(range: CountableRange<Int>, iterator: (_ i: Int) -> Void) {
+func bubbleVisualIterator(range: CountableRange<Int>, iterator: (_ i: Int) -> Void) {
     for i in range {
         viewController.arrangementController?.appendAction(type: .showCurrentIndicators, index1: i-1, index2: i)
         iterator(i)
@@ -101,7 +101,7 @@ func performBubbleSort(_ arrangementController: SPArrangementController, endBefo
     //#-editable-code
     visualIf(value: endBefore, greaterThan: 0) {
         // Special iterator so we can see what happens in LiveView
-        visualIterator(range: 1..<endBefore) { i in
+        bubbleVisualIterator(range: 1..<endBefore) { i in
             if names[i-1] > names[i] {
                 visualSwap(index1: i-1, index2: i)
             }

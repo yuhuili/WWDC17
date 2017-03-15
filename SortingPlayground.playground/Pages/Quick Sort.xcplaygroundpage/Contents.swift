@@ -21,10 +21,20 @@ import PlaygroundSupport
 
 _internalSetup()
 
-let viewController = SPViewController(showBubble: true, showSelection: true, showQuick: false, showBogo: false)
+let viewController = SPViewController(showBubble: true, showSelection: true, showQuick: true, showBogo: false)
 PlaygroundPage.current.liveView = viewController
 
 var names = [String]()
+
+func visualSwap(index1: Int, index2: Int) {
+    
+    if index1 == index2 {
+        return
+    }
+    
+    swap(&names[index1], &names[index2])
+    viewController.arrangementController?.appendAction(type: .swap, index1: index1, index2: index2)
+}
 
 func bubbleVisualIterator(range: CountableRange<Int>, iterator: (_ i: Int) -> Void) {
     for i in range {
@@ -32,16 +42,6 @@ func bubbleVisualIterator(range: CountableRange<Int>, iterator: (_ i: Int) -> Vo
         iterator(i)
         viewController.arrangementController?.appendAction(type: .hideIndicators, index1: i-1, index2: i)
     }
-}
-
-func visualSwap(index1: Int, index2: Int) {
-    
-    if index1 == index2 {
-        return
-    }
-        
-    swap(&names[index1], &names[index2])
-    viewController.arrangementController?.appendAction(type: .swap, index1: index1, index2: index2)
 }
 
 func bubbleVisualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
@@ -118,7 +118,7 @@ func performBubbleSort(_ arrangementController: SPArrangementController) {
 }
 /*:
  ## Bubble Sort
-*/
+ */
 func performBubbleSort(_ arrangementController: SPArrangementController, endBefore: Int) {
     // Can you see how the cards are being bubbled up?
     bubbleVisualIf(value: endBefore, greaterThan: 0) {
@@ -168,7 +168,86 @@ func performSelectionSort(_ arrangementController: SPArrangementController, star
     //#-end-editable-code
 }
 //#-hidden-code
+// Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
+func performQuickSort(_ arrangementController: SPArrangementController) {
+    
+    viewController.labelText = "Performing Quick Sort"
+    
+    names.removeAll()
+    for c in arrangementController.cards {
+        names.append(c.stringValue())
+    }
+    
+    performQuickSort(arrangementController, startAt: 0, endBefore: names.count, completion: {
+        arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
+        arrangementController.executeActions()
+        viewController.enableBoard()
+        viewController.enableButtons()
+    })
+}
+
+func visualizePivot(_ index: Int) {
+    viewController.arrangementController?.appendAction(type: .showPivotIndicator, index1: index, index2: nil)
+}
+
+func quickVisualIterator(range: CountableRange<Int>, iterator: (_ i: Int) -> Void) {
+    for i in range {
+        viewController.arrangementController?.appendAction(type: .showCurrentIndicator, index1: i, index2: nil)
+        iterator(i)
+        viewController.arrangementController?.appendAction(type: .hideIndicator, index1: i, index2: nil)
+    }
+}
+
+func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform completion: (() -> Void)?, getFinalPivotLocation: () -> Int) {
+    if startAt < endBefore {
+        let pivotLocation = getFinalPivotLocation()
+        viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: pivotLocation, index2: nil)
+        viewController.arrangementController?.executeActions {
+            viewController.arrangementController?.appendAction(type: .showLookLeft, index1: pivotLocation, index2: nil)
+            performQuickSort(viewController.arrangementController!, startAt: startAt, endBefore: pivotLocation, completion: {
+                viewController.arrangementController?.appendAction(type: .showLookRight, index1: pivotLocation, index2: nil)
+                performQuickSort(viewController.arrangementController!, startAt: pivotLocation+1, endBefore: endBefore, completion: {
+                    if let completion = completion {
+                        completion()
+                    }
+                })
+            })
+        }
+    }
+    else {
+        
+        if let completion = completion {
+            completion()
+        }
+    }
+}
+
+//#-end-hidden-code
+//: ## Quick Sort
+//: Average runtime: O(nlogn)
+func performQuickSort(_ arrangementController: SPArrangementController, startAt: Int, endBefore: Int, completion: (() -> Void)?) {
+    // Every time we pick the first card in range as the pivot, then rearrange the board such that everything less than it will be on its left and other ones will be on its right. We know this card must be at the correct place. Then we sort its left and right side.
+    
+    quickVisualIf(value: startAt, lessThan: endBefore, thenPerform: completion) {
+        visualizePivot(startAt) // Choose first card as the pivot
+        var dividerLocation: Int = startAt
+        quickVisualIterator(range: startAt+1..<endBefore) { i in
+            if names[i] < names[startAt] {
+                dividerLocation += 1
+                if dividerLocation != i {
+                    visualSwap(index1: i, index2: dividerLocation)
+                }
+            }
+        }
+        if (startAt != dividerLocation) {
+            visualSwap(index1: startAt, index2: dividerLocation)
+        }
+        return dividerLocation
+    }
+}
+//#-hidden-code
 viewController.performSelectionSort = performSelectionSort
 viewController.performBubbleSort = performBubbleSort
+viewController.performQuickSort = performQuickSort
 viewController.shuffle = shuffle
 //#-end-hidden-code

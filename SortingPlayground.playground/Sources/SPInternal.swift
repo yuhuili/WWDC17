@@ -36,6 +36,8 @@ public enum SPActionType: UInt8 {
     case showPivotIndicator
     case showCurrentIndicator
     case showCurrentIndicators
+    case showLookLeft
+    case showLookRight
     case hideIndicator
     case hideIndicators
     case resetAll

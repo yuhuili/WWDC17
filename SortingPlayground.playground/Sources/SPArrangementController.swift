@@ -104,11 +104,26 @@ public class SPArrangementController: NSObject {
             }
             return
         case .showCurrentIndicator:
+            viewController?.labelText = String(format: "Checking %@", cards[actions[0].index1!].stringValue())
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
         case .showCurrentIndicators:
             viewController?.labelText = String(format: "Checking %@ and %@", cards[actions[0].index1!].stringValue(), cards[actions[0].index2!].stringValue())
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
             cards[actions[0].index2!].showIndicatorWithColor(UIColor.black)
+        case .showLookLeft:
+            viewController?.labelText = String(format: "Sort left side of %@", cards[actions[0].index1!].stringValue())
+            actions.removeFirst()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2*animationSpeed) {
+                self.executeActions(completion)
+            }
+            return
+        case .showLookRight:
+            viewController?.labelText = String(format: "Sort right side of %@", cards[actions[0].index1!].stringValue())
+            actions.removeFirst()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2*animationSpeed) {
+                self.executeActions(completion)
+            }
+            return
         case .hideIndicator:
             cards[actions[0].index1!].hideIndicator()
             actions.removeFirst()
@@ -171,10 +186,26 @@ public class SPArrangementController: NSObject {
             viewController?.labelText = String(format: "Let %@ be the pivot", cards[actions[0].index1!].stringValue())
             cards[actions[0].index1!].showIndicatorWithColor(UIColor(red: 0, green: 141.0/255.0, blue: 249.0/255.0, alpha: 1))
         case .showCurrentIndicator:
+            viewController?.labelText = String(format: "Checking %@", cards[actions[0].index1!].stringValue())
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
         case .showCurrentIndicators:
+            viewController?.labelText = String(format: "Checking %@ and %@", cards[actions[0].index1!].stringValue(), cards[actions[0].index2!].stringValue())
             cards[actions[0].index1!].showIndicatorWithColor(UIColor.black)
             cards[actions[0].index2!].showIndicatorWithColor(UIColor.black)
+        case .showLookLeft:
+            viewController?.labelText = String(format: "Sort left side of %@", cards[actions[0].index1!].stringValue())
+            actions.removeFirst()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2*animationSpeed) {
+                self.executeActions()
+            }
+            return
+        case .showLookRight:
+            viewController?.labelText = String(format: "Sort right side of %@", cards[actions[0].index1!].stringValue())
+            actions.removeFirst()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2*animationSpeed) {
+                self.executeActions()
+            }
+            return
         case .hideIndicator:
             cards[actions[0].index1!].hideIndicator()
             actions.removeFirst()
