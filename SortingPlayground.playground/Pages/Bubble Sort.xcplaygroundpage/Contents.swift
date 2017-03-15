@@ -15,7 +15,7 @@
 //#-code-completion(currentmodule, show)
 //#-code-completion(module, show, Swift)
 //#-code-completion(if, func, var, let, ., =, <=, >=, <, >, ==, !=, +, -, true, false, &&, ||, !, *, /, (, ))
-//#-code-completion(arrangementController, cards, stringValue(), smallestIndex, smallestIndexWord)
+//#-code-completion(rand(low: Int, high: Int), visualSwap(index1: Int, index2: Int))
 import UIKit
 import PlaygroundSupport
 
