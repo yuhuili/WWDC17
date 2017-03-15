@@ -24,14 +24,6 @@ PlaygroundPage.current.liveView = viewController
 
 var names = [String]()
 
-func bubbleVisualIterator(range: CountableRange<Int>, iterator: (_ i: Int) -> Void) {
-    for i in range {
-        viewController.arrangementController?.appendAction(type: .showCurrentIndicators, index1: i-1, index2: i)
-        iterator(i)
-        viewController.arrangementController?.appendAction(type: .hideIndicators, index1: i-1, index2: i)
-    }
-}
-
 func visualSwap(index1: Int, index2: Int) {
     
     if index1 == index2 {
@@ -40,19 +32,6 @@ func visualSwap(index1: Int, index2: Int) {
         
     swap(&names[index1], &names[index2])
     viewController.arrangementController?.appendAction(type: .swap, index1: index1, index2: index2)
-}
-
-func bubbleVisualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
-    if value > v {
-        execute()
-        viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: value-1, index2: nil)
-        viewController.arrangementController?.executeActions {
-            performBubbleSort(viewController.arrangementController!, endBefore: value-1)
-        }
-    } else {
-        viewController.arrangementController?.appendAction(type: .resetAll, index1: nil, index2: nil)
-        viewController.arrangementController?.executeActions()
-    }
 }
 
 func selectionVisualIf(value: Int, lessThan v: Int, execute: () -> Void) {
@@ -103,33 +82,6 @@ func shuffle(_ count: Int) {
 //#-end-hidden-code
 //#-hidden-code
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
-func performBubbleSort(_ arrangementController: SPArrangementController) {
-    
-    viewController.labelText = "Performing Bubble Sort"
-    
-    names.removeAll()
-    for c in arrangementController.cards {
-        names.append(c.stringValue())
-    }
-    
-    performBubbleSort(arrangementController, endBefore: names.count)
-}
-/*:
- ## Bubble Sort
-*/
-func performBubbleSort(_ arrangementController: SPArrangementController, endBefore: Int) {
-    // Can you see how the cards are being bubbled up?
-    bubbleVisualIf(value: endBefore, greaterThan: 0) {
-        // Special iterator so we can see what happens in LiveView
-        bubbleVisualIterator(range: 1..<endBefore) { i in
-            if names[i-1] > names[i] {
-                visualSwap(index1: i-1, index2: i)
-            }
-        }
-    }
-}
-//#-end-hidden-code
-//#-hidden-code
 func performSelectionSort(_ arrangementController: SPArrangementController) {
     
     viewController.labelText = "Performing Selection Sort"
@@ -168,6 +120,5 @@ func performSelectionSort(_ arrangementController: SPArrangementController, star
 //: These two are too slow? The [next one](@next) is going to be fast! Buckle up!
 //#-hidden-code
 viewController.performSelectionSort = performSelectionSort
-viewController.performBubbleSort = performBubbleSort
 viewController.shuffle = shuffle
 //#-end-hidden-code
