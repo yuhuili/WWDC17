@@ -235,12 +235,12 @@ public class SPViewController: UIViewController {
         view.backgroundColor = UIColor.white
         
         setupGradient()
-        setupQuestionIcon()
         setupCloudView()
         setupGrassImageView()
         setupBoardView()
         setupButtons()
         setupLogo()
+        setupQuestionIcon()
         setupOverlayButtons()
     }
     
@@ -477,12 +477,12 @@ public class SPViewController: UIViewController {
             funcButton.addTarget(self, action: #selector(handleFunc), for: .touchUpInside)
             view.addSubview(funcButton)
             
-            let heightConstraint = NSLayoutConstraint(item: funcButton, attribute: .height, relatedBy: .equal, toItem: boardView, attribute: .height, multiplier: 0.203, constant: 0)
-            let widthConstraint = NSLayoutConstraint(item: funcButton, attribute: .width, relatedBy: .equal, toItem: funcButton, attribute: .height, multiplier: 50.0/20.0, constant: 0)
+            let heightConstraint = NSLayoutConstraint(item: funcButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20.0)
+            let widthConstraint = NSLayoutConstraint(item: funcButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50.0)
             let topConstraint = NSLayoutConstraint(item: funcButton, attribute: .top, relatedBy: .equal, toItem: boardView, attribute: .top, multiplier: 1, constant: 0)
-            let rightConstraint = NSLayoutConstraint(item: funcButton, attribute: .right, relatedBy: .equal, toItem: boardView, attribute: .right, multiplier: 1, constant: -10)
+            let centerConstraint = NSLayoutConstraint(item: funcButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
             
-            view.addConstraints([widthConstraint, heightConstraint, topConstraint, rightConstraint])
+            view.addConstraints([widthConstraint, heightConstraint, topConstraint, centerConstraint])
         }
     }
 }
