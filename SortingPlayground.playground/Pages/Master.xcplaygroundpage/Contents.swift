@@ -19,7 +19,7 @@ import PlaygroundSupport
 
 _internalSetup()
 
-let viewController = SPViewController(showBubble: true, showSelection: true, showQuick: true, showBogo: false)
+let viewController = SPViewController(showBubble: true, showSelection: true, showQuick: true, showBogo: true)
 PlaygroundPage.current.liveView = viewController
 
 var names = [String]()
@@ -246,12 +246,57 @@ func performQuickSort(_ arrangementController: SPArrangementController, startAt:
         return dividerLocation
     }
 }
+
+func performBogoSort(_ arrangementController: SPArrangementController) {
+    viewController.labelText = "Performing Bogo Sort"
+    performBogo(viewController.arrangementController!.cards.count)
+}
+
+func verifyBogo() {
+    if viewController.shouldTerminate {
+        return
+    }
+    
+    for i in 1..<viewController.arrangementController!.cards.count {
+        if viewController.arrangementController!.cards[i-1].stringValue() > viewController.arrangementController!.cards[i].stringValue() {
+            // Out of order
+            viewController.labelText = "Not in order, reshuffle..."
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                performBogo(viewController.arrangementController!.cards.count)
+            })
+            return
+        }
+    }
+    viewController.labelText = "Bogo succeeded!"
+}
+//#-end-hidden-code
+/*:
+ ## Bogo Sort
+ */
+func performBogo(_ count: Int) {
+    for i in 0..<count-1 {
+        // rand gives you an integer between low and high inclusive
+        let r = rand(low: i, high: count)
+        // Use rearrange to update the graphics
+        rearrange(index1: i, index2: r)
+    }
+    verifyBogo()
+}
 //#-end-hidden-code
 
+/*:
+ # The end
+ Sorting Playground provided you with an intuitive interface and animation to explore a number of sorting algorithms, ranging from easy but slow ones, to a very sophisticated Quick Sort, then finally a laugh of Bogo Sort.
+ 
+ I hope you have enjoyed this journey in sorting. You may enjoy all previously shown algorithms on this page, or reread the details by going back to previous pages.
+ 
+ Yuhui Li
+ */
 
 //#-hidden-code
 viewController.performSelectionSort = performSelectionSort
 viewController.performBubbleSort = performBubbleSort
 viewController.performQuickSort = performQuickSort
+viewController.performBogoSort = performBogoSort
 viewController.shuffle = shuffle
 //#-end-hidden-code
