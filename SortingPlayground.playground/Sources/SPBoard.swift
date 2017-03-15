@@ -161,6 +161,14 @@ class SPBoard: SKScene {
         }
     }
     
+    public func hideHandIfNeeded() {
+        if handIndicatorNode.alpha != 0 {
+            self.handIndicatorNode.run(SKAction.fadeOut(withDuration: 0.5), completion: {
+                self.handIndicatorNode.removeFromParent()
+            })
+        }
+    }
+    
     // MARK: - View Setups
     private func setupHandIndicator() {
         self.handIndicatorNode.size = CGSize(width: 180, height: 180)

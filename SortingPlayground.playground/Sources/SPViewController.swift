@@ -78,24 +78,28 @@ public class SPViewController: UIViewController {
     @objc private func bubbleSort() {
         disableBoard()
         disableButtons()
+        self.board?.hideHandIfNeeded()
         self.arrangementController?.performBubbleSort!(self.arrangementController!)
     }
     
     @objc private func selectionSort() {
         disableBoard()
         disableButtons()
+        self.board?.hideHandIfNeeded()
         self.arrangementController?.performSelectionSort!(self.arrangementController!)
     }
     
     @objc private func quickSort() {
         disableBoard()
         disableButtons()
+        self.board?.hideHandIfNeeded()
         self.arrangementController?.performQuickSort!(self.arrangementController!)
     }
     
     @objc private func bogoSort() {
         disableBoard()
         disableButtons()
+        self.board?.hideHandIfNeeded()
         self.arrangementController?.performBogoSort!(self.arrangementController!)
     }
     
