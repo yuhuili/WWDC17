@@ -106,6 +106,8 @@ public class SPViewController: UIViewController {
         bogoSortButton?.setTitleColor(NormalColorOnWood, for: .normal)
         
         funcButton?.setTitle("Shuffle", for: .normal)
+        funcButton?.isUserInteractionEnabled = true
+        funcButton?.alpha = 1
     }
     
     public func disableButtons() {
@@ -125,7 +127,20 @@ public class SPViewController: UIViewController {
         if funcButton?.title(for: .normal) == "Shuffle" {
             arrangementController?.shuffle!((arrangementController?.cards.count)!)
         } else {
-            // TODO: stop
+            arrangementController?.shouldTerminate = true
+            
+            funcButton?.setTitle("Stopping", for: .normal)
+            funcButton?.isUserInteractionEnabled = false
+            funcButton?.alpha = 0.7
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2, execute: {
+                self.labelText = ""
+                self.arrangementController?.shouldTerminate = false
+                self.enableBoard()
+                self.enableButtons()
+                self.arrangementController?.appendAction(type: .terminate, index1: nil, index2: nil)
+                self.arrangementController?.executeActions()
+            })
         }
     }
     

@@ -16,6 +16,8 @@ public class SPArrangementController: NSObject {
     
     public weak var viewController: SPViewController?
     
+    public var shouldTerminate = false
+    
     // MARK: - Animations
     
     public var performSelectionSort: ((_ arrangementController: SPArrangementController) -> Void)?
@@ -70,6 +72,11 @@ public class SPArrangementController: NSObject {
      - parameter completion: code block to be executed upon completion of all items in animation queue
      */
     public func executeActions(_ completion: @escaping () -> Void) {
+        if shouldTerminate {
+            actions.removeAll()
+            return
+        }
+        
         if actions.isEmpty {
             completion()
             return
@@ -140,6 +147,10 @@ public class SPArrangementController: NSObject {
             resetCardsOpacity()
             resetCardsIndicator()
             break
+        case .terminate:
+            resetCardsOpacity()
+            resetCardsIndicator()
+            break
         case .quickSwap:
             rearrange(index1: actions[0].index1!, index2: actions[0].index2!)
             actions.removeFirst()
@@ -158,6 +169,11 @@ public class SPArrangementController: NSObject {
      Execute actions in animation queue
      */
     public func executeActions() {
+        if shouldTerminate {
+            actions.removeAll()
+            return
+        }
+        
         if actions.isEmpty {
             if let viewController = viewController {
                 viewController.enableBoard()
@@ -219,6 +235,10 @@ public class SPArrangementController: NSObject {
             return
         case .resetAll:
             viewController?.labelText = "Sorting completed!"
+            resetCardsOpacity()
+            resetCardsIndicator()
+            break
+        case .terminate:
             resetCardsOpacity()
             resetCardsIndicator()
             break

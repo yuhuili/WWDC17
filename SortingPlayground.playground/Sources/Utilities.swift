@@ -41,6 +41,7 @@ public enum SPActionType: UInt8 {
     case hideIndicator
     case hideIndicators
     case resetAll
+    case terminate
 }
 
 public struct SPAction {
