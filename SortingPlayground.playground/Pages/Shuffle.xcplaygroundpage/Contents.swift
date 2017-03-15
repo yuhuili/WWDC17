@@ -5,11 +5,6 @@
 //  Copyright (c) 2017 Yuhui Li
 //
 //#-end-hidden-code
-/*:
- # Sorting Playground
- Sorting: the process of arranging items.
- - - -
- */
 //#-hidden-code
 //#-code-completion(everything, hide)
 //#-code-completion(currentmodule, show)
@@ -52,6 +47,7 @@ func shuffle(_ count: Int) {
     }
     //#-end-editable-code
 }
+//: Coming up, [Bubble Sort!](@next)
 //#-hidden-code
 viewController.shuffle = shuffle
 //#-end-hidden-code

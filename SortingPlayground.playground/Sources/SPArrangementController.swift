@@ -46,8 +46,22 @@ public class SPArrangementController: NSObject {
      - parameter index2: Secondary Index for the action
      */
     public func appendAction(type: SPActionType, index1: Int?, index2: Int?) {
+        
+        if (type == .swap) {
+            let action = SPAction(type: .showSwapIndicators, index1: index1, index2: index2)
+            actions.append(action)
+        } else if (type == .showDoneIndicator) {
+            let action = SPAction(type: .dim, index1: index1, index2: index2)
+            actions.append(action)
+        }
+        
         let action = SPAction(type: type, index1: index1, index2: index2)
         actions.append(action)
+        
+        if (type == .swap) {
+            let action = SPAction(type: .hideSwapIndicators, index1: index1, index2: index2)
+            actions.append(action)
+        }
     }
     
     /**

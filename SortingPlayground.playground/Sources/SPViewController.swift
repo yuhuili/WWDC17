@@ -418,6 +418,7 @@ public class SPViewController: UIViewController {
             view.addSubview(buttonsStackView)
             
             let horizontalConstraint = NSLayoutConstraint(item: buttonsStackView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+            
             buttonsWidthConstraintNarrow = NSLayoutConstraint(item: buttonsStackView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150)
             
             buttonsWidthConstraintWideLeft = NSLayoutConstraint(item: buttonsStackView, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 50)
@@ -425,7 +426,9 @@ public class SPViewController: UIViewController {
             buttonsWidthConstraintWideLeft?.isActive = false
             buttonsWidthConstraintWideRight?.isActive = false
             
-            buttonsHeightConstraintTall = NSLayoutConstraint(item: buttonsStackView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 160)
+            let calculatedHeight = 160.0/4 * ((showBubble ? 1 : 0) + (showSelection ? 1 : 0) + (showQuick ? 1 : 0) + (showBogo ? 1 : 0))
+            
+            buttonsHeightConstraintTall = NSLayoutConstraint(item: buttonsStackView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: CGFloat(calculatedHeight))
             buttonsHeightConstraintShort = NSLayoutConstraint(item: buttonsStackView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30)
             buttonsHeightConstraintShort?.isActive = false
             
@@ -479,7 +482,7 @@ public class SPViewController: UIViewController {
             
             let heightConstraint = NSLayoutConstraint(item: funcButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20.0)
             let widthConstraint = NSLayoutConstraint(item: funcButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50.0)
-            let topConstraint = NSLayoutConstraint(item: funcButton, attribute: .top, relatedBy: .equal, toItem: boardView, attribute: .top, multiplier: 1, constant: 0)
+            let topConstraint = NSLayoutConstraint(item: funcButton, attribute: .bottom, relatedBy: .equal, toItem: boardView, attribute: .top, multiplier: 1, constant: 0)
             let centerConstraint = NSLayoutConstraint(item: funcButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
             
             view.addConstraints([widthConstraint, heightConstraint, topConstraint, centerConstraint])

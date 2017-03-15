@@ -79,9 +79,7 @@ func performBubbleSort(_ arrangementController: SPArrangementController, endBefo
             if values[i-1] > values[i] {
                 swap(&values[i-1], &values[i])
                 //#-hidden-code
-                arrangementController.appendAction(type: .showSwapIndicators, index1: i-1, index2: i)
                 arrangementController.appendAction(type: .swap, index1: i-1, index2: i)
-                arrangementController.appendAction(type: .hideSwapIndicators, index1: i-1, index2: i)
                 //#-end-hidden-code
             }
             //#-hidden-code
@@ -89,7 +87,6 @@ func performBubbleSort(_ arrangementController: SPArrangementController, endBefo
             //#-end-hidden-code
         }
         //#-hidden-code
-        arrangementController.appendAction(type: .dim, index1: endBefore-1, index2: nil)
         arrangementController.appendAction(type: .showDoneIndicator, index1: endBefore-1, index2: nil)
         arrangementController.executeActions {
             performBubbleSort(arrangementController, endBefore: endBefore-1)
@@ -145,13 +142,10 @@ func performSelectionSort(_ arrangementController: SPArrangementController, star
         if smallestIndex != i {
             swap(&values[i], &values[smallestIndex])
             //#-hidden-code
-            arrangementController.appendAction(type: .showSwapIndicators, index1: i, index2: smallestIndex)
             arrangementController.appendAction(type: .swap, index1: i, index2: smallestIndex)
-            arrangementController.appendAction(type: .hideSwapIndicators, index1: i, index2: smallestIndex)
             //#-end-hidden-code
         }
         //#-hidden-code
-        arrangementController.appendAction(type: .dim, index1: i, index2: nil)
         arrangementController.appendAction(type: .showDoneIndicator, index1: i, index2: nil)
         arrangementController.executeActions {
             performSelectionSort(arrangementController, startAt: i+1)
@@ -199,9 +193,7 @@ func performQuickSort(_ arrangementController: SPArrangementController, startAt:
                 if dividerLocation != i {
                     swap(&values[i], &values[dividerLocation])
                     //#-hidden-code
-                    arrangementController.appendAction(type: .showSwapIndicators, index1: i, index2: dividerLocation)
                     arrangementController.appendAction(type: .swap, index1: i, index2: dividerLocation)
-                    arrangementController.appendAction(type: .hideSwapIndicators, index1: i, index2: dividerLocation)
                     //#-end-hidden-code
                 }
             }
@@ -212,13 +204,10 @@ func performQuickSort(_ arrangementController: SPArrangementController, startAt:
         if (startAt != dividerLocation) {
             swap(&values[startAt], &values[dividerLocation])
             //#-hidden-code
-            arrangementController.appendAction(type: .showSwapIndicators, index1: startAt, index2: dividerLocation)
             arrangementController.appendAction(type: .swap, index1: startAt, index2: dividerLocation)
-            arrangementController.appendAction(type: .hideSwapIndicators, index1: startAt, index2: dividerLocation)
             //#-end-hidden-code
         }
         //#-hidden-code
-        arrangementController.appendAction(type: .dim, index1: dividerLocation, index2: nil)
         arrangementController.appendAction(type: .showDoneIndicator, index1: dividerLocation, index2: nil)
         arrangementController.executeActions {
             performQuickSort(arrangementController, startAt: startAt, endBefore: dividerLocation, completion: {
