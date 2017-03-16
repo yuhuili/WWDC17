@@ -95,6 +95,8 @@ func visualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
 /*:
  Now, we'll explore different ways of sorting cards. It is not as simple as how we humans could sort; computers must follow strict rules. No worries, this one is fun. Who doesn't like bubbles?
  
+ ![Bubble banner](bubble_banner.png)
+ 
  ## Bubble Sort
  Average runtime: O(n^2), i.e., if we have 2 times amount of cards, this algorithm will take 4 times longer to run.
  
