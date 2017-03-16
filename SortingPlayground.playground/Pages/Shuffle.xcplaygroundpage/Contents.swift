@@ -43,8 +43,7 @@ func rand(low: Int, high: Int) -> Int {
  * [Quick Sort](Quick%20Sort)
  * [Bogo Sort](Bogo%20Sort)
  * [The End](The%20End)
- 
- 
+  - - -
  */
 /*:
  ## Shuffle
