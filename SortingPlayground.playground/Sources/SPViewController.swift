@@ -21,7 +21,8 @@ public class SPViewController: UIViewController {
     var quickSortButton: UIButton?
     var bogoSortButton: UIButton?
     var grassImageView: UIImageView?
-    var questionIcon: UIButton?
+    var menuButton: UIButton?
+    var musicButton: UIButton?
     var funcButton: UIButton?
     
     var musicPlayer: AVAudioPlayer?
@@ -180,6 +181,18 @@ public class SPViewController: UIViewController {
         soundPlayer?.play()
     }
     
+    @objc private func toggleMusic() {
+        if let musicPlayer = musicPlayer {
+            if musicPlayer.isPlaying {
+                musicButton?.setImage(UIImage(named: "music_icon_off"), for: .normal)
+                musicPlayer.stop()
+            } else {
+                musicButton?.setImage(UIImage(named: "music_icon_on"), for: .normal)
+                musicPlayer.play()
+            }
+        }
+    }
+    
     // MARK: - Menu Control
     public func showMenu() {
         let vc = SPMenuViewController()
@@ -288,7 +301,8 @@ public class SPViewController: UIViewController {
         setupBoardView()
         setupButtons()
         setupLogo()
-        setupQuestionIcon()
+        setupMenuButton()
+        setupMusicButton()
         setupOverlayButtons()
         
         do {
@@ -353,17 +367,34 @@ public class SPViewController: UIViewController {
     }
     
     // MARK: - View Setups
-    private func setupQuestionIcon() {
-        questionIcon = UIButton(type: .infoDark)
-        if let questionIcon = questionIcon {
-            questionIcon.tintColor = UIColor.white
-            questionIcon.translatesAutoresizingMaskIntoConstraints = false
-            questionIcon.addTarget(self, action: #selector(showMenu), for: .touchUpInside)
-            view.addSubview(questionIcon)
+    private func setupMenuButton() {
+        menuButton = UIButton(type: .infoDark)
+        if let menuButton = menuButton {
+            menuButton.tintColor = UIColor.white
+            menuButton.translatesAutoresizingMaskIntoConstraints = false
+            menuButton.addTarget(self, action: #selector(showMenu), for: .touchUpInside)
+            view.addSubview(menuButton)
             
-            let views = ["view": view, "questionIcon": questionIcon]
-            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:[questionIcon(22)]-(10)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
-            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(10)-[questionIcon(22)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            let views = ["view": view, "menuButton": menuButton]
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:[menuButton(22)]-(10)-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(10)-[menuButton(22)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            
+            view.addConstraints(horizontalConstraints)
+            view.addConstraints(verticalConstraints)
+        }
+    }
+    
+    private func setupMusicButton() {
+        musicButton = UIButton()
+        if let musicButton = musicButton {
+            musicButton.setImage(UIImage(named: "music_icon_on"), for: .normal)
+            musicButton.translatesAutoresizingMaskIntoConstraints = false
+            musicButton.addTarget(self, action: #selector(toggleMusic), for: .touchUpInside)
+            view.addSubview(musicButton)
+            
+            let views = ["view": view, "musicButton": musicButton]
+            let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-(10)-[musicButton(22)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
+            let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-(10)-[musicButton(22)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views)
             
             view.addConstraints(horizontalConstraints)
             view.addConstraints(verticalConstraints)
