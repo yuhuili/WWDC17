@@ -18,25 +18,9 @@ _internalSetup()
 let viewController = SPViewController(showBubble: false, showSelection: false, showQuick: false, showBogo: false)
 PlaygroundPage.current.liveView = viewController
 
-// == Shuffle Sound ==
-var shuffleSoundPlayer = AVAudioPlayer()
-let shuffleURL = Bundle.main.url(forResource: "shuffle", withExtension: "mp3")
-if let shuffleURL = shuffleURL {
-    do {
-        shuffleSoundPlayer = try AVAudioPlayer(contentsOf: shuffleURL)
-        shuffleSoundPlayer.volume = 0.1
-        shuffleSoundPlayer.prepareToPlay()
-    } catch {
-        
-    }
-}
 func playShuffleSound() {
-    shuffleSoundPlayer.stop()
-    shuffleSoundPlayer.currentTime = 0
-    shuffleSoundPlayer.play()
+    viewController.playShuffle()
 }
-// == Shuffle Sound ==
-
 
 // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
 func rearrange(index1: Int, index2: Int) {
@@ -46,8 +30,8 @@ func rearrange(index1: Int, index2: Int) {
 func rand(low: Int, high: Int) -> Int {
     return Int(arc4random_uniform(UInt32(high-low))) + low
 }
-
 //#-end-hidden-code
+
 /*:
  # Prologue
  Hello there, welcome to Sorting Playground! In this book, you will be guided through a number of sorting algorithms accompanied by beautiful animations. There will be small challenges for you to complete, and some questions for you to think about.
@@ -59,6 +43,8 @@ func rand(low: Int, high: Int) -> Int {
  * [Quick Sort](Quick%20Sort)
  * [Bogo Sort](Bogo%20Sort)
  * [The End](The%20End)
+ 
+ 
  */
 /*:
  ## Shuffle

@@ -23,24 +23,9 @@ _internalSetup()
 let viewController = SPViewController(showBubble: true, showSelection: false, showQuick: false, showBogo: false)
 PlaygroundPage.current.liveView = viewController
 
-// == Shuffle Sound ==
-var shuffleSoundPlayer = AVAudioPlayer()
-let shuffleURL = Bundle.main.url(forResource: "shuffle", withExtension: "mp3")
-if let shuffleURL = shuffleURL {
-    do {
-        shuffleSoundPlayer = try AVAudioPlayer(contentsOf: shuffleURL)
-        shuffleSoundPlayer.volume = 0.1
-        shuffleSoundPlayer.prepareToPlay()
-    } catch {
-        
-    }
-}
 func playShuffleSound() {
-    shuffleSoundPlayer.stop()
-    shuffleSoundPlayer.currentTime = 0
-    shuffleSoundPlayer.play()
+    viewController.playShuffle()
 }
-// == Shuffle Sound ==
 
 var names = [String]()
 

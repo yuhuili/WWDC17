@@ -25,6 +25,7 @@ public class SPViewController: UIViewController {
     var funcButton: UIButton?
     
     var musicPlayer: AVAudioPlayer?
+    var soundPlayer: AVAudioPlayer?
     
     public var shouldTerminate: Bool {
         didSet {
@@ -173,6 +174,12 @@ public class SPViewController: UIViewController {
         arrangementController?.animationSpeed = Double(sender.maximumValue - (sender.value - sender.minimumValue))
     }
     
+    public func playShuffle() {
+        soundPlayer?.stop()
+        soundPlayer?.currentTime = 0
+        soundPlayer?.play()
+    }
+    
     // MARK: - Menu Control
     public func showMenu() {
         let vc = SPMenuViewController()
@@ -286,12 +293,19 @@ public class SPViewController: UIViewController {
         
         do {
             let backgroundMusicURL = Bundle.main.url(forResource: "GreenHills", withExtension: "mp3")
-            if let backgroundMusicURL = backgroundMusicURL {
+            let shuffleURL = Bundle.main.url(forResource: "shuffle", withExtension: "mp3")
+            if let backgroundMusicURL = backgroundMusicURL, let shuffleURL = shuffleURL {
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+                try AVAudioSession.sharedInstance().setActive(true)
                 musicPlayer = try AVAudioPlayer(contentsOf: backgroundMusicURL)
-                musicPlayer?.volume = 0.05
+                musicPlayer?.volume = 0.1
                 musicPlayer?.numberOfLoops = -1
                 musicPlayer?.prepareToPlay()
                 musicPlayer?.play()
+                
+                soundPlayer = try AVAudioPlayer(contentsOf: shuffleURL)
+                soundPlayer?.volume = 0.05
+                soundPlayer?.prepareToPlay()
             }
         } catch {
             
