@@ -5,11 +5,6 @@
 //  Copyright (c) 2017 Yuhui Li
 //
 //#-end-hidden-code
-/*:
- # Sorting Playground
- Sorting: the process of arranging items.
- - - -
- */
 //#-hidden-code
 //#-code-completion(everything, hide)
 //#-code-completion(if, func, var, let, ., =, <=, >=, <, >, ==, !=, +, -, true, false, &&, ||, !, *, /, (, ))
@@ -93,8 +88,8 @@ func rearrange(index1: Int, index2: Int) {
 func rand(low: Int, high: Int) -> Int {
     return Int(arc4random_uniform(UInt32(high-low))) + low
 }
-//: ## Shuffle
-//: Shuffle the cards so we can sort them back~
+// ## Shuffle
+// Shuffle the cards so we can sort them back~
 func shuffle(_ count: Int) {
     //#-editable-code
     for i in 0..<count-1 {
@@ -120,7 +115,7 @@ func performBubbleSort(_ arrangementController: SPArrangementController) {
     
     performBubbleSort(arrangementController, endBefore: names.count)
 }
-/*:
+/*
  ## Bubble Sort
  */
 func performBubbleSort(_ arrangementController: SPArrangementController, endBefore: Int) {
@@ -147,7 +142,7 @@ func performSelectionSort(_ arrangementController: SPArrangementController) {
     
     performSelectionSort(arrangementController, startAt: 0)
 }
-/*:
+/*
  ## Selection Sort
  */
 func performSelectionSort(_ arrangementController: SPArrangementController, startAt: Int) {
@@ -221,7 +216,7 @@ func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform comp
     }
 }
 
-/*:
+/*
  ## Quick Sort
  */
 func performQuickSort(_ arrangementController: SPArrangementController, startAt: Int, endBefore: Int, completion: (() -> Void)?) {
@@ -275,7 +270,7 @@ func verifyBogo() {
     }
     viewController.labelText = "Bogo succeeded!"
 }
-/*:
+/*
  ## Bogo Sort
  */
 func performBogo(_ count: Int) {

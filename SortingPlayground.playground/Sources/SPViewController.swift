@@ -324,7 +324,7 @@ public class SPViewController: UIViewController {
     }
     
     public override func viewWillLayoutSubviews() {
-        if view.frame.height < 400 {
+        if view.frame.height < 400 && ((showBubble ? 1 : 0) + (showSelection ? 1 : 0) + (showQuick ? 1 : 0) + (showBogo ? 1 : 0)) > 1 {
             buttonsHeightConstraintTall?.isActive = false
             buttonsHeightConstraintShort?.isActive = true
             buttonsWidthConstraintNarrow?.isActive = false
@@ -501,7 +501,7 @@ public class SPViewController: UIViewController {
             buttonsHeightConstraintShort = NSLayoutConstraint(item: buttonsStackView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30)
             buttonsHeightConstraintShort?.isActive = false
             
-            let bottomConstraint = NSLayoutConstraint(item: buttonsStackView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: boardView, attribute: .top, multiplier: 1, constant: -10)
+            let bottomConstraint = NSLayoutConstraint(item: buttonsStackView, attribute: .bottom, relatedBy: .lessThanOrEqual, toItem: boardView, attribute: .top, multiplier: 1, constant: -30)
             
             view.addConstraints([horizontalConstraint, buttonsWidthConstraintNarrow!, buttonsWidthConstraintWideLeft!, buttonsWidthConstraintWideRight!,buttonsHeightConstraintTall!, buttonsHeightConstraintShort!, bottomConstraint])
         }
