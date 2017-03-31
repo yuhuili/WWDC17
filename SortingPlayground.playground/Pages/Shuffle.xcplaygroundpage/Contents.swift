@@ -34,7 +34,7 @@ func rand(low: Int, high: Int) -> Int {
 
 /*:
  # Prologue
- Hello there, welcome to Sorting Playground! In this book, you will be guided through a number of sorting algorithms accompanied by beautiful animations. There will be small challenges for you to complete, and some questions for you to think about.
+ Hello there, welcome to Sorting Playground! In this book, you will be guided through a number of sorting algorithms accompanied by beautiful animations. There will be a small challenge in Quick Sort for you to complete, and some questions for you to think about.
  
  ### Table of Contents
  * [Shuffle](Shuffle)

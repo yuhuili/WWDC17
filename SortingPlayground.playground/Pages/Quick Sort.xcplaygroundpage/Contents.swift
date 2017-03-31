@@ -128,6 +128,8 @@ func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform comp
  
  The code is longer but it's pretty cool!
  
+ ![Quick example](quick_example.png)
+ 
  ### Challenge for you:
  
  The choice of pivot has been studied extensively because it affects how fast the algorithm runs. So a good thing to do is to randomize the pivot. Currently we always choose the first card as pivot. Can you write simple **two lines** of code to randomize this?
