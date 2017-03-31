@@ -93,14 +93,18 @@ func visualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
 
 //#-end-hidden-code
 /*:
- Now, we'll explore different ways of sorting cards. It is not as simple as how we humans could sort; computers must follow strict rules. No worries, this one is fun. Who doesn't like bubbles?
+ Now, we'll explore various ways of sorting cards. It is not as simple as how we humans could sort; computers must follow strict rules. No worries, this one is fun.
+ 
+ Who doesn't like bubbles?
+ 
+ _Note that we'll be sorting in lexicographical order, i.e. the order as they come in dictionary._
  
  ![Bubble banner](bubble_banner.png)
  
  ## Bubble Sort
  Average runtime: O(n^2), i.e., if we have 2 times amount of cards, this algorithm will take 4 times longer to run.
  
- Imagine the array having two parts, left is unosrted and right is sorted. Each time we examine the adjacent pair, and swap them if they are out of order. Can you see that the last element in each iteration will be at the correct spot? (Hint: will it ever be in the currect order when we examine it with its neighbour unless it's at very end?)
+ Imagine the array having two parts, left is unosrted and right is sorted. Each time we examine the adjacent pair, and swap them if they are out of order. Can you see that the last element in each iteration will be at the correct spot? (Hint: what do we do if we encounter a card along the way that is supposed to be placed at the end?)
  */
 func performBubbleSort(_ arrangementController: SPArrangementController, endBefore: Int) {
     // Can you see how the cards are being bubbled up?

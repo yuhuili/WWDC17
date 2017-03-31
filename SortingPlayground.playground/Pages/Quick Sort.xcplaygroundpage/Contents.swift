@@ -12,8 +12,9 @@
  */
 //#-hidden-code
 //#-code-completion(everything, hide)
-//#-code-completion(if, func, var, let, ., =, <=, >=, <, >, ==, !=, +, -, true, false, &&, ||, !, *, /, (, ))
-//#-code-completion(rand(low: Int, high: Int), visualSwap(index1: Int, index2: Int))
+//#-code-completion(identifier, show, rand(low:high:), rearrange(index1:index2:), visualSwap(index1:index2:), visualizePivot(_:))
+//#-code-completion(identifier, show, startAt, endBefore)
+//#-code-completion(keyword, show, for, if, let, var)
 import UIKit
 import PlaygroundSupport
 import AVFoundation
@@ -47,6 +48,7 @@ func rearrange(index1: Int, index2: Int) {
 func rand(low: Int, high: Int) -> Int {
     return Int(arc4random_uniform(UInt32(high-low))) + low
 }
+
 //: ## Shuffle
 //: Shuffle the cards so we can sort them back~
 func shuffle(_ count: Int) {
@@ -122,11 +124,7 @@ func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform comp
  
  Average runtime: O(nlogn)
  
- O(nlogn) is much better than O(n^2), in this case we have 6 cards, but if we have 600 cards, O(n^2) will approximately do 30 times more work than O(nlogn), and if we have 6 million cards, Quick Sort can be 100000 times faster! Amazing isn't it?
- 
  Every time we pick the first card in range as the pivot, then rearrange the cards such that everything less than it will be on its left and other ones will be on its right. We know this card must be at the correct place. Then we sort its left and right side separately. For example, no matter how we arrange 1~3 and 5~7, as long as they are on the correct side of number 4, 4 must be in the right place, such as [1,3,2,4,5,6,7], [3,2,1,4,7,5,6], and so on.
- 
- This is also a form of [divide and conquer](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithm) algorithm, in which we break down big problems into smaller ones. Divide occurs when we arrange elements based on the pivot, then in conquer stage, we recursively sort the cards on the left and right.
  
  The code is longer but it's pretty cool!
  
@@ -169,6 +167,14 @@ func performQuickSort(_ arrangementController: SPArrangementController, startAt:
     //#-end-editable-code
 }
 //: Ready for some laugh? [Continue](@next)
+/*:
+ ### Further readings:
+ 
+ O(nlogn) is much better than O(n^2), in this case we have 6 cards, but if we have 600 cards, O(n^2) will approximately do 30 times more work than O(nlogn), and if we have 6 million cards, Quick Sort can be 100000 times faster! Amazing isn't it?
+ 
+ This is also a form of [divide and conquer](https://en.wikipedia.org/wiki/Divide_and_conquer_algorithm) algorithm, in which we break down big problems into smaller ones. Divide occurs when we arrange elements based on the pivot, then in conquer stage, we recursively sort the cards on the left and right.
+ */
+
 //#-hidden-code
 viewController.performQuickSort = performQuickSort
 viewController.shuffle = shuffle
