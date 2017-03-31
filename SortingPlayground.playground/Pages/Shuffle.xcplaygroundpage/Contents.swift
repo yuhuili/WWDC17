@@ -7,8 +7,9 @@
 //#-end-hidden-code
 //#-hidden-code
 //#-code-completion(everything, hide)
-//#-code-completion(if, func, var, let, ., =, <=, >=, <, >, ==, !=, +, -, true, false, &&, ||, !, *, /, (, ))
-//#-code-completion(rand(low: Int, high: Int), rearrange)
+//#-code-completion(identifier, show, visualSwap(index1:index2:), rand(low:high:), rearrange(index1:index2:))
+//#-code-completion(identifier, show, count, i, r)
+//#-code-completion(keyword, show, for, if, let, var)
 import UIKit
 import PlaygroundSupport
 import AVFoundation

@@ -12,8 +12,9 @@
  */
 //#-hidden-code
 //#-code-completion(everything, hide)
-//#-code-completion(if, func, var, let, ., =, <=, >=, <, >, ==, !=, +, -, true, false, &&, ||, !, *, /, (, ))
-//#-code-completion(rand(low: Int, high: Int), visualSwap(index1: Int, index2: Int))
+//#-code-completion(identifier, show, visualSwap(index1:index2:), visualizeSelectionIndicatorsWith(j:smallestValue:smallestIndex:))
+//#-code-completion(identifier, show, smallestIndex, smallestValue, startAt, names, i, j)
+//#-code-completion(keyword, show, for, if, let, var)
 import UIKit
 import PlaygroundSupport
 import AVFoundation
@@ -101,10 +102,9 @@ func performSelectionSort(_ arrangementController: SPArrangementController) {
 }
 //#-end-hidden-code
 /*:
+ ![Selection example](selection_example.png)
  ## Selection Sort
  Now we have the sorted part to the left side. Each time we loop through unsorted part, we pick the smallest item. Then place it at the end of the sorted part.
- 
- ![Selection example](selection_example.png)
  
  Average runtime: O(n^2), same as Bubble Sort
  */
