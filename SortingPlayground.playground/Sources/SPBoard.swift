@@ -151,8 +151,9 @@ class SPBoard: SKScene {
     
     private func addAnimalCard() {
         arrangementController.removeAllCards()
-        let animals = ["squirrel","pig","penguin","panda","dog","cat"].shuffled()
-        
+        let animalsRepo = ["butterfly","cat","dog","elephant","fox","giraffe","goose","horse","kangaroo","koala","panda","penguin","pig","squirrel","turtle","whale","zebra"].shuffled()
+        let animals = animalsRepo[0..<6];
+      
         for item in animals {
             let card = Card.init(cardImage: item, cardValue: item)
             card.position = arrangementController.addCard(card: card)
