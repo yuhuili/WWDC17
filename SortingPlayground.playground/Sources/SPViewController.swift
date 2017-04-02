@@ -575,6 +575,7 @@ public class SPViewController: UIViewController {
             funcButton.setBackgroundImage(UIImage(named: "purty_wood"), for: .normal)
             funcButton.setTitleColor(NormalColorOnWood, for: .normal)
             funcButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+            funcButton.titleEdgeInsets = UIEdgeInsetsMake(2, 2, 2, 2)
             funcButton.layer.cornerRadius = 5
             funcButton.layer.masksToBounds = true
             funcButton.addTarget(self, action: #selector(handleFunc), for: .touchUpInside)
