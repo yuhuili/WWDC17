@@ -93,7 +93,7 @@ func rand(low: Int, high: Int) -> Int {
 func shuffle(_ count: Int) {
     //#-editable-code
     for i in 0..<count-1 {
-        // rand gives you an integer between low and high inclusive
+        // rand outputs integer between low and high inclusive
         let r = rand(low: i, high: count)
         // Use rearrange to update the graphics
         rearrange(index1: i, index2: r)
@@ -275,7 +275,7 @@ func verifyBogo() {
  */
 func performBogo(_ count: Int) {
     for i in 0..<count-1 {
-        // rand gives you an integer between low and high inclusive
+        // rand outputs integer between low and high inclusive
         let r = rand(low: i, high: count)
         // Use rearrange to update the graphics
         rearrange(index1: i, index2: r)

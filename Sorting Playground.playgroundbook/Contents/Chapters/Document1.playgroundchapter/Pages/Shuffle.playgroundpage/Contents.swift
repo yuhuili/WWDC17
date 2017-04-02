@@ -43,7 +43,7 @@ func shuffle(_ count: Int) {
     // Each time we swap current index i with a random index j such that i <= j < number of elements
     //#-editable-code
     for i in 0..<count-1 {
-        // rand gives you an integer between low and high inclusive
+        // rand outputs integer between low and high inclusive
         let r = rand(low: i, high: count)
         // Use rearrange to update the graphics
         rearrange(index1: i, index2: r)
