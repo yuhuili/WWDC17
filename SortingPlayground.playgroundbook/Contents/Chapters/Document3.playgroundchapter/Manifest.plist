@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>Name</key>
-	<string>Name</string>
+	<string>Selection Sort</string>
 	<key>Pages</key>
 	<array>
-		<string>Introduction.cutscenepage</string>
+		<string>Selection.cutscenepage</string>
 		<string>Selection Sort.playgroundpage</string>
 	</array>
 </dict>
