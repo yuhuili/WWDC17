@@ -47,7 +47,7 @@ func bubbleVisualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
         execute()
         viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: value-1, index2: nil)
         viewController.arrangementController?.executeActions {
-            performBubbleSort(viewController.arrangementController!, endBefore: value-1)
+            performBubbleSort(endBefore: value-1)
         }
     } else {
         viewController.arrangementController?.appendAction(type: .resetAll, index1: nil, index2: nil)
@@ -62,7 +62,7 @@ func selectionVisualIf(value: Int, lessThan v: Int, execute: () -> Void) {
         execute()
         viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: value, index2: nil)
         viewController.arrangementController?.executeActions {
-            performSelectionSort(viewController.arrangementController!, startAt: value+1)
+            performSelectionSort(startAt: value+1)
         }
     } else {
         viewController.arrangementController?.appendAction(type: .resetAll, index1: nil, index2: nil)
@@ -113,12 +113,12 @@ func performBubbleSort(_ arrangementController: SPArrangementController) {
         names.append(c.stringValue())
     }
     
-    performBubbleSort(arrangementController, endBefore: names.count)
+    performBubbleSort(endBefore: names.count)
 }
 /*
  ## Bubble Sort
  */
-func performBubbleSort(_ arrangementController: SPArrangementController, endBefore: Int) {
+func performBubbleSort(endBefore: Int) {
     // Can you see how the cards are being bubbled up?
     bubbleVisualIf(value: endBefore, greaterThan: 0) {
         // Special iterator so we can see what happens in LiveView
@@ -140,12 +140,12 @@ func performSelectionSort(_ arrangementController: SPArrangementController) {
         names.append(c.stringValue())
     }
     
-    performSelectionSort(arrangementController, startAt: 0)
+    performSelectionSort(startAt: 0)
 }
 /*
  ## Selection Sort
  */
-func performSelectionSort(_ arrangementController: SPArrangementController, startAt: Int) {
+func performSelectionSort(startAt: Int) {
     let i = startAt
     selectionVisualIf(value: i, lessThan: names.count) {
         var (smallestIndex, smallestValue) = (i, names[i])
@@ -172,7 +172,7 @@ func performQuickSort(_ arrangementController: SPArrangementController) {
         names.append(c.stringValue())
     }
     
-    performQuickSort(arrangementController, startAt: 0, endBefore: names.count, completion: {
+    performQuickSort(startAt: 0, endBefore: names.count, completion: {
         arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
         arrangementController.executeActions()
         viewController.enableBoard()
@@ -198,9 +198,9 @@ func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform comp
         viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: pivotLocation, index2: nil)
         viewController.arrangementController?.executeActions {
             viewController.arrangementController?.appendAction(type: .showLookLeft, index1: pivotLocation, index2: nil)
-            performQuickSort(viewController.arrangementController!, startAt: startAt, endBefore: pivotLocation, completion: {
+            performQuickSort(startAt: startAt, endBefore: pivotLocation, completion: {
                 viewController.arrangementController?.appendAction(type: .showLookRight, index1: pivotLocation, index2: nil)
-                performQuickSort(viewController.arrangementController!, startAt: pivotLocation+1, endBefore: endBefore, completion: {
+                performQuickSort(startAt: pivotLocation+1, endBefore: endBefore, completion: {
                     if let completion = completion {
                         completion()
                     }
@@ -219,7 +219,7 @@ func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform comp
 /*
  ## Quick Sort
  */
-func performQuickSort(_ arrangementController: SPArrangementController, startAt: Int, endBefore: Int, completion: (() -> Void)?) {
+func performQuickSort(startAt: Int, endBefore: Int, completion: (() -> Void)?) {
     // Let app handle visualization of each step
     quickVisualIf(value: startAt, lessThan: endBefore, thenPerform: completion) {
         

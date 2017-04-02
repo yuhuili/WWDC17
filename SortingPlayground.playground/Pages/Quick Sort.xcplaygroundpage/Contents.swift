@@ -74,7 +74,7 @@ func performQuickSort(_ arrangementController: SPArrangementController) {
         names.append(c.stringValue())
     }
     
-    performQuickSort(arrangementController, startAt: 0, endBefore: names.count, completion: {
+    performQuickSort(startAt: 0, endBefore: names.count, completion: {
         arrangementController.appendAction(type: .resetAll, index1: nil, index2: nil)
         arrangementController.executeActions()
         viewController.enableBoard()
@@ -100,9 +100,9 @@ func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform comp
         viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: pivotLocation, index2: nil)
         viewController.arrangementController?.executeActions {
             viewController.arrangementController?.appendAction(type: .showLookLeft, index1: pivotLocation, index2: nil)
-            performQuickSort(viewController.arrangementController!, startAt: startAt, endBefore: pivotLocation, completion: {
+            performQuickSort(startAt: startAt, endBefore: pivotLocation, completion: {
                 viewController.arrangementController?.appendAction(type: .showLookRight, index1: pivotLocation, index2: nil)
-                performQuickSort(viewController.arrangementController!, startAt: pivotLocation+1, endBefore: endBefore, completion: {
+                performQuickSort(startAt: pivotLocation+1, endBefore: endBefore, completion: {
                     if let completion = completion {
                         completion()
                     }
@@ -134,7 +134,7 @@ func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform comp
  
  The choice of pivot has been studied extensively because it affects how fast the algorithm runs. So a good thing to do is to randomize the pivot. Currently we always choose the first card as pivot. Can you write simple **two lines** of code to randomize this?
  */
-func performQuickSort(_ arrangementController: SPArrangementController, startAt: Int, endBefore: Int, completion: (() -> Void)?) {
+func performQuickSort(startAt: Int, endBefore: Int, completion: (() -> Void)?) {
     //#-editable-code
     // Let app handle visualization of each step
     quickVisualIf(value: startAt, lessThan: endBefore, thenPerform: completion) {

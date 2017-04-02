@@ -47,7 +47,7 @@ func selectionVisualIf(value: Int, lessThan v: Int, execute: () -> Void) {
         execute()
         viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: value, index2: nil)
         viewController.arrangementController?.executeActions {
-            performSelectionSort(viewController.arrangementController!, startAt: value+1)
+            performSelectionSort(startAt: value+1)
         }
     } else {
         viewController.arrangementController?.appendAction(type: .resetAll, index1: nil, index2: nil)
@@ -98,7 +98,7 @@ func performSelectionSort(_ arrangementController: SPArrangementController) {
         names.append(c.stringValue())
     }
     
-    performSelectionSort(arrangementController, startAt: 0)
+    performSelectionSort(startAt: 0)
 }
 //#-end-hidden-code
 /*:
@@ -108,7 +108,7 @@ func performSelectionSort(_ arrangementController: SPArrangementController) {
  
  Average runtime: O(n^2), same as Bubble Sort
  */
-func performSelectionSort(_ arrangementController: SPArrangementController, startAt: Int) {
+func performSelectionSort(startAt: Int) {
     //#-editable-code
     let i = startAt
     selectionVisualIf(value: i, lessThan: names.count) {
