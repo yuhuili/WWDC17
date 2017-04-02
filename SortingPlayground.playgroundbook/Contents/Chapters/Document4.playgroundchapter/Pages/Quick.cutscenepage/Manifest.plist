@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CutsceneReference</key>
-	<string>Introduction/Main.html</string>
+	<string>Quick/Quick.html</string>
 	<key>Name</key>
-	<string>Name</string>
+	<string>What&apos;s Quick Sort?</string>
 	<key>Version</key>
 	<string>1.0</string>
 </dict>

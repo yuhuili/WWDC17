@@ -5,11 +5,6 @@
 //  Copyright (c) 2017 Yuhui Li
 //
 //#-end-hidden-code
-/*:
- # Sorting Playground
- Sorting: the process of arranging items.
- - - -
- */
 //#-hidden-code
 //#-code-completion(everything, hide)
 //#-code-completion(identifier, show, rand(low:high:), rearrange(index1:index2:), visualSwap(index1:index2:), visualizePivot(_:))
@@ -124,7 +119,7 @@ func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform comp
  
  Average runtime: O(nlogn)
  
- Every time we pick the first card in range as the pivot, then rearrange the cards such that everything less than it will be on its left and other ones will be on its right. We know this card must be at the correct place. Then we sort its left and right side separately. For example, no matter how we arrange 1~3 and 5~7, as long as they are on the correct side of number 4, 4 must be in the right place, such as [1,3,2,4,5,6,7], [3,2,1,4,7,5,6], and so on.
+ Every time we pick the first card in range as the pivot, then rearrange the cards such that everything less than it will be on its left and other ones will be on its right. We know this card must be at the correct place. Then we sort its left and right side separately.
  
  The code is longer but it's pretty cool!
  
