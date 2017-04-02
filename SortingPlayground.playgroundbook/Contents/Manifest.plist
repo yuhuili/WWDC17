@@ -22,7 +22,7 @@
 	<key>ImageReference</key>
 	<string>bookcover.png</string>
 	<key>Name</key>
-	<string>Name</string>
+	<string>Sorting Playground</string>
 	<key>SwiftVersion</key>
 	<string>3.0</string>
 	<key>Version</key>

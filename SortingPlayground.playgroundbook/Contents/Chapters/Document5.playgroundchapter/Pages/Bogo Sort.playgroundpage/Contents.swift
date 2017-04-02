@@ -5,11 +5,6 @@
 //  Copyright (c) 2017 Yuhui Li
 //
 //#-end-hidden-code
-/*:
- # Sorting Playground
- Sorting: the process of arranging items.
- - - -
- */
 //#-hidden-code
 //#-code-completion(everything, hide)
 //#-code-completion(identifier, show, visualSwap(index1:index2:), rand(low:high:), rearrange(index1:index2:), verifyBogo())
@@ -87,7 +82,7 @@ func verifyBogo() {
  
  Average runtime: O(n * n!)
  
- See that n! there? That's bad! Observe that n = 10, n^n = 100, nlogn = 33., and n! = 3628800.
+ See that n! there? That's bad! In simple terms, observe that n = 10, n^n = 100, nlogn = 33., and n! = 3628800.
  
  ### Think about...
  
