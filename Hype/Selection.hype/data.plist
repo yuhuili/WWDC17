@@ -75,7 +75,7 @@
 	<key>hasManuallyChangedCSSPositioning</key>
 	<false/>
 	<key>lastCheckDate</key>
-	<date>2017-04-02T03:18:35Z</date>
+	<date>2017-04-02T17:22:53Z</date>
 	<key>layout</key>
 	<dict>
 		<key>currentInspectorPane</key>
@@ -158,7 +158,7 @@
 									<array>
 										<dict>
 											<key>frame</key>
-											<string>{{136, 0}, {1622, 568}}</string>
+											<string>{{136, 0}, {1622, 567.875}}</string>
 											<key>identifier</key>
 											<string>timelineCustomizableContainer</string>
 											<key>isCustomizableViewContainer</key>
@@ -181,7 +181,7 @@
 									<array>
 										<dict>
 											<key>frame</key>
-											<string>{{136, 569}, {1622, 708}}</string>
+											<string>{{136, 568.875}, {1622, 708.125}}</string>
 											<key>identifier</key>
 											<string>sceneEditorCustomizableContainer</string>
 											<key>isCustomizableViewContainer</key>
@@ -265,7 +265,7 @@
 	<key>monotypeProjectID</key>
 	<string>14ECC62A-A09F-4C7E-81B3-77A76D57F6A4-8454-00008E9EE7114D1B</string>
 	<key>oidCounter</key>
-	<integer>154</integer>
+	<integer>156</integer>
 	<key>resourcesInfo</key>
 	<dict>
 		<key>groups</key>
@@ -310,30 +310,6 @@
 				<key>expanded</key>
 				<true/>
 				<key>name</key>
-				<string>penguin</string>
-				<key>oid</key>
-				<string>75</string>
-				<key>resources</key>
-				<array>
-					<string>penguin.png</string>
-				</array>
-			</dict>
-			<dict>
-				<key>expanded</key>
-				<true/>
-				<key>name</key>
-				<string>koala</string>
-				<key>oid</key>
-				<string>76</string>
-				<key>resources</key>
-				<array>
-					<string>koala.png</string>
-				</array>
-			</dict>
-			<dict>
-				<key>expanded</key>
-				<true/>
-				<key>name</key>
 				<string>Cutscene-previous-red_2x-1-1_2x</string>
 				<key>oid</key>
 				<string>134</string>
@@ -352,6 +328,30 @@
 				<key>resources</key>
 				<array>
 					<string>1457633386-2400px.png</string>
+				</array>
+			</dict>
+			<dict>
+				<key>expanded</key>
+				<true/>
+				<key>name</key>
+				<string>cat</string>
+				<key>oid</key>
+				<string>155</string>
+				<key>resources</key>
+				<array>
+					<string>cat.png</string>
+				</array>
+			</dict>
+			<dict>
+				<key>expanded</key>
+				<true/>
+				<key>name</key>
+				<string>fox</string>
+				<key>oid</key>
+				<string>156</string>
+				<key>resources</key>
+				<array>
+					<string>fox.png</string>
 				</array>
 			</dict>
 		</array>
@@ -523,106 +523,6 @@
 			</dict>
 			<dict>
 				<key>fileModificationDate</key>
-				<date>2017-03-14T22:49:54Z</date>
-				<key>fileSize</key>
-				<integer>53481</integer>
-				<key>md5</key>
-				<string>D4AA5716819BFECB16916808833FFB95</string>
-				<key>notifyOnBookmarkChange</key>
-				<true/>
-				<key>originalPath</key>
-				<string>/Users/ThunderDragon/Desktop/penguin.png</string>
-				<key>resourceName</key>
-				<string>penguin.png</string>
-				<key>securityScopedBookmark</key>
-				<data>
-				Ym9va8ACAAAAAAQQMAAAAAbpcOyjw5RvRKN5SJYWA0Bi
-				QJtIvTeoQNUcouTUVhkFvAEAAAQAAAADAwAAAAkAKAUA
-				AAABAQAAVXNlcnMAAAANAAAAAQEAAFRodW5kZXJEcmFn
-				b24AAAAHAAAAAQEAAERlc2t0b3AACwAAAAEBAABwZW5n
-				dWluLnBuZwAQAAAAAQYAABAAAAAgAAAAOAAAAEgAAAAI
-				AAAABAMAANWTAgAAAAAACAAAAAQDAAC0QwkAAAAAAAgA
-				AAAEAwAAxUMJAAAAAAAIAAAABAMAAAplqQwAAAAAEAAA
-				AAEGAAB0AAAAhAAAAJQAAACkAAAACAAAAAAEAABBvnir
-				EgAAABgAAAABAgAAAQAAAAAAAAAPAAAAAAAAAAAAAAAA
-				AAAACAAAAAQDAAACAAAAAAAAAAQAAAADAwAA9QEAAAgA
-				AAABCQAAZmlsZTovLy8MAAAAAQEAAE1hY2ludG9zaCBI
-				RAgAAAAEAwAAAAByMnQAAAAIAAAAAAQAAEG55shnAAAA
-				JAAAAAEBAABEOTFERDc5NS1ENzhBLTM5MEYtQTFDMC1B
-				NUNCRDVGNTEzQzgYAAAAAQIAAIEAAAABAAAA7xMAAAEA
-				AAAAAAAAAAAAAAEAAAABAQAALwAAAAAAAAABBQAAzAAA
-				AP7///8BAAAAAAAAABAAAAAEEAAAXAAAAAAAAAAFEAAA
-				tAAAAAAAAAAQEAAA3AAAAAAAAABAEAAAzAAAAAAAAAAC
-				IAAAqAEAAAAAAAAFIAAAGAEAAAAAAAAQIAAAKAEAAAAA
-				AAARIAAAXAEAAAAAAAASIAAAPAEAAAAAAAATIAAATAEA
-				AAAAAAAgIAAAiAEAAAAAAAAwIAAAtAEAAAAAAAABwAAA
-				/AAAAAAAAAARwAAAIAAAAAAAAAASwAAADAEAAAAAAAAQ
-				0AAABAAAAAAAAAA=
-				</data>
-				<key>shouldAutoResize</key>
-				<true/>
-				<key>shouldIncludeInDocumentHeadHTML</key>
-				<false/>
-				<key>shouldPreload</key>
-				<true/>
-				<key>shouldRemoveWhenNoLongerReferenced</key>
-				<true/>
-				<key>type</key>
-				<string>FileResource</string>
-			</dict>
-			<dict>
-				<key>fileModificationDate</key>
-				<date>2017-03-31T01:53:18Z</date>
-				<key>fileSize</key>
-				<integer>128573</integer>
-				<key>md5</key>
-				<string>C53ECAEE237A536A590B53CA4C13DD8B</string>
-				<key>notifyOnBookmarkChange</key>
-				<true/>
-				<key>originalPath</key>
-				<string>/Users/ThunderDragon/GitHub/WWDC17/Resources/koala.png</string>
-				<key>resourceName</key>
-				<string>koala.png</string>
-				<key>securityScopedBookmark</key>
-				<data>
-				Ym9vaxQDAAAAAAQQMAAAAO139x2He0XQW6fzTEfLoSYD
-				0QiggZYtfSL3FBHGMpTEEAIAAAQAAAADAwAAAAkAKAUA
-				AAABAQAAVXNlcnMAAAANAAAAAQEAAFRodW5kZXJEcmFn
-				b24AAAAGAAAAAQEAAEdpdEh1YgAABgAAAAEBAABXV0RD
-				MTcAAAkAAAABAQAAUmVzb3VyY2VzAAAACQAAAAEBAABr
-				b2FsYS5wbmcAAAAYAAAAAQYAABAAAAAgAAAAOAAAAEgA
-				AABYAAAAbAAAAAgAAAAEAwAA1ZMCAAAAAAAIAAAABAMA
-				ALRDCQAAAAAACAAAAAQDAADBTI4HAAAAAAgAAAAEAwAA
-				KkiVDAAAAAAIAAAABAMAAPc9mwwAAAAACAAAAAQDAAAS
-				U6YMAAAAABgAAAABBgAAoAAAALAAAADAAAAA0AAAAOAA
-				AADwAAAACAAAAAAEAABBvo3uDgAAABgAAAABAgAAAQAA
-				AAAAAAAPAAAAAAAAAAAAAAAAAAAACAAAAAQDAAAEAAAA
-				AAAAAAQAAAADAwAA9QEAAAgAAAABCQAAZmlsZTovLy8M
-				AAAAAQEAAE1hY2ludG9zaCBIRAgAAAAEAwAAAAByMnQA
-				AAAIAAAAAAQAAEG55shnAAAAJAAAAAEBAABEOTFERDc5
-				NS1ENzhBLTM5MEYtQTFDMC1BNUNCRDVGNTEzQzgYAAAA
-				AQIAAIEAAAABAAAA7xMAAAEAAAAAAAAAAAAAAAEAAAAB
-				AQAALwAAAAAAAAABBQAAzAAAAP7///8BAAAAAAAAABAA
-				AAAEEAAAgAAAAAAAAAAFEAAAAAEAAAAAAAAQEAAAMAEA
-				AAAAAABAEAAAIAEAAAAAAAACIAAA/AEAAAAAAAAFIAAA
-				bAEAAAAAAAAQIAAAfAEAAAAAAAARIAAAsAEAAAAAAAAS
-				IAAAkAEAAAAAAAATIAAAoAEAAAAAAAAgIAAA3AEAAAAA
-				AAAwIAAACAIAAAAAAAABwAAAUAEAAAAAAAARwAAAIAAA
-				AAAAAAASwAAAYAEAAAAAAAAQ0AAABAAAAAAAAAA=
-				</data>
-				<key>shouldAutoResize</key>
-				<true/>
-				<key>shouldIncludeInDocumentHeadHTML</key>
-				<false/>
-				<key>shouldPreload</key>
-				<true/>
-				<key>shouldRemoveWhenNoLongerReferenced</key>
-				<true/>
-				<key>type</key>
-				<string>FileResource</string>
-			</dict>
-			<dict>
-				<key>fileModificationDate</key>
 				<date>2017-03-24T21:22:18Z</date>
 				<key>fileSize</key>
 				<integer>1023</integer>
@@ -735,6 +635,112 @@
 				<key>type</key>
 				<string>FileResource</string>
 			</dict>
+			<dict>
+				<key>fileModificationDate</key>
+				<date>2017-03-14T22:49:54Z</date>
+				<key>fileSize</key>
+				<integer>63476</integer>
+				<key>md5</key>
+				<string>931D633EE0C3AA983AC6EBEE372DCB46</string>
+				<key>notifyOnBookmarkChange</key>
+				<true/>
+				<key>originalPath</key>
+				<string>/Users/ThunderDragon/GitHub/WWDC17/SortingPlayground.playground/Resources/cat.png</string>
+				<key>resourceName</key>
+				<string>cat.png</string>
+				<key>securityScopedBookmark</key>
+				<data>
+				Ym9va0wDAAAAAAQQMAAAALqxOAdYjR4rgDx334X7KOnx
+				gDLrW5ALKdDexw1tuvgySAIAAAQAAAADAwAAAAkAKAUA
+				AAABAQAAVXNlcnMAAAANAAAAAQEAAFRodW5kZXJEcmFn
+				b24AAAAGAAAAAQEAAEdpdEh1YgAABgAAAAEBAABXV0RD
+				MTcAABwAAAABAQAAU29ydGluZ1BsYXlncm91bmQucGxh
+				eWdyb3VuZAkAAAABAQAAUmVzb3VyY2VzAAAABwAAAAEB
+				AABjYXQucG5nABwAAAABBgAAEAAAACAAAAA4AAAASAAA
+				AFgAAAB8AAAAkAAAAAgAAAAEAwAA1ZMCAAAAAAAIAAAA
+				BAMAALRDCQAAAAAACAAAAAQDAADBTI4HAAAAAAgAAAAE
+				AwAAKkiVDAAAAAAIAAAABAMAAArAmQwAAAAACAAAAAQD
+				AAAVwJkMAAAAAAgAAAAEAwAAIz6bDAAAAAAcAAAAAQYA
+				AMQAAADUAAAA5AAAAPQAAAAEAQAAFAEAACQBAAAIAAAA
+				AAQAAEG+eKsSAAAAGAAAAAECAAABAAAAAAAAAA8AAAAA
+				AAAAAAAAAAAAAAAIAAAABAMAAAUAAAAAAAAABAAAAAMD
+				AAD1AQAACAAAAAEJAABmaWxlOi8vLwwAAAABAQAATWFj
+				aW50b3NoIEhECAAAAAQDAAAAAHIydAAAAAgAAAAABAAA
+				QbnmyGcAAAAkAAAAAQEAAEQ5MURENzk1LUQ3OEEtMzkw
+				Ri1BMUMwLUE1Q0JENUY1MTNDOBgAAAABAgAAgQAAAAEA
+				AADvEwAAAQAAAAAAAAAAAAAAAQAAAAEBAAAvAAAAAAAA
+				AAEFAADMAAAA/v///wEAAAAAAAAAEAAAAAQQAACgAAAA
+				AAAAAAUQAAA0AQAAAAAAABAQAABoAQAAAAAAAEAQAABY
+				AQAAAAAAAAIgAAA0AgAAAAAAAAUgAACkAQAAAAAAABAg
+				AAC0AQAAAAAAABEgAADoAQAAAAAAABIgAADIAQAAAAAA
+				ABMgAADYAQAAAAAAACAgAAAUAgAAAAAAADAgAABAAgAA
+				AAAAAAHAAACIAQAAAAAAABHAAAAgAAAAAAAAABLAAACY
+				AQAAAAAAABDQAAAEAAAAAAAAAA==
+				</data>
+				<key>shouldAutoResize</key>
+				<true/>
+				<key>shouldIncludeInDocumentHeadHTML</key>
+				<false/>
+				<key>shouldPreload</key>
+				<true/>
+				<key>shouldRemoveWhenNoLongerReferenced</key>
+				<true/>
+				<key>type</key>
+				<string>FileResource</string>
+			</dict>
+			<dict>
+				<key>fileModificationDate</key>
+				<date>2017-03-31T01:53:18Z</date>
+				<key>fileSize</key>
+				<integer>65782</integer>
+				<key>md5</key>
+				<string>07006EB1076002231C8D4258971672A9</string>
+				<key>notifyOnBookmarkChange</key>
+				<true/>
+				<key>originalPath</key>
+				<string>/Users/ThunderDragon/GitHub/WWDC17/SortingPlayground.playground/Resources/fox.png</string>
+				<key>resourceName</key>
+				<string>fox.png</string>
+				<key>securityScopedBookmark</key>
+				<data>
+				Ym9va0wDAAAAAAQQMAAAAFfr687lDUsgPyo3R2g2xpIP
+				WcdcT/66S9OqxTBA0mUVSAIAAAQAAAADAwAAAAkAKAUA
+				AAABAQAAVXNlcnMAAAANAAAAAQEAAFRodW5kZXJEcmFn
+				b24AAAAGAAAAAQEAAEdpdEh1YgAABgAAAAEBAABXV0RD
+				MTcAABwAAAABAQAAU29ydGluZ1BsYXlncm91bmQucGxh
+				eWdyb3VuZAkAAAABAQAAUmVzb3VyY2VzAAAABwAAAAEB
+				AABmb3gucG5nABwAAAABBgAAEAAAACAAAAA4AAAASAAA
+				AFgAAAB8AAAAkAAAAAgAAAAEAwAA1ZMCAAAAAAAIAAAA
+				BAMAALRDCQAAAAAACAAAAAQDAADBTI4HAAAAAAgAAAAE
+				AwAAKkiVDAAAAAAIAAAABAMAAArAmQwAAAAACAAAAAQD
+				AAAVwJkMAAAAAAgAAAAEAwAAG1OmDAAAAAAcAAAAAQYA
+				AMQAAADUAAAA5AAAAPQAAAAEAQAAFAEAACQBAAAIAAAA
+				AAQAAEG+je4OAAAAGAAAAAECAAABAAAAAAAAAA8AAAAA
+				AAAAAAAAAAAAAAAIAAAABAMAAAUAAAAAAAAABAAAAAMD
+				AAD1AQAACAAAAAEJAABmaWxlOi8vLwwAAAABAQAATWFj
+				aW50b3NoIEhECAAAAAQDAAAAAHIydAAAAAgAAAAABAAA
+				QbnmyGcAAAAkAAAAAQEAAEQ5MURENzk1LUQ3OEEtMzkw
+				Ri1BMUMwLUE1Q0JENUY1MTNDOBgAAAABAgAAgQAAAAEA
+				AADvEwAAAQAAAAAAAAAAAAAAAQAAAAEBAAAvAAAAAAAA
+				AAEFAADMAAAA/v///wEAAAAAAAAAEAAAAAQQAACgAAAA
+				AAAAAAUQAAA0AQAAAAAAABAQAABoAQAAAAAAAEAQAABY
+				AQAAAAAAAAIgAAA0AgAAAAAAAAUgAACkAQAAAAAAABAg
+				AAC0AQAAAAAAABEgAADoAQAAAAAAABIgAADIAQAAAAAA
+				ABMgAADYAQAAAAAAACAgAAAUAgAAAAAAADAgAABAAgAA
+				AAAAAAHAAACIAQAAAAAAABHAAAAgAAAAAAAAABLAAACY
+				AQAAAAAAABDQAAAEAAAAAAAAAA==
+				</data>
+				<key>shouldAutoResize</key>
+				<true/>
+				<key>shouldIncludeInDocumentHeadHTML</key>
+				<false/>
+				<key>shouldPreload</key>
+				<true/>
+				<key>shouldRemoveWhenNoLongerReferenced</key>
+				<true/>
+				<key>type</key>
+				<string>FileResource</string>
+			</dict>
 		</array>
 	</dict>
 	<key>sceneContainers</key>
@@ -786,8 +792,6 @@
 					<string>78</string>
 					<key>scrollViewOffset</key>
 					<string>{0, 99}</string>
-					<key>userGuides</key>
-					<array/>
 				</dict>
 			</array>
 		</dict>
@@ -837,7 +841,7 @@
 					<key>rootSymbolControllerOid</key>
 					<string>50</string>
 					<key>scrollViewOffset</key>
-					<string>{0, 66}</string>
+					<string>{0, 67.125}</string>
 					<key>userGuides</key>
 					<array/>
 				</dict>
@@ -866,9 +870,11 @@
 	<array>
 		<dict>
 			<key>documentIdentifier</key>
-			<string>0E2886A0-CB19-418B-9DB4-FA2D4673690D-8454-000097178CF15888</string>
+			<string>2BB37092-1FDF-4075-B05D-F60D2211D614-8454-0000A9DD32F1B00C</string>
 			<key>selectedObjects</key>
-			<array/>
+			<array>
+				<string>74</string>
+			</array>
 			<key>symbol</key>
 			<dict>
 				<key>addToNewSceneControllers</key>
@@ -889,9 +895,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TextColor</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>#000000</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -969,25 +975,25 @@
 							<key>identifier</key>
 							<string>InnerHTML</string>
 							<key>objectValue</key>
-							<string>Butterfly</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>PaddingLeft</string>
-							<key>objectValue</key>
-							<string>8px</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>Width</string>
-							<key>objectValue</key>
-							<string>60px</string>
+							<string>butterfly</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
 							<string>ZIndex</string>
 							<key>objectValue</key>
 							<string>3</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Width</string>
+							<key>objectValue</key>
+							<string>58px</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>PaddingLeft</string>
+							<key>objectValue</key>
+							<string>8px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1009,9 +1015,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>TextColor</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>#000000</string>
 						</dict>
 					</array>
 					<key>124</key>
@@ -1024,9 +1030,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TextColor</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>#000000</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1062,7 +1068,7 @@
 							<key>identifier</key>
 							<string>Top</string>
 							<key>objectValue</key>
-							<string>87px</string>
+							<string>86px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1098,31 +1104,31 @@
 							<key>identifier</key>
 							<string>Left</string>
 							<key>objectValue</key>
-							<string>10px</string>
+							<string>28px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
 							<string>InnerHTML</string>
 							<key>objectValue</key>
-							<string>Penguin</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>ZIndex</string>
-							<key>objectValue</key>
-							<string>3</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>Width</string>
-							<key>objectValue</key>
-							<string>60px</string>
+							<string>fox</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
 							<string>PaddingLeft</string>
 							<key>objectValue</key>
 							<string>8px</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Width</string>
+							<key>objectValue</key>
+							<string>22px</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>ZIndex</string>
+							<key>objectValue</key>
+							<string>3</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1144,9 +1150,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>TextColor</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>#000000</string>
 						</dict>
 					</array>
 					<key>125</key>
@@ -1159,9 +1165,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TextColor</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>#000000</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1233,31 +1239,31 @@
 							<key>identifier</key>
 							<string>Left</string>
 							<key>objectValue</key>
-							<string>19px</string>
+							<string>27px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
 							<string>InnerHTML</string>
 							<key>objectValue</key>
-							<string>Koala</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>ZIndex</string>
-							<key>objectValue</key>
-							<string>3</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>Width</string>
-							<key>objectValue</key>
-							<string>42px</string>
+							<string>cat</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
 							<string>PaddingLeft</string>
 							<key>objectValue</key>
 							<string>8px</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Width</string>
+							<key>objectValue</key>
+							<string>22px</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>ZIndex</string>
+							<key>objectValue</key>
+							<string>3</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1279,9 +1285,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>TextColor</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>#000000</string>
 						</dict>
 					</array>
 					<key>126</key>
@@ -1505,9 +1511,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TextColor</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>#555555</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -1661,9 +1667,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>TextColor</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>#555555</string>
 						</dict>
 					</array>
 					<key>131</key>
@@ -2361,9 +2367,9 @@
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>88px</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -2499,9 +2505,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>88px</string>
 						</dict>
 					</array>
 					<key>136</key>
@@ -2823,9 +2829,9 @@
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>1598px</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -2943,9 +2949,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>1598px</string>
 						</dict>
 					</array>
 					<key>139</key>
@@ -3021,27 +3027,27 @@
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>BorderRadiusBottomRight</string>
-							<key>objectValue</key>
-							<string>16px</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>BorderWidthLeft</string>
+							<string>BorderWidthBottom</string>
 							<key>objectValue</key>
 							<string>2px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>ExplicitDimensions</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>YES</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
 							<string>BorderColorBottom</string>
 							<key>objectValue</key>
 							<string>#FF2800</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>ExplicitDimensions</string>
+							<key>objectValue</key>
+							<string>YES</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -3183,48 +3189,48 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>DisplayName</string>
+							<string>BorderRadiusBottomRight</string>
 							<key>objectValue</key>
-							<string>Rounded Rectangle</string>
+							<string>16px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>BorderWidthBottom</string>
+							<string>BorderWidthLeft</string>
 							<key>objectValue</key>
 							<string>2px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>DisplayName</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>Rounded Rectangle</string>
 						</dict>
 					</array>
 					<key>151</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>BorderWidthBottom</string>
+							<string>BorderWidthLeft</string>
 							<key>objectValue</key>
 							<string>2px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>DisplayName</string>
 							<key>objectValue</key>
-							<string>div</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>BorderColorBottom</string>
-							<key>objectValue</key>
-							<string>#FF2800</string>
+							<string>Rounded Rectangle</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
 							<string>ExplicitDimensions</string>
 							<key>objectValue</key>
 							<string>YES</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>BorderColorBottom</string>
+							<key>objectValue</key>
+							<string>#FF2800</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -3366,42 +3372,42 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>BorderWidthLeft</string>
+							<string>BorderWidthBottom</string>
 							<key>objectValue</key>
 							<string>2px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>DisplayName</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>Rounded Rectangle</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>152</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>BorderWidthBottom</string>
+							<string>BorderWidthLeft</string>
 							<key>objectValue</key>
 							<string>2px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>DisplayName</string>
 							<key>objectValue</key>
-							<string>div</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>BorderColorBottom</string>
-							<key>objectValue</key>
-							<string>#FF2800</string>
+							<string>Rounded Rectangle</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
 							<string>ExplicitDimensions</string>
 							<key>objectValue</key>
 							<string>YES</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>BorderColorBottom</string>
+							<key>objectValue</key>
+							<string>#FF2800</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -3543,42 +3549,42 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>BorderWidthLeft</string>
+							<string>BorderWidthBottom</string>
 							<key>objectValue</key>
 							<string>2px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>DisplayName</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>Rounded Rectangle</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>153</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>BorderWidthLeft</string>
+							<string>BorderWidthBottom</string>
 							<key>objectValue</key>
 							<string>2px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>DisplayName</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>Rounded Rectangle</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>ExplicitDimensions</string>
-							<key>objectValue</key>
-							<string>YES</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
 							<string>BorderColorBottom</string>
 							<key>objectValue</key>
 							<string>#8154F7</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>ExplicitDimensions</string>
+							<key>objectValue</key>
+							<string>YES</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -3714,48 +3720,48 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>BorderRadiusBottomRight</string>
+							<string>DisplayName</string>
 							<key>objectValue</key>
-							<string>16px</string>
+							<string>Rounded Rectangle</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>BorderWidthBottom</string>
+							<string>BorderWidthLeft</string>
 							<key>objectValue</key>
 							<string>2px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>BorderRadiusBottomRight</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>16px</string>
 						</dict>
 					</array>
 					<key>154</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>BorderWidthBottom</string>
+							<string>BorderWidthLeft</string>
 							<key>objectValue</key>
 							<string>2px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>BorderRadiusBottomRight</string>
 							<key>objectValue</key>
-							<string>div</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
-							<string>BorderColorBottom</string>
-							<key>objectValue</key>
-							<string>#8154F7</string>
+							<string>16px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
 							<string>ExplicitDimensions</string>
 							<key>objectValue</key>
 							<string>YES</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>BorderColorBottom</string>
+							<key>objectValue</key>
+							<string>#8154F7</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -3897,15 +3903,15 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>BorderWidthLeft</string>
+							<string>BorderWidthBottom</string>
 							<key>objectValue</key>
 							<string>2px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>BorderRadiusBottomRight</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>16px</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>54</key>
@@ -3924,9 +3930,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>TextColor</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>#555555</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -4080,9 +4086,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TextColor</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>#555555</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>57</key>
@@ -4101,9 +4107,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TextColor</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>#555555</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -4263,9 +4269,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>TextColor</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>#555555</string>
 						</dict>
 					</array>
 					<key>58</key>
@@ -4278,9 +4284,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>TextColor</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>#888888</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -4362,9 +4368,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>ZIndex</string>
+							<string>PaddingLeft</string>
 							<key>objectValue</key>
-							<string>6</string>
+							<string>8px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -4380,9 +4386,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>PaddingLeft</string>
+							<string>ZIndex</string>
 							<key>objectValue</key>
-							<string>8px</string>
+							<string>6</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -4404,9 +4410,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TextColor</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>#888888</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>61</key>
@@ -4425,9 +4431,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>TextColor</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>#555555</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -4593,18 +4599,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TextColor</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>#555555</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>63</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>150px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -4728,18 +4734,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>150px</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>65</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>600px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -4799,7 +4805,7 @@
 							<key>identifier</key>
 							<string>BackgroundImageResourceGroupOid</string>
 							<key>objectValue</key>
-							<string>75</string>
+							<string>156</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -4857,9 +4863,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>600px</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>66</key>
@@ -5025,9 +5031,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>Width</string>
+							<string>Opacity</string>
 							<key>objectValue</key>
-							<string>93px</string>
+							<string>1</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -5043,9 +5049,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>Opacity</string>
+							<string>Width</string>
 							<key>objectValue</key>
-							<string>1</string>
+							<string>93px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -5064,9 +5070,9 @@
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>150px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -5184,18 +5190,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>150px</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>70</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>600px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -5313,9 +5319,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>600px</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>71</key>
@@ -5352,15 +5358,15 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>Overflow</string>
-							<key>objectValue</key>
-							<string>visible</string>
-						</dict>
-						<dict>
-							<key>identifier</key>
 							<string>Opacity</string>
 							<key>objectValue</key>
 							<string>1</string>
+						</dict>
+						<dict>
+							<key>identifier</key>
+							<string>Overflow</string>
+							<key>objectValue</key>
+							<string>visible</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -5397,9 +5403,9 @@
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>150px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -5517,18 +5523,18 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>150px</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>73</key>
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>593px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -5588,7 +5594,7 @@
 							<key>identifier</key>
 							<string>BackgroundImageResourceGroupOid</string>
 							<key>objectValue</key>
-							<string>76</string>
+							<string>155</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -5642,13 +5648,13 @@
 							<key>identifier</key>
 							<string>OriginalHeight</string>
 							<key>objectValue</key>
-							<string>600px</string>
+							<string>593px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>600px</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>74</key>
@@ -5984,7 +5990,7 @@
 								<key>uuid</key>
 								<string>AFD19798-E808-421E-9277-0866D0BA8B71-8454-00009757EB7C7E12</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>5</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6020,7 +6026,7 @@
 								<key>uuid</key>
 								<string>AF860E00-9C41-4FC5-8405-AB13E44583AE-8454-000096B8AC9449B0</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>6</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6056,7 +6062,7 @@
 								<key>uuid</key>
 								<string>0A9FA63F-BF1D-4A56-B73A-96498E70B0E1-8454-000096B97FD341E1</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>7</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6092,7 +6098,7 @@
 								<key>uuid</key>
 								<string>EF5F7367-7EA3-4EA4-B8A2-E7A6DE5D2C76-8454-00009154CB229B61</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>8</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6128,7 +6134,7 @@
 								<key>uuid</key>
 								<string>BDAC63FA-39D3-482F-A950-26AD9862226A-8454-00009758B0B82885</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>9</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6164,7 +6170,7 @@
 								<key>uuid</key>
 								<string>0B1E40A4-C5E2-4217-9710-75957B6A204E-8454-000096BC8F142382</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>10</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6200,7 +6206,7 @@
 								<key>uuid</key>
 								<string>FEC5640E-4225-4D41-A125-C64622990C84-8454-000096BB22F1D852</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>11</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6236,7 +6242,7 @@
 								<key>uuid</key>
 								<string>163C6B90-8FE7-4A04-A148-EEA8AD9CF7D5-8454-0000915654C98386</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>12</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6308,7 +6314,7 @@
 								<key>uuid</key>
 								<string>B8DB11A7-FAF7-4C38-A753-957C339847F1-8454-0000922090019516</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>13</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6344,7 +6350,7 @@
 								<key>uuid</key>
 								<string>14FDA8E9-A654-48DC-872F-55835180A280-8454-00009220900C477D</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>2</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6380,7 +6386,7 @@
 								<key>uuid</key>
 								<string>1874B1E1-68F5-4164-8E8C-E17B1B8A41BE-8454-0000975CA9EFDA5B</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>14</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6416,7 +6422,7 @@
 								<key>uuid</key>
 								<string>9D7200B7-8C05-467B-9E32-CA6E88C9DB12-8454-000096C1B5763AB5</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>15</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6452,7 +6458,7 @@
 								<key>uuid</key>
 								<string>F2BFF98C-5FAA-46A1-8C88-D221913DF0E6-8454-000096C39E5480BA</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>16</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6488,7 +6494,7 @@
 								<key>uuid</key>
 								<string>A6D8DD04-0AD0-4B1D-9EDC-53B7D1F0754B-8454-000097678DC1BCE2</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>17</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6517,7 +6523,7 @@
 								<key>uuid</key>
 								<string>63DCC081-D5A1-4CB5-A515-1142EA009860-8454-000092163CC5B745</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>3</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6553,7 +6559,7 @@
 								<key>uuid</key>
 								<string>3F7F66BF-B23C-49B4-B4C5-672B6672E39C-8454-0000922090082ADD</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>18</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6589,7 +6595,7 @@
 								<key>uuid</key>
 								<string>75811BDC-0C0F-4E48-AEDE-32C89FCA1122-8454-000092209010EEA2</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>4</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6625,7 +6631,7 @@
 								<key>uuid</key>
 								<string>2A515CCA-5EC4-43C4-B521-D2E533D1B5F6-8454-0000975D5EFD3377</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>19</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6654,7 +6660,7 @@
 								<key>uuid</key>
 								<string>C9A371D6-6923-4212-83AD-8A69D0038A2B-8454-000096C63CEF148E</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>20</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6690,7 +6696,7 @@
 								<key>uuid</key>
 								<string>25729B5F-B47D-4336-B6FF-8D7D84C642E6-8454-000096C2D9DA04FC</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>21</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6726,7 +6732,7 @@
 								<key>uuid</key>
 								<string>69D82918-CC97-4D49-9A52-A3891219E8E0-8454-000097678DCE736C</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>22</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6798,7 +6804,7 @@
 								<key>uuid</key>
 								<string>08CCF0D5-F637-4058-BAB5-1756CC21C05C-8454-000092934A4D7094</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>2</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6834,7 +6840,7 @@
 								<key>uuid</key>
 								<string>4124BDCC-39CD-4F8D-99CF-8F6AD8B53184-8454-00009782E09AB0A1</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>23</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6870,7 +6876,7 @@
 								<key>uuid</key>
 								<string>7C7B3274-EECE-4E7E-98C3-7973CC2E3AA9-8454-00009295D776A874</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>3</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6906,7 +6912,7 @@
 								<key>uuid</key>
 								<string>661D55D4-50E0-4275-8074-19F12CAA2C99-8454-000097678DD74885</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>24</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6935,7 +6941,7 @@
 								<key>uuid</key>
 								<string>100B22C1-DA70-4C8F-AA1A-B4FE7A36B5AC-8454-0000929C16D5B9DC</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>4</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -6971,7 +6977,7 @@
 								<key>uuid</key>
 								<string>37F50960-92C8-40AF-A2C3-14C98F58B458-8454-0000950A1AA633AC</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>25</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7007,7 +7013,7 @@
 								<key>uuid</key>
 								<string>AEBB60D0-B36E-451A-BB80-43DCD3BA0998-8454-0000950DFDCF0B44</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>26</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7043,7 +7049,7 @@
 								<key>uuid</key>
 								<string>421792F1-7F60-4EC2-AC95-98EF2CB55972-8454-00009783FA3F6DBB</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>27</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7072,7 +7078,7 @@
 								<key>uuid</key>
 								<string>332F9391-9DA6-4DCD-BACC-72B75A7C0D42-8454-000097678DDDCE7A</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>28</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7108,7 +7114,7 @@
 								<key>uuid</key>
 								<string>95F72230-3149-4BDE-99AE-76A8126F0B47-8454-0000953762921FF1</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>5</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7144,7 +7150,7 @@
 								<key>uuid</key>
 								<string>51B779C7-0F88-449B-AF76-BE8BD47E5522-8454-0000950B9F93A5E2</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>29</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7173,7 +7179,7 @@
 								<key>uuid</key>
 								<string>2B9FE56F-F6D1-442A-8DCC-10975C12656D-8454-0000950D4CC3E60F</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>30</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7209,7 +7215,7 @@
 								<key>uuid</key>
 								<string>147E1BFC-CD5B-4657-9964-FB1AFEEAAA05-8454-000096D0B9FDB095</string>
 								<key>zIndex</key>
-								<integer>5</integer>
+								<integer>31</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7245,7 +7251,7 @@
 								<key>uuid</key>
 								<string>6FA03BBA-2E8C-4656-9797-19B3FEE2F11A-8454-000096CFF17E4625</string>
 								<key>zIndex</key>
-								<integer>5</integer>
+								<integer>32</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7281,7 +7287,7 @@
 								<key>uuid</key>
 								<string>FCF4D1B3-B341-45C6-BFF8-400992372855-8454-0000951A2CAC1C97</string>
 								<key>zIndex</key>
-								<integer>19</integer>
+								<integer>33</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7317,7 +7323,7 @@
 								<key>uuid</key>
 								<string>BE01F7B3-3C42-4B0D-AF32-4CDA8242BB3A-8454-000096D187DFBDA5</string>
 								<key>zIndex</key>
-								<integer>6</integer>
+								<integer>34</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7353,7 +7359,7 @@
 								<key>uuid</key>
 								<string>0766B58D-4F33-4A46-B901-85830FB3DF70-8454-000096D2C261353F</string>
 								<key>zIndex</key>
-								<integer>6</integer>
+								<integer>35</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7389,7 +7395,7 @@
 								<key>uuid</key>
 								<string>5B85DACF-33AD-4873-B4F3-0F62A4B68E15-8454-0000951A2CB4CE9C</string>
 								<key>zIndex</key>
-								<integer>24</integer>
+								<integer>36</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7425,7 +7431,7 @@
 								<key>uuid</key>
 								<string>FD9BD63C-103E-4C7A-9ABB-8F829630842A-8454-0000953F547F4D81</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>6</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7461,7 +7467,7 @@
 								<key>uuid</key>
 								<string>965D9998-EBAC-449E-99B1-79BA4F534B09-8454-0000979FF1FF2A78</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>37</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7497,7 +7503,7 @@
 								<key>uuid</key>
 								<string>ADB37055-FFCD-481E-BB1C-A64DA767A4BA-8454-000096D49B3944F8</string>
 								<key>zIndex</key>
-								<integer>7</integer>
+								<integer>38</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7533,7 +7539,7 @@
 								<key>uuid</key>
 								<string>C2322173-F200-4EC5-BA05-8EA7E4281575-8454-000096D84E0DE034</string>
 								<key>zIndex</key>
-								<integer>7</integer>
+								<integer>39</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7569,7 +7575,7 @@
 								<key>uuid</key>
 								<string>33A91FC6-E59C-4F29-8256-259D9CBBEDB4-8454-00009530607E1091</string>
 								<key>zIndex</key>
-								<integer>5</integer>
+								<integer>7</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7605,7 +7611,7 @@
 								<key>uuid</key>
 								<string>CB9B640A-D68E-4AC9-84F0-7B92ADBD6EA9-8454-00009530607F1702</string>
 								<key>zIndex</key>
-								<integer>5</integer>
+								<integer>40</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7641,7 +7647,7 @@
 								<key>uuid</key>
 								<string>2A1ECD97-C81B-4CE1-876E-F76EC8007408-8454-0000951A2CC3524C</string>
 								<key>zIndex</key>
-								<integer>7</integer>
+								<integer>8</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7677,7 +7683,7 @@
 								<key>uuid</key>
 								<string>B1781A4A-DC09-42DD-B084-511C0D5DFA57-8454-0000979FF2006B01</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>41</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7706,7 +7712,7 @@
 								<key>uuid</key>
 								<string>6412ADE2-8981-49F4-BC9F-5607E5AF8EBF-8454-000096D942246D4B</string>
 								<key>zIndex</key>
-								<integer>8</integer>
+								<integer>42</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7735,7 +7741,7 @@
 								<key>uuid</key>
 								<string>82738407-1B7D-44E7-A564-EEA0144B334E-8454-000096DA5B1EBA3C</string>
 								<key>zIndex</key>
-								<integer>8</integer>
+								<integer>43</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7764,7 +7770,7 @@
 								<key>uuid</key>
 								<string>571B6E61-431F-4847-9AB0-2600AB164043-8454-00009530608017BD</string>
 								<key>zIndex</key>
-								<integer>6</integer>
+								<integer>9</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7800,7 +7806,7 @@
 								<key>uuid</key>
 								<string>78C6DDF2-848D-4CA2-B530-DF728BDB744D-8454-000095306080F066</string>
 								<key>zIndex</key>
-								<integer>6</integer>
+								<integer>44</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7829,7 +7835,7 @@
 								<key>uuid</key>
 								<string>F95BB17C-BCF3-4617-B215-D8EA7532D11A-8454-0000951A2CC8A314</string>
 								<key>zIndex</key>
-								<integer>9</integer>
+								<integer>10</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7865,7 +7871,7 @@
 								<key>uuid</key>
 								<string>6A89E033-FBF4-42F3-A00F-D4826005DE97-8454-00009559CEE00C3A</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>5</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7901,7 +7907,7 @@
 								<key>uuid</key>
 								<string>50AB846F-E771-4417-963D-673035105C00-8454-00009558DCC9FB1D</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>6</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7937,7 +7943,7 @@
 								<key>uuid</key>
 								<string>3FF2DF97-0A40-45D7-841C-C0EAC889280A-8454-0000979FF20128D8</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>45</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -7973,7 +7979,7 @@
 								<key>uuid</key>
 								<string>949F1186-BAC4-4A6F-BB85-68477594656D-8454-000095306081AD6F</string>
 								<key>zIndex</key>
-								<integer>7</integer>
+								<integer>46</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8009,7 +8015,7 @@
 								<key>uuid</key>
 								<string>4F632BCB-34A6-49AC-B625-C4E9DB9D652B-8454-0000951A2CB98095</string>
 								<key>zIndex</key>
-								<integer>29</integer>
+								<integer>47</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8045,7 +8051,7 @@
 								<key>uuid</key>
 								<string>F87BC19D-CFD1-489E-A237-1E31DDF4AACF-8454-000095648A53F96E</string>
 								<key>zIndex</key>
-								<integer>30</integer>
+								<integer>48</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8081,7 +8087,7 @@
 								<key>uuid</key>
 								<string>DE55C291-5C05-441F-A41A-63E732FE4095-8454-000097ACBA0D3691</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>49</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8110,7 +8116,7 @@
 								<key>uuid</key>
 								<string>BFE097F0-A595-4F85-AAA0-62FF24D6957C-8454-0000955BBDDCC6BD</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>7</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8139,7 +8145,7 @@
 								<key>uuid</key>
 								<string>DF3BF269-9FB9-4C98-88EF-1597B0ECC781-8454-0000955C367FE69B</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>8</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8168,7 +8174,7 @@
 								<key>uuid</key>
 								<string>90D47E99-E62A-47D7-A782-407A344E9FC5-8454-0000979FF201C29F</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>50</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8197,7 +8203,7 @@
 								<key>uuid</key>
 								<string>D0281F28-F2D8-4463-9AA6-7C0048BF4334-8454-0000953060824455</string>
 								<key>zIndex</key>
-								<integer>8</integer>
+								<integer>51</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8226,7 +8232,7 @@
 								<key>uuid</key>
 								<string>FD36FE24-4A9A-4686-B8AC-A34DE6E47E3B-8454-0000951A2CBE0713</string>
 								<key>zIndex</key>
-								<integer>34</integer>
+								<integer>52</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8255,7 +8261,7 @@
 								<key>uuid</key>
 								<string>BFB795BB-3A4E-43FC-8784-226B572DCF4E-8454-000095653D5C85F8</string>
 								<key>zIndex</key>
-								<integer>35</integer>
+								<integer>53</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8291,7 +8297,7 @@
 								<key>uuid</key>
 								<string>CC45B52E-B345-47F5-A677-9BBCE95F6484-8454-000097B27801FCE3</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>54</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8327,7 +8333,7 @@
 								<key>uuid</key>
 								<string>8F87210A-376B-4249-A495-92CEDD7B7D1E-8454-000097AD7F33C369</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>55</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8435,7 +8441,7 @@
 								<key>uuid</key>
 								<string>2A70E4C6-4614-4FD6-B70B-940A592C9809-8454-000091B15715556E</string>
 								<key>zIndex</key>
-								<integer>39</integer>
+								<integer>56</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8471,7 +8477,7 @@
 								<key>uuid</key>
 								<string>1513F7BE-618D-47D6-B0F4-8E4C422B3718-8454-0000957722DE2918</string>
 								<key>zIndex</key>
-								<integer>40</integer>
+								<integer>57</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8507,7 +8513,7 @@
 								<key>uuid</key>
 								<string>B6674B9A-2DF3-448B-B667-6193CAA21393-8454-000095A22A1882AF</string>
 								<key>zIndex</key>
-								<integer>41</integer>
+								<integer>58</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8543,7 +8549,7 @@
 								<key>uuid</key>
 								<string>E1C21F32-C031-48F6-A095-EB5AC3F760C2-8454-000095E7FADA432C</string>
 								<key>zIndex</key>
-								<integer>42</integer>
+								<integer>59</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8579,7 +8585,7 @@
 								<key>uuid</key>
 								<string>66F4606A-2AC6-4E35-855F-92BAD488E5C0-8454-000097B36A13C601</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>60</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8615,7 +8621,7 @@
 								<key>uuid</key>
 								<string>3C7CB5C9-EE72-4EDD-B0F4-C2CC40D268A5-8454-000097B7B12B26A6</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>61</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8651,7 +8657,7 @@
 								<key>uuid</key>
 								<string>5B7983A2-A791-413B-8AD8-C9F5F289FD35-8454-000097B82A8CCA15</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>62</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8738,7 +8744,7 @@
 								<key>uuid</key>
 								<string>70429BFF-AEA7-4502-89DD-37503B540717-8454-000091B3057ED261</string>
 								<key>zIndex</key>
-								<integer>43</integer>
+								<integer>63</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8767,7 +8773,7 @@
 								<key>uuid</key>
 								<string>12F1E7A0-B58C-432F-870D-501B4C11675D-8454-0000957878396B1C</string>
 								<key>zIndex</key>
-								<integer>44</integer>
+								<integer>64</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8796,7 +8802,7 @@
 								<key>uuid</key>
 								<string>9387FE10-BBA7-4219-A21A-ABE7291EACAE-8454-000095A3D092E4B9</string>
 								<key>zIndex</key>
-								<integer>45</integer>
+								<integer>65</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8825,7 +8831,7 @@
 								<key>uuid</key>
 								<string>96D399BF-E9AC-4F67-9366-5C48DA75D16F-8454-000095E8A32667AF</string>
 								<key>zIndex</key>
-								<integer>46</integer>
+								<integer>66</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8854,7 +8860,7 @@
 								<key>uuid</key>
 								<string>C2121E6C-74D8-49F9-9044-078E90DA6B2A-8454-000097B59E0F3E10</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>67</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8883,7 +8889,7 @@
 								<key>uuid</key>
 								<string>6E6F3060-787E-45A1-A93D-B285337796D4-8454-000097B92B61267C</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>68</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -8912,7 +8918,7 @@
 								<key>uuid</key>
 								<string>2CC03417-381E-4EBC-BB50-1677368BD7B7-8454-000097BA2831B3C8</string>
 								<key>zIndex</key>
-								<integer>4</integer>
+								<integer>69</integer>
 							</dict>
 						</array>
 						<key>firstKeyframeIsRelative</key>
@@ -8933,7 +8939,7 @@
 		</dict>
 		<dict>
 			<key>documentIdentifier</key>
-			<string>0E2886A0-CB19-418B-9DB4-FA2D4673690D-8454-000097178CF15888</string>
+			<string>2BB37092-1FDF-4075-B05D-F60D2211D614-8454-0000A9DD32F1B00C</string>
 			<key>selectedObjects</key>
 			<array/>
 			<key>symbol</key>
@@ -8956,9 +8962,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TextColor</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>#888888</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -9040,9 +9046,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>PaddingLeft</string>
+							<string>ZIndex</string>
 							<key>objectValue</key>
-							<string>8px</string>
+							<string>6</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -9058,9 +9064,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>ZIndex</string>
+							<string>PaddingLeft</string>
 							<key>objectValue</key>
-							<string>6</string>
+							<string>8px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -9082,9 +9088,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>TextColor</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>#888888</string>
 						</dict>
 					</array>
 					<key>86</key>
@@ -9103,9 +9109,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TextColor</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>#555555</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -9265,9 +9271,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>TextColor</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>#555555</string>
 						</dict>
 					</array>
 					<key>88</key>
@@ -9860,9 +9866,9 @@
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>88px</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -10018,9 +10024,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>88px</string>
+							<string>div</string>
 						</dict>
 					</array>
 					<key>95</key>
@@ -10096,9 +10102,9 @@
 					<array>
 						<dict>
 							<key>identifier</key>
-							<string>OriginalWidth</string>
+							<string>TagName</string>
 							<key>objectValue</key>
-							<string>88px</string>
+							<string>div</string>
 						</dict>
 						<dict>
 							<key>identifier</key>
@@ -10252,9 +10258,9 @@
 						</dict>
 						<dict>
 							<key>identifier</key>
-							<string>TagName</string>
+							<string>OriginalWidth</string>
 							<key>objectValue</key>
-							<string>div</string>
+							<string>88px</string>
 						</dict>
 					</array>
 				</dict>
@@ -10381,7 +10387,7 @@
 							</dict>
 							<dict>
 								<key>duration</key>
-								<real>0.50000001490116119</real>
+								<real>0.5</real>
 								<key>endValue</key>
 								<dict>
 									<key>identifier</key>
@@ -10413,11 +10419,11 @@
 								<key>uuid</key>
 								<string>4C88BFBD-1032-4734-8CCF-A6262CA83898-8454-00009266D99E1909</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>2</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
-								<real>0.50000001490116119</real>
+								<real>0.5</real>
 								<key>endValue</key>
 								<dict>
 									<key>identifier</key>
@@ -10449,7 +10455,7 @@
 								<key>uuid</key>
 								<string>2A70E4C6-4614-4FD6-B70B-940A592C9809-8454-000091B15715556E</string>
 								<key>zIndex</key>
-								<integer>1</integer>
+								<integer>3</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -10478,7 +10484,7 @@
 								<key>uuid</key>
 								<string>7CACA2E3-A713-4110-9832-C9AC28106E15-8454-0000912871F01F1A</string>
 								<key>zIndex</key>
-								<integer>3</integer>
+								<integer>4</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -10507,7 +10513,7 @@
 								<key>uuid</key>
 								<string>24ABD93B-B8D8-4AF2-9545-7420F7863701-8454-00009267F74B5557</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>5</integer>
 							</dict>
 							<dict>
 								<key>duration</key>
@@ -10536,7 +10542,7 @@
 								<key>uuid</key>
 								<string>70429BFF-AEA7-4502-89DD-37503B540717-8454-000091B3057ED261</string>
 								<key>zIndex</key>
-								<integer>2</integer>
+								<integer>6</integer>
 							</dict>
 						</array>
 						<key>firstKeyframeIsRelative</key>
