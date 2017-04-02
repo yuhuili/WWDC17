@@ -92,9 +92,13 @@ func visualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
  ## Bubble Sort
  Average runtime: [O(n^2)](glossary://quadratic%20runtime)
  
- Imagine the array having two parts, left is unosrted and right is sorted. Each time we examine the adjacent pair, and swap them if they are out of order. Can you see that the last element in each iteration will be at the correct spot? (Hint: what do we do if we encounter a card along the way that is supposed to be placed at the end?)
+ Imagine the array having two parts, left is unosrted and right is sorted. Each time we examine the adjacent pair, and swap them if they are out of order.
  
  ![Bubble example](bubble_example.png)
+ 
+* callout(Think about):
+ 
+     Can you see that the last element in each iteration will be at the correct spot? (Hint: what do we do if we encounter a card along the way that is supposed to be placed at the end?)
  */
 func performBubbleSort(endBefore: Int) {
     // Can you see how the cards are being bubbled up?
