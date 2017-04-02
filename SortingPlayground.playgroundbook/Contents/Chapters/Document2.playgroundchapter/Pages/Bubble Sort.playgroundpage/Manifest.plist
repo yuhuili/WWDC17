@@ -11,7 +11,7 @@
 	<key>MaximumSupportedExecutionSpeed</key>
 	<string>Fastest</string>
 	<key>Name</key>
-	<string>Name</string>
+	<string>Bubble Sort</string>
 	<key>PlaygroundLoggingMode</key>
 	<string>Off</string>
 	<key>PosterReference</key>
