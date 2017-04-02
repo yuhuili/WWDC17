@@ -58,7 +58,7 @@ func performBubbleSort(_ arrangementController: SPArrangementController) {
         names.append(c.stringValue())
     }
     
-    performBubbleSort(arrangementController, endBefore: names.count)
+    performBubbleSort(endBefore: names.count)
 }
 
 func bubbleVisualIterator(range: CountableRange<Int>, iterator: (_ i: Int) -> Void) {
@@ -79,7 +79,7 @@ func visualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
         execute()
         viewController.arrangementController?.appendAction(type: .showDoneIndicator, index1: value-1, index2: nil)
         viewController.arrangementController?.executeActions {
-            performBubbleSort(viewController.arrangementController!, endBefore: value-1)
+            performBubbleSort(endBefore: value-1)
         }
     } else {
         viewController.arrangementController?.appendAction(type: .resetAll, index1: nil, index2: nil)
@@ -96,7 +96,7 @@ func visualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
  
  ![Bubble example](bubble_example.png)
  */
-func performBubbleSort(_ arrangementController: SPArrangementController, endBefore: Int) {
+func performBubbleSort(endBefore: Int) {
     // Can you see how the cards are being bubbled up?
     //#-editable-code
     visualIf(value: endBefore, greaterThan: 0) {
