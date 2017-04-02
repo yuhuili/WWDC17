@@ -291,15 +291,6 @@ func performBogo(_ count: Int) {
  You may play with all previously shown algorithms on this page, or reread the details by navigating the table of contents. I hope you have enjoyed this journey in sorting.
  
  Yuhui Li
- 
- - - -
- ### Table of Contents
- * [Shuffle](/Shuffle/Fisher-Yates%20Shuffle)
- * [Bubble Sort](Bubble%20Sort)
- * [Selection Sort](Selection%20Sort)
- * [Quick Sort](Quick%20Sort)
- * [Bogo Sort](Bogo%20Sort)
- * [The End](The%20End)
  */
 
 //#-hidden-code

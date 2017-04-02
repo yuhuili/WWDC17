@@ -32,16 +32,6 @@ func rand(low: Int, high: Int) -> Int {
     return Int(arc4random_uniform(UInt32(high-low))) + low
 }
 //#-end-hidden-code
-
-/*:
- Feeling brave? Kick start with a sorting algorithm instead!
-
- * [Bubble Sort](Bubble%20Sort)
- * [Selection Sort](Selection%20Sort)
- * [Quick Sort](Quick%20Sort)
- * [Bogo Sort](Bogo%20Sort)
-  - - -
- */
 /*:
  ## Shuffle
  Before we start, we'll learn to shuffle.
