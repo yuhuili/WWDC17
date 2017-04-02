@@ -5,15 +5,13 @@
 	<key>Description</key>
 	<string>Description</string>
 	<key>LiveViewEdgeToEdge</key>
-	<true/>
+	<false/>
 	<key>LiveViewMode</key>
 	<string>VisibleByDefault</string>
 	<key>MaximumSupportedExecutionSpeed</key>
 	<string>Fastest</string>
 	<key>Name</key>
-	<string>Name</string>
-	<key>PlaygroundLoggingMode</key>
-	<string>Off</string>
+	<string>The End</string>
 	<key>PosterReference</key>
 	<string>LiveViewPoster.png</string>
 	<key>Version</key>
