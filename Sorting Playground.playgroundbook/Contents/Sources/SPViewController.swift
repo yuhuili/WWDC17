@@ -45,7 +45,11 @@ public class SPViewController: UIViewController {
     private var buttonsWidthConstraintWideRight: NSLayoutConstraint?
     private var buttonsHeightConstraintTall: NSLayoutConstraint?
     private var buttonsHeightConstraintShort: NSLayoutConstraint?
-
+    
+    private var shuffleWidthContraintLarge: NSLayoutConstraint?
+    private var shuffleWidthContraintSmall: NSLayoutConstraint?
+    private var shuffleHeightContraintLarge: NSLayoutConstraint?
+    private var shuffleHeightContraintSmall: NSLayoutConstraint?
     
     // MARK: - Exposed functions for Contents.swift
     // Note: These functions are not following Swift conventions but are instead trying to mimic the feel of a class for a beginner audience.
@@ -338,6 +342,18 @@ public class SPViewController: UIViewController {
     }
     
     public override func viewWillLayoutSubviews() {
+        if view.frame.height < 400 {
+            shuffleHeightContraintSmall?.isActive = true;
+            shuffleWidthContraintSmall?.isActive = true;
+            shuffleHeightContraintLarge?.isActive = false;
+            shuffleWidthContraintLarge?.isActive = false;
+        } else {
+            shuffleHeightContraintSmall?.isActive = false;
+            shuffleWidthContraintSmall?.isActive = false;
+            shuffleHeightContraintLarge?.isActive = true;
+            shuffleWidthContraintLarge?.isActive = true;
+        }
+        
         if view.frame.height < 400 && ((showBubble ? 1 : 0) + (showSelection ? 1 : 0) + (showQuick ? 1 : 0) + (showBogo ? 1 : 0)) > 1 {
             buttonsHeightConstraintTall?.isActive = false
             buttonsHeightConstraintShort?.isActive = true
@@ -574,18 +590,24 @@ public class SPViewController: UIViewController {
             funcButton.titleLabel?.minimumScaleFactor = 0.2
             funcButton.setBackgroundImage(UIImage(named: "purty_wood"), for: .normal)
             funcButton.setTitleColor(NormalColorOnWood, for: .normal)
-            funcButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+            funcButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
             funcButton.layer.cornerRadius = 5
             funcButton.layer.masksToBounds = true
             funcButton.addTarget(self, action: #selector(handleFunc), for: .touchUpInside)
             view.addSubview(funcButton)
             
-            let heightConstraint = NSLayoutConstraint(item: funcButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20.0)
-            let widthConstraint = NSLayoutConstraint(item: funcButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50.0)
+            shuffleHeightContraintLarge = NSLayoutConstraint(item: funcButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 30.0)
+            shuffleHeightContraintSmall = NSLayoutConstraint(item: funcButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20.0)
+            shuffleHeightContraintSmall?.isActive = false;
+            
+            shuffleWidthContraintLarge = NSLayoutConstraint(item: funcButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 70.0)
+            shuffleWidthContraintSmall = NSLayoutConstraint(item: funcButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 50.0)
+            shuffleWidthContraintSmall?.isActive = false;
+            
             let topConstraint = NSLayoutConstraint(item: funcButton, attribute: .bottom, relatedBy: .equal, toItem: boardView, attribute: .top, multiplier: 1, constant: 0)
             let centerConstraint = NSLayoutConstraint(item: funcButton, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
             
-            view.addConstraints([widthConstraint, heightConstraint, topConstraint, centerConstraint])
+            view.addConstraints([shuffleWidthContraintLarge!, shuffleWidthContraintSmall!, shuffleHeightContraintLarge!, shuffleHeightContraintSmall!, topConstraint, centerConstraint])
         }
     }
 }
