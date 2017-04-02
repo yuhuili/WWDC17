@@ -9,7 +9,7 @@
 			<key>Definition</key>
 			<string>Simply randomize the cards could result in the algorithm running forever. Another version of Bogo is deterministic, meaning it enumerates all possible permutations. Therefore it is guaranteed that it will finish, but still very slow.</string>
 			<key>Title</key>
-			<string>Deterministic vs Random</string>
+			<string>Deterministic vs. Random</string>
 		</dict>
 		<key>bogo runtime</key>
 		<dict>

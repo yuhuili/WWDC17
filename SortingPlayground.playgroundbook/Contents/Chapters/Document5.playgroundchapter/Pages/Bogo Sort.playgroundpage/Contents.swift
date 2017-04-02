@@ -82,11 +82,9 @@ func verifyBogo() {
  
  Average runtime: [O(n * n!)](glossary://bogo%20runtime)
  
- See that n! there? That's bad! In simple terms, observe that n = 10, n^n = 100, nlogn = 33., and n! = 3628800.
+* callout(Think about):
  
- ### Think about...
- 
- How many times do we need to shuffle in the best case? What about worst case? Could this run forever if we are unlucky? [How to solve this issue?](glossary://deterministic%20bogo)
+     How many times do we need to shuffle in the *best case*? What about *worst case*? Could this *run forever* if we are unlucky? [How to solve this issue?](glossary://deterministic%20bogo)
  */
 func performBogo(_ count: Int) {
     //#-editable-code
