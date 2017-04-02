@@ -101,7 +101,7 @@ func performSelectionSort(_ arrangementController: SPArrangementController) {
  ## Selection Sort
  Now we have the sorted part to the left side. Each time we loop through unsorted part, we pick the smallest item. Then place it at the end of the sorted part.
  
- Average runtime: O(n^2), same as Bubble Sort
+ Average runtime: [O(n^2)](glossary://quadratic%20runtime), same as Bubble Sort
  */
 func performSelectionSort(startAt: Int) {
     //#-editable-code

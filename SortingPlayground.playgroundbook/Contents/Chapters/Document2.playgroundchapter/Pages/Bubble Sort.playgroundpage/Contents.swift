@@ -90,7 +90,7 @@ func visualIf(value: Int, greaterThan v: Int, execute: () -> Void) {
 //#-end-hidden-code
 /*:
  ## Bubble Sort
- Average runtime: O(n^2), i.e., if we have 2 times amount of cards, this algorithm will take 4 times longer to run.
+ Average runtime: [O(n^2)](glossary://quadratic%20runtime)
  
  Imagine the array having two parts, left is unosrted and right is sorted. Each time we examine the adjacent pair, and swap them if they are out of order. Can you see that the last element in each iteration will be at the correct spot? (Hint: what do we do if we encounter a card along the way that is supposed to be placed at the end?)
  

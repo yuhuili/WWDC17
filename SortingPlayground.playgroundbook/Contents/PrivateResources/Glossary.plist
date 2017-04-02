@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Terms</key>
+	<dict>
+		<key>deterministic bogo</key>
+		<dict>
+			<key>Definition</key>
+			<string>Simply randomize the cards could result in the algorithm running forever. Another version of Bogo is deterministic, meaning it enumerates all possible permutations. Therefore it is guaranteed that it will finish, but still very slow.</string>
+			<key>Title</key>
+			<string>Deterministic vs Random</string>
+		</dict>
+		<key>bogo runtime</key>
+		<dict>
+			<key>Definition</key>
+			<string>Factorial of n is 1\*2\*3\*...\*n, which is certainly much much worse than any of the runtimes we encountered. This is the average runtime, but the worst case is unbounded.</string>
+			<key>Title</key>
+			<string>O(n * n!)</string>
+		</dict>
+		<key>choice of pivot</key>
+		<dict>
+			<key>Definition</key>
+			<string>In worst case, Quick Sort will run at O(n^2). By choosing a good pivot, we can minimize the chance of getting this worst case behaviour.</string>
+			<key>Title</key>
+			<string>Choice of Pivot</string>
+		</dict>
+		<key>linearithmic runtime</key>
+		<dict>
+			<key>Definition</key>
+			<string>The growth rate of a linearithmic time algorithm is much less time than that of a quadratic time algorithm. In fact, the best we can do for comparison based sorting is O(nlogn).</string>
+			<key>Title</key>
+			<string>O(nlogn) Linearithmic Time</string>
+		</dict>
+		<key>quadratic runtime</key>
+		<dict>
+			<key>Definition</key>
+			<string>This is known as the Big O notation. Quadratic time, informally, means that if we have 2 times amount of cards, the algorithm will take 4 times longer to run.</string>
+			<key>Title</key>
+			<string>O(n^2) Quadratic Time</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
