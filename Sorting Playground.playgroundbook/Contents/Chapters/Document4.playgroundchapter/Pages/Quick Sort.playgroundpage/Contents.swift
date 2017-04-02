@@ -119,7 +119,11 @@ func quickVisualIf(value startAt: Int, lessThan endBefore: Int, thenPerform comp
  
  Average runtime: [O(nlogn)](glossary://linearithmic%20runtime)
  
- Every time we pick the first card in range as the pivot, then rearrange the cards such that everything less than it will be on its left and other ones will be on its right. We know this card must be at the correct place. Then we sort its left and right side separately.
+ Quick sort follows three steps:
+ 
+ 1. Pick an item as *pivot*, we'll always pick the first one.
+ 2. *Partition* such that all items that should come before the pivot are placed on the left, otherwise on the right side of pivot.
+ 3. Recursively apply the same steps for each side of the pivot.
  
  ![Quick example](quick_example.png)
  
