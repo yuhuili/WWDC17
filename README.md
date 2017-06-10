@@ -5,3 +5,5 @@ Sorting Playground provides an intuitive interface and animations to explore a n
 AirDrop `Sorting Playground.playgroundbook` to an iPad with Swift Playground to run.
 
 (SortingPlayground.playground is for development purpose only)
+
+![WWDC17](screenshots.png)
